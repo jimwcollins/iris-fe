@@ -3,10 +3,10 @@ import TopicList from './Nav/TopicList';
 
 const Nav = () => {
   return (
-    <div>
+    <nav className="nav">
       <p>Topics</p>
       <TopicList />
-    </div>
+    </nav>
   );
 };
 

@@ -33,16 +33,21 @@ class ArticleList extends Component {
 
     return (
       <main>
-        <h2>{topic || 'All articles'}</h2>
-        {isLoading ? (
-          'Loading articles...'
-        ) : (
-          <ul>
-            {articles.map((article) => {
-              return <ArticleCard key={article.article_id} article={article} />;
-            })}
-          </ul>
-        )}
+        <div className="articles">
+          <h2>{topic || 'All articles'}</h2>
+          {isLoading ? (
+            'Loading articles...'
+          ) : (
+            <ul className="articles__list">
+              {articles.map((article) => {
+                return (
+                  <ArticleCard key={article.article_id} article={article} />
+                );
+              })}
+            </ul>
+          )}
+        </div>
+        <div className="side-panel">Side List</div>
       </main>
     );
   }

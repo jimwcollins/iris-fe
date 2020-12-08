@@ -28,29 +28,53 @@ nav {
   margin: 2rem 0;
   padding: 2rem;
 
-  background-color: rgb(194, 208, 212);
+  background-color: rgb(255, 255, 255);
 }
 
 main {
   width: 100%;
   display: grid;
   grid-template-columns: auto 30%;
-  grid-template-areas: 'main side';
+  grid-template-rows: min-content auto;
+  grid-template-areas: 'header header' 'main side';
   column-gap: 5rem;
 
-  margin-top: 5rem;
+  margin-top: 2rem;
+}
+
+.articles__header {
+  grid-area: header;
+  margin-bottom: 3rem;
+
+  font-size: 2rem;
+}
+
+.articles__count {
+  font-size: 1.3rem;
 }
 
 .articles {
   grid-area: main;
 }
 
-.articles__header {
-  margin-bottom: 0.5rem;
+.articles-sort {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border: 0.1rem solid rgb(37, 37, 37);
+  border-radius: 0.5rem;
+  padding: 1rem;
+  margin-bottom: 1.5rem;
 }
 
-.articles__count {
-  margin-bottom: 1rem;
+.articles-sort__label {
+  margin-right: 0.5rem;
+  font-size: 1.1rem;
+}
+
+.articles-sort__controls {
+  display: flex;
+  align-items: center;
 }
 
 .articles__list {
@@ -63,7 +87,7 @@ main {
   border-radius: 0.5rem;
   padding: 1rem;
   margin-bottom: 1.5rem;
-  max-height: 15rem;
+  max-height: 19rem;
   overflow: hidden;
 }
 
@@ -97,7 +121,7 @@ main {
 .articles__card__info {
   margin: 1rem 0;
   border-top: 0.1rem solid black;
-  padding: 1rem 0;
+  padding-top: 1rem;
 }
 
 .articles__card__stats {

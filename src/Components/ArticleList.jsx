@@ -3,6 +3,7 @@ import { getArticleList } from '../api';
 import ArticleCard from './ArticleList/ArticleCard';
 import LoadSpinner from './LoadSpinner';
 import ErrorMsg from './ErrorMsg';
+import ArticleSort from './ArticleList/ArticleSort';
 
 class ArticleList extends Component {
   state = {
@@ -28,9 +29,13 @@ class ArticleList extends Component {
     }
   };
 
-  loadArticleList = async (topic) => {
+  loadArticleList = async (topic, sortBy, order) => {
     try {
-      const { articles, total_count } = await getArticleList(topic);
+      const { articles, total_count } = await getArticleList(
+        topic,
+        sortBy,
+        order
+      );
       this.setState({
         topic,
         articles,
@@ -64,11 +69,14 @@ class ArticleList extends Component {
 
     return (
       <main>
+        <h2 className="articles__header">{topic || 'All articles'}</h2>
+
         <div className="articles">
-          <h2 className="articles__header">{topic || 'All articles'}</h2>
-          <p className="articles__count">
-            Now showing 10 of {articleCount} articles
-          </p>
+          <ArticleSort
+            articleCount={articleCount}
+            topic={topic}
+            loadArticleList={this.loadArticleList}
+          />
           {isLoading ? (
             <LoadSpinner />
           ) : (

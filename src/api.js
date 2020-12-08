@@ -10,10 +10,12 @@ export const getTopics = async () => {
   return topics;
 };
 
-export const getArticleList = async (topic) => {
+export const getArticleList = async (topic, sortBy, order) => {
   const { data: articles } = await irisApi.get('/articles', {
     params: {
-      topic
+      topic,
+      sort_by: sortBy,
+      order
     }
   });
 

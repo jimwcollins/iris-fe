@@ -27,3 +27,11 @@ export const getArticle = async (articleId) => {
 
   return article;
 };
+
+export const getCommentList = async (articleId) => {
+  const {
+    data: { comments }
+  } = await irisApi.get(`/articles/${articleId}/comments`);
+
+  return comments;
+};

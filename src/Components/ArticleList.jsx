@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import { getArticleList } from '../api';
 import ArticleCard from './ArticleList/ArticleCard';
-import ErrorMsg from './ErrorMsg';
 import LoadSpinner from './LoadSpinner';
+import ErrorMsg from './ErrorMsg';
 
 class ArticleList extends Component {
   state = {

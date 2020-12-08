@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { getCommentList } from '../api';
 import CommentCard from './CommentList/CommentCard';
 import LoadSpinner from './LoadSpinner';
+import ErrorMsg from './ErrorMsg';
 
 class CommentList extends Component {
   state = {
@@ -24,24 +25,31 @@ class CommentList extends Component {
         isLoading: false
       });
     } catch (err) {
-      console.log(err);
+      const {
+        response: { status, statusText }
+      } = err;
+
+      this.setState({
+        isLoading: false,
+        hasError: true,
+        errMsg: `${status}: ${statusText}`
+      });
     }
   };
 
   render() {
-    const { comments, isLoading } = this.state;
+    const { comments, isLoading, hasError, errMsg } = this.state;
+
+    if (isLoading) return <LoadSpinner />;
+    if (hasError) return <ErrorMsg errorMsg={errMsg} />;
 
     return (
       <div>
-        {isLoading ? (
-          <LoadSpinner />
-        ) : (
-          <ul className="commentList__list">
-            {comments.map((comment) => {
-              return <CommentCard key={comment.comment_id} comment={comment} />;
-            })}
-          </ul>
-        )}
+        <ul className="commentList__list">
+          {comments.map((comment) => {
+            return <CommentCard key={comment.comment_id} comment={comment} />;
+          })}
+        </ul>
       </div>
     );
   }

@@ -4,6 +4,7 @@ import Title from './Components/Title';
 import Nav from './Components/Nav';
 import ArticleList from './Components/ArticleList';
 import Article from './Components/Article';
+import ErrorMsg from './Components/ErrorMsg';
 
 function App() {
   return (
@@ -14,6 +15,7 @@ function App() {
         <ArticleList path="/" />
         <ArticleList path="/articles/:topic" />
         <Article path="/article" />
+        <ErrorMsg default errorMsg="Sorry, page not found." />
       </Router>
     </div>
   );

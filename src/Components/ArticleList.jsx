@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
-import { fetchArticles } from '../api';
+import { getArticleList } from '../api';
 import ArticleCard from './ArticleList/ArticleCard';
 import ErrorMsg from './ErrorMsg';
+import LoadSpinner from './LoadSpinner';
 
 class ArticleList extends Component {
   state = {
@@ -15,7 +16,7 @@ class ArticleList extends Component {
 
   componentDidMount = () => {
     const { topic } = this.props;
-    this.loadArticles(topic);
+    this.loadArticleList(topic);
   };
 
   componentDidUpdate = (prevProps) => {
@@ -23,19 +24,18 @@ class ArticleList extends Component {
     const isNew = topic !== prevProps.topic;
 
     if (isNew) {
-      this.loadArticles(topic);
+      this.loadArticleList(topic);
     }
   };
 
-  loadArticles = async (topic) => {
+  loadArticleList = async (topic) => {
     try {
-      const { articles, total_count } = await fetchArticles(topic);
+      const { articles, total_count } = await getArticleList(topic);
       this.setState({
         topic,
         articles,
         articleCount: total_count,
-        isLoading: false,
-        hasError: false
+        isLoading: false
       });
     } catch (err) {
       const {
@@ -60,9 +60,7 @@ class ArticleList extends Component {
       errMsg
     } = this.state;
 
-    if (hasError) {
-      return <ErrorMsg errorMsg={errMsg} />;
-    }
+    if (hasError) return <ErrorMsg errorMsg={errMsg} />;
 
     return (
       <main>
@@ -72,7 +70,7 @@ class ArticleList extends Component {
             Now showing 10 of {articleCount} articles
           </p>
           {isLoading ? (
-            'Loading articles...'
+            <LoadSpinner />
           ) : (
             <ul className="articles__list">
               {articles.map((article) => {

@@ -14,8 +14,8 @@ function App() {
       <Router>
         <ArticleList path="/" />
         <ArticleList path="/articles/:topic" />
-        <Article path="/article" />
-        <ErrorMsg default errorMsg="Sorry, page not found." />
+        <Article path="/article/:articleId" />
+        <ErrorMsg default errorMsg="404: page not found" />
       </Router>
     </div>
   );

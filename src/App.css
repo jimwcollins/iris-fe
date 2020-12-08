@@ -57,13 +57,51 @@ main {
   list-style: none;
 }
 
-.article-card {
+.articles__card {
   border: 0.1rem solid rgb(37, 37, 37);
   border-radius: 1rem;
-  padding: 0.5rem;
+  padding: 1rem;
   margin-bottom: 1.5rem;
   max-height: 10rem;
   overflow: hidden;
+}
+
+.articles__link {
+  text-decoration: none;
+  color: inherit;
+}
+
+.article {
+  text-align: left;
+}
+
+.article__title {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+}
+
+.article__author {
+  display: flex;
+  align-items: center;
+  border-top: 0.1rem solid black;
+  border-bottom: 0.1rem solid black;
+  height: 3rem;
+  margin: 1rem 0;
+  font-size: 1.1rem;
+}
+
+.article__body {
+  font-size: 1.4rem;
+}
+
+.article__statBar {
+  margin-top: 1rem;
+  display: flex;
+}
+
+.article__stat {
+  font-size: 1.1rem;
+  margin-right: 0.3rem;
 }
 
 h3 {

@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { getArticle } from '../api';
 import LoadSpinner from './LoadSpinner';
+import ErrorMsg from './ErrorMsg';
 
 class Article extends Component {
   state = {
@@ -23,7 +24,18 @@ class Article extends Component {
         isLoading: false
       });
     } catch (err) {
-      console.log(err);
+      const {
+        response: { status, statusText }
+      } = err;
+
+      console.log(status);
+      console.log(statusText);
+
+      this.setState({
+        isLoading: false,
+        hasError: true,
+        errMsg: `${status}: ${statusText}`
+      });
     }
   };
 
@@ -38,9 +50,10 @@ class Article extends Component {
       created_at
     } = this.state.article;
 
-    const { isLoading } = this.state;
+    const { isLoading, hasError, errMsg } = this.state;
 
     if (isLoading) return <LoadSpinner />;
+    if (hasError) return <ErrorMsg errorMsg={errMsg} />;
 
     return (
       <main>
@@ -54,6 +67,7 @@ class Article extends Component {
             <p className="article__stat">{comment_count} comments</p>
           </div>
         </div>
+
         <div className="side-panel">Side List</div>
       </main>
     );

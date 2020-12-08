@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { getArticle } from '../api';
 import LoadSpinner from './LoadSpinner';
 import ErrorMsg from './ErrorMsg';
+import CommentList from './CommentList';
 
 class Article extends Component {
   state = {
@@ -41,10 +42,9 @@ class Article extends Component {
 
   render() {
     const {
+      article_id,
       title,
       body,
-      topic,
-      votes,
       author,
       comment_count,
       created_at
@@ -67,6 +67,8 @@ class Article extends Component {
             <p className="article__stat">{comment_count} comments</p>
           </div>
         </div>
+
+        <CommentList articleId={article_id} />
 
         <div className="side-panel">Side List</div>
       </main>

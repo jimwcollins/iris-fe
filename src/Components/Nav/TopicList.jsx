@@ -21,7 +21,7 @@ class TopicList extends Component {
       <div>
         {topics.map((topic) => {
           return (
-            <Link to={`/articles/${topic.slug}`}>
+            <Link to={`/articles/${topic.slug}`} key={topic.slug}>
               <button key={topic.slug}>{topic.slug}</button>
             </Link>
           );

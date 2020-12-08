@@ -1,39 +1,68 @@
 import React, { Component } from 'react';
 import { fetchArticles } from '../api';
 import ArticleCard from './ArticleList/ArticleCard';
+import ErrorMsg from './ErrorMsg';
 
 class ArticleList extends Component {
   state = {
     topic: '',
     articles: [],
     articleCount: 0,
-    isLoading: true
+    isLoading: true,
+    hasError: false,
+    errMsg: ''
   };
 
-  componentDidMount = async () => {
+  componentDidMount = () => {
     const { topic } = this.props;
-    const { articles, total_count } = await fetchArticles(topic);
-
-    this.setState({
-      topic,
-      articles,
-      articleCount: total_count,
-      isLoading: false
-    });
+    this.loadArticles(topic);
   };
 
-  componentDidUpdate = async (prevProps) => {
+  componentDidUpdate = (prevProps) => {
     const { topic } = this.props;
     const isNew = topic !== prevProps.topic;
 
     if (isNew) {
-      const { articles } = await fetchArticles(topic);
-      this.setState({ topic, articles, isLoading: false });
+      this.loadArticles(topic);
+    }
+  };
+
+  loadArticles = async (topic) => {
+    try {
+      const { articles, total_count } = await fetchArticles(topic);
+      this.setState({
+        topic,
+        articles,
+        articleCount: total_count,
+        isLoading: false,
+        hasError: false
+      });
+    } catch (err) {
+      const {
+        response: { status, statusText }
+      } = err;
+
+      this.setState({
+        isLoading: false,
+        hasError: true,
+        errMsg: `${status}: ${statusText}`
+      });
     }
   };
 
   render() {
-    const { articles, topic, articleCount, isLoading } = this.state;
+    const {
+      articles,
+      topic,
+      articleCount,
+      isLoading,
+      hasError,
+      errMsg
+    } = this.state;
+
+    if (hasError) {
+      return <ErrorMsg errorMsg={errMsg} />;
+    }
 
     return (
       <main>

@@ -4,6 +4,7 @@ import ArticleCard from './ArticleList/ArticleCard';
 import LoadSpinner from './LoadSpinner';
 import ErrorMsg from './ErrorMsg';
 import ArticleSort from './ArticleList/ArticleSort';
+import SidePanel from './SidePanel';
 
 class ArticleList extends Component {
   state = {
@@ -69,7 +70,7 @@ class ArticleList extends Component {
 
     return (
       <main>
-        <h2 className="articles__header">{topic || 'All articles'}</h2>
+        <h2 className="articles__header">{topic || 'Welcome To The Iris!'}</h2>
 
         <div className="articles">
           <ArticleSort
@@ -89,7 +90,7 @@ class ArticleList extends Component {
             </ul>
           )}
         </div>
-        <div className="side-panel">Side List</div>
+        <SidePanel />
       </main>
     );
   }

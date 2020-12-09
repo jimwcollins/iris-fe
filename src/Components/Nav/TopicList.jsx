@@ -18,11 +18,15 @@ class TopicList extends Component {
     const topics = this.state.topics;
 
     return (
-      <div>
+      <div className="nav__topiclist">
         {topics.map((topic) => {
           return (
-            <Link to={`/articles/${topic.slug}`} key={topic.slug}>
-              <button key={topic.slug}>{topic.slug}</button>
+            <Link
+              to={`/articles/${topic.slug}`}
+              key={topic.slug}
+              className="nav__topic"
+            >
+              {topic.slug}
             </Link>
           );
         })}

@@ -8,10 +8,10 @@ import ErrorMsg from './Components/ErrorMsg';
 
 function App() {
   return (
-    <div className="App">
+    <div className="App grid">
       <Title />
       <Nav />
-      <Router>
+      <Router className="content">
         <ArticleList path="/" />
         <ArticleList path="/articles/:topic" />
         <Article path="/article/:articleId" />

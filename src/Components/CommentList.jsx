@@ -7,6 +7,7 @@ import CommentForm from './CommentList/CommentForm';
 
 class CommentList extends Component {
   state = {
+    user: this.props.user,
     articleId: this.props.articleId,
     comments: [],
     isLoading: true,
@@ -41,9 +42,10 @@ class CommentList extends Component {
   };
 
   addComment = async (comment) => {
-    const { articleId } = this.state;
+    const { user, articleId } = this.state;
+
     try {
-      const newComment = await postNewComment('jessjelly', articleId, comment);
+      const newComment = await postNewComment(user, articleId, comment);
       this.setState((currentState) => {
         return {
           comments: [newComment, ...currentState.comments]

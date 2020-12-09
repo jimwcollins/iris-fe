@@ -6,6 +6,7 @@ import CommentList from './CommentList';
 
 class Article extends Component {
   state = {
+    user: this.props.user,
     article: {},
     isLoading: true,
     hasError: false,
@@ -50,7 +51,7 @@ class Article extends Component {
       created_at
     } = this.state.article;
 
-    const { isLoading, hasError, errMsg } = this.state;
+    const { user, isLoading, hasError, errMsg } = this.state;
 
     if (isLoading) return <LoadSpinner />;
     if (hasError) return <ErrorMsg errorMsg={errMsg} />;
@@ -66,7 +67,7 @@ class Article extends Component {
           <div className="article__statBar">
             <p className="article__stat">{comment_count} comments</p>
           </div>
-          <CommentList articleId={article_id} />
+          <CommentList articleId={article_id} user={user} />
         </div>
 
         <div className="side-panel">Side List</div>

@@ -6,19 +6,29 @@ import ArticleList from './Components/ArticleList';
 import Article from './Components/Article';
 import ErrorMsg from './Components/ErrorMsg';
 
-function App() {
-  return (
-    <div className="App grid">
-      <Title />
-      <Nav />
-      <Router className="content" primary={false}>
-        <ArticleList path="/" />
-        <ArticleList path="/articles/:topic" />
-        <Article path="/article/:articleId" />
-        <ErrorMsg default errorMsg="404: page not found" />
-      </Router>
-    </div>
-  );
+import React, { Component } from 'react';
+
+class App extends Component {
+  state = {
+    user: 'jessjelly'
+  };
+
+  render() {
+    const { user } = this.state;
+
+    return (
+      <div className="App grid">
+        <Title />
+        <Nav />
+        <Router className="content" primary={false}>
+          <ArticleList path="/" />
+          <ArticleList path="/articles/:topic" />
+          <Article path="/article/:articleId" user={user} />
+          <ErrorMsg default errorMsg="404: page not found" />
+        </Router>
+      </div>
+    );
+  }
 }
 
 export default App;

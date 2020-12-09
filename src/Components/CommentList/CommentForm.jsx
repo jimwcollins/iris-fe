@@ -11,7 +11,11 @@ class CommentForm extends Component {
 
   handleSubmit = (event) => {
     event.preventDefault();
-    console.log(this.state);
+
+    const { addComment } = this.props;
+    const { comment } = this.state;
+
+    addComment(comment);
   };
 
   render() {

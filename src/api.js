@@ -41,3 +41,14 @@ export const getCommentList = async (articleId) => {
 
   return comments;
 };
+
+export const postNewComment = async (user, articleId, commentText) => {
+  const {
+    data: { comment }
+  } = await irisApi.post(`/articles/${articleId}/comments`, {
+    username: user,
+    body: commentText
+  });
+
+  return comment;
+};

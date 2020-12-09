@@ -3,6 +3,7 @@ import { getCommentList } from '../api';
 import CommentCard from './CommentList/CommentCard';
 import LoadSpinner from './LoadSpinner';
 import ErrorMsg from './ErrorMsg';
+import CommentForm from './CommentList/CommentForm';
 
 class CommentList extends Component {
   state = {
@@ -44,7 +45,9 @@ class CommentList extends Component {
     if (hasError) return <ErrorMsg errorMsg={errMsg} />;
 
     return (
-      <div>
+      <div className="commentList">
+        <CommentForm />
+
         <ul className="commentList__list">
           {comments.map((comment) => {
             return <CommentCard key={comment.comment_id} comment={comment} />;

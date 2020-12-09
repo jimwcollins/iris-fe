@@ -66,9 +66,8 @@ class Article extends Component {
           <div className="article__statBar">
             <p className="article__stat">{comment_count} comments</p>
           </div>
+          <CommentList articleId={article_id} />
         </div>
-
-        <CommentList articleId={article_id} />
 
         <div className="side-panel">Side List</div>
       </main>

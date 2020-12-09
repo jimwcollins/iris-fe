@@ -2,11 +2,11 @@ import React from 'react';
 import TopicBox from './SidePanel/TopicBox';
 
 const SidePanel = (props) => {
-  const { topic } = props;
+  const { topicSlug } = props;
 
   return (
     <div className="sidepanel">
-      {topic ? <TopicBox topic={topic} /> : 'Side Panel'}
+      {topicSlug ? <TopicBox topicSlug={topicSlug} /> : 'Side Panel'}
     </div>
   );
 };

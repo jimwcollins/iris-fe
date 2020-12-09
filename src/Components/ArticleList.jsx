@@ -97,7 +97,7 @@ class ArticleList extends Component {
             </ul>
           )}
         </div>
-        <SidePanel topic={topic} />
+        <SidePanel topicSlug={topic} />
       </main>
     );
   }

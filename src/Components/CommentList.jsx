@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { getCommentList, postNewComment } from '../api';
+import { getCommentList, postNewComment, deleteComment } from '../api';
 import CommentCard from './CommentList/CommentCard';
 import LoadSpinner from './LoadSpinner';
 import ErrorMsg from './ErrorMsg';
@@ -52,7 +52,34 @@ class CommentList extends Component {
         };
       });
     } catch (err) {
-      console.log(err);
+      const {
+        response: { status, statusText }
+      } = err;
+
+      this.setState({
+        hasError: true,
+        errMsg: `${status}: ${statusText}`
+      });
+    }
+  };
+
+  removeComment = async (commentId) => {
+    try {
+      await deleteComment(commentId);
+
+      this.setState((currentState) => {
+        const oldComments = [...currentState.comments];
+        const delIndex = oldComments.findIndex(
+          (comment) => comment.comment_id === commentId
+        );
+
+        oldComments.splice(delIndex, 1);
+
+        return {
+          comments: oldComments
+        };
+      });
+    } catch (err) {
       const {
         response: { status, statusText }
       } = err;
@@ -65,7 +92,7 @@ class CommentList extends Component {
   };
 
   render() {
-    const { comments, isLoading, hasError, errMsg } = this.state;
+    const { user, comments, isLoading, hasError, errMsg } = this.state;
 
     if (isLoading) return <LoadSpinner />;
     if (hasError) return <ErrorMsg errorMsg={errMsg} />;
@@ -76,7 +103,14 @@ class CommentList extends Component {
 
         <ul className="commentList__list">
           {comments.map((comment) => {
-            return <CommentCard key={comment.comment_id} comment={comment} />;
+            return (
+              <CommentCard
+                key={comment.comment_id}
+                comment={comment}
+                user={user}
+                removeComment={() => this.removeComment(comment.comment_id)}
+              />
+            );
           })}
         </ul>
       </div>

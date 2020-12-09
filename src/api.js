@@ -52,3 +52,7 @@ export const postNewComment = async (user, articleId, commentText) => {
 
   return comment;
 };
+
+export const deleteComment = (commentId) => {
+  irisApi.delete(`/comments/${commentId}`);
+};

@@ -315,6 +315,10 @@ main {
   font-size: 1.3rem;
 }
 
+.comment__delete-btn {
+  margin-top: 0.5rem;
+}
+
 h3 {
   margin-bottom: 0.5rem;
 }

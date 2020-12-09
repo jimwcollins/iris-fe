@@ -4,10 +4,14 @@ const irisApi = axios.create({
   baseURL: 'http://localhost:9090/api'
 });
 
-export const getTopics = async () => {
+export const getTopicList = async () => {
   const { data: topics } = await irisApi.get('/topics');
-
   return topics;
+};
+
+export const getTopic = async (topicSlug) => {
+  const { data: topic } = await irisApi.get(`/topics/${topicSlug}`);
+  return topic;
 };
 
 export const getArticleList = async (topic, sortBy, order) => {

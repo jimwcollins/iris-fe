@@ -11,7 +11,7 @@ function App() {
     <div className="App grid">
       <Title />
       <Nav />
-      <Router className="content">
+      <Router className="content" primary={false}>
         <ArticleList path="/" />
         <ArticleList path="/articles/:topic" />
         <Article path="/article/:articleId" />

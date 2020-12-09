@@ -56,6 +56,11 @@ class ArticleList extends Component {
     }
   };
 
+  // Capitalise the title
+  formatTitle = (title) => {
+    return title.charAt(0).toUpperCase() + title.slice(1);
+  };
+
   render() {
     const {
       articles,
@@ -66,11 +71,13 @@ class ArticleList extends Component {
       errMsg
     } = this.state;
 
+    const title = topic ? this.formatTitle(topic) : 'Welcome To The Iris!';
+
     if (hasError) return <ErrorMsg errorMsg={errMsg} />;
 
     return (
       <main>
-        <h2 className="articles__header">{topic || 'Welcome To The Iris!'}</h2>
+        <h2 className="articles__header">{title}</h2>
 
         <div className="articles">
           <ArticleSort
@@ -90,7 +97,7 @@ class ArticleList extends Component {
             </ul>
           )}
         </div>
-        <SidePanel />
+        <SidePanel topic={topic} />
       </main>
     );
   }

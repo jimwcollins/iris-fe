@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { getTopics } from '../../api';
+import { getTopicList } from '../../api';
 import { Link } from '@reach/router';
 
 class TopicList extends Component {
@@ -9,7 +9,7 @@ class TopicList extends Component {
   };
 
   componentDidMount = async () => {
-    const { topics } = await getTopics();
+    const { topics } = await getTopicList();
 
     this.setState({ topics, isLoading: false });
   };

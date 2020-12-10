@@ -20,6 +20,12 @@ class CommentList extends Component {
     this.loadComments(articleId);
   };
 
+  componentDidUpdate = (prevProps) => {
+    const { articleId } = this.props;
+
+    if (articleId !== prevProps.articleId) this.loadComments(articleId);
+  };
+
   loadComments = async (articleId) => {
     try {
       const comments = await getCommentList(articleId);

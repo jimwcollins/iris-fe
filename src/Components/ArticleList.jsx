@@ -23,11 +23,7 @@ class ArticleList extends Component {
 
   componentDidUpdate = (prevProps) => {
     const { topic } = this.props;
-    const isNew = topic !== prevProps.topic;
-
-    if (isNew) {
-      this.loadArticleList(topic);
-    }
+    if (topic !== prevProps.topic) this.loadArticleList(topic);
   };
 
   loadArticleList = async (topic, sortBy, order) => {

@@ -20,6 +20,11 @@ class Article extends Component {
     this.loadArticle(articleId);
   };
 
+  componentDidUpdate = (prevProps) => {
+    const { articleId } = this.props;
+    if (articleId !== prevProps.articleId) this.loadArticle(articleId);
+  };
+
   loadArticle = async (articleId) => {
     try {
       const article = await getArticle(articleId);

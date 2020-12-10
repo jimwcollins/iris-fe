@@ -14,7 +14,7 @@ export const getTopic = async (topicSlug) => {
   return topic;
 };
 
-export const getArticleList = async (topic, sortBy, order) => {
+export const getArticleList = async (topic, sortBy, order, limit) => {
   const { data: articles } = await irisApi.get('/articles', {
     params: {
       topic,

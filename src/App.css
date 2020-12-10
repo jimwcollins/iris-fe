@@ -351,10 +351,59 @@ h3 {
 .sidepanel {
   border: 0.1rem solid rgb(37, 37, 37);
   border-radius: 0.5rem;
-  padding: 1rem;
-  margin-bottom: 1.5rem;
+  padding-bottom: 1rem;
   max-height: 19rem;
   overflow: hidden;
   background-color: var(--color-white);
   box-shadow: var(--box-shadow);
+}
+
+.topicbox {
+  height: 6.5rem;
+  border-bottom: 0.1rem solid var(--color-black);
+}
+
+.box__header {
+  height: 3rem;
+  padding-top: 0.5rem;
+  padding-left: 1rem;
+  background-color: var(--color-primary);
+}
+
+.box__header__text {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: var(--color-white);
+}
+
+.box__desc {
+  margin-top: 1rem;
+  margin-left: 1rem;
+  font-size: 1.3rem;
+  font-weight: 600;
+}
+
+.top-articles {
+  margin: 1rem;
+}
+
+.top-articles__header {
+  font-size: 1.1rem;
+  text-transform: uppercase;
+  font-weight: 600;
+  color: var(--color-tertiary);
+  margin-bottom: 0.5rem;
+}
+
+.top-articles__list {
+  height: 9rem;
+  overflow: hidden;
+}
+
+.top-articles__item {
+  margin-bottom: 0.5rem;
+  font-size: 1.1rem;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }

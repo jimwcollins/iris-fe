@@ -30,6 +30,7 @@ class Nav extends Component {
                 type="text"
                 name="searchTopics"
                 placeholder="Search topics"
+                autocomplete="off"
               />
             </form>
             <button className="btn" onClick={this.loginUser}>

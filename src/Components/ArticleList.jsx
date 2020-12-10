@@ -8,7 +8,7 @@ import SidePanel from './SidePanel';
 
 class ArticleList extends Component {
   state = {
-    topic: '',
+    topic: this.props.topic,
     articles: [],
     articleCount: 0,
     isLoading: true,
@@ -17,7 +17,7 @@ class ArticleList extends Component {
   };
 
   componentDidMount = () => {
-    const { topic } = this.props;
+    const { topic } = this.state;
     this.loadArticleList(topic);
   };
 
@@ -37,6 +37,7 @@ class ArticleList extends Component {
         sortBy,
         order
       );
+
       this.setState({
         topic,
         articles,
@@ -75,6 +76,8 @@ class ArticleList extends Component {
 
     if (hasError) return <ErrorMsg errorMsg={errMsg} />;
 
+    console.log('Topic in ArticleList', topic);
+
     return (
       <main>
         <h2 className="articles__header">{title}</h2>
@@ -97,7 +100,7 @@ class ArticleList extends Component {
             </ul>
           )}
         </div>
-        <SidePanel topicSlug={topic} />
+        <SidePanel topic={topic} />
       </main>
     );
   }

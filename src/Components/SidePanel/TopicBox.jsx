@@ -3,27 +3,44 @@ import { getTopic } from '../../api';
 
 class TopicBox extends Component {
   state = {
+    hasTopic: false,
     topic: {},
     isLoading: true,
     hasError: false,
     errMsg: ''
   };
 
-  componentDidMount = async () => {
-    try {
-      const { topicSlug } = this.props;
-      const { topic } = await getTopic(topicSlug);
-      this.setState({ topic, isLoading: false });
-    } catch (err) {
-      const {
-        response: { status, statusText }
-      } = err;
+  componentDidMount = () => {
+    const { topicSlug } = this.props;
+    this.fetchTopicInfo(topicSlug);
+  };
 
-      this.setState({
-        isLoading: false,
-        hasError: true,
-        errMsg: `${status}: ${statusText}`
-      });
+  componentDidUpdate = (prevProps) => {
+    const { topicSlug } = this.props;
+    if (topicSlug !== prevProps.topicSlug) {
+      this.fetchTopicInfo(topicSlug);
+    }
+  };
+
+  fetchTopicInfo = async (topicSlug) => {
+    const { hasTopic } = this.state;
+    console.log('Topic slug in topic box:', topicSlug);
+
+    if (topicSlug) {
+      try {
+        const { topic } = await getTopic(topicSlug);
+        this.setState({ hasTopic: true, topic, isLoading: false });
+      } catch (err) {
+        const {
+          response: { status, statusText }
+        } = err;
+
+        this.setState({
+          isLoading: false,
+          hasError: true,
+          errMsg: `${status}: ${statusText}`
+        });
+      }
     }
   };
 
@@ -34,12 +51,20 @@ class TopicBox extends Component {
 
   render() {
     const { slug, description } = this.state.topic;
-    // const topic = this.formatTopic(slug);
+    let topic, subhead;
+
+    if (slug) topic = this.formatTopic(slug);
+    else topic = 'Hi there!';
+
+    if (slug) subhead = description;
+    else subhead = 'Pick a topic or dive right in...';
 
     return (
-      <div>
-        <p>{slug}</p>
-        <p>{description}</p>
+      <div className="topicbox">
+        <div className="box__header">
+          <p className="box__header__text">{topic}</p>
+        </div>
+        <p className="box__desc">{subhead}</p>
       </div>
     );
   }

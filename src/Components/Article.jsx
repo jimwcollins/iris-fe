@@ -4,6 +4,7 @@ import LoadSpinner from './LoadSpinner';
 import ErrorMsg from './ErrorMsg';
 import CommentList from './CommentList';
 import Votes from './Votes';
+import SidePanel from './SidePanel';
 
 class Article extends Component {
   state = {
@@ -50,6 +51,7 @@ class Article extends Component {
       author,
       comment_count,
       created_at,
+      topic,
       votes
     } = this.state.article;
 
@@ -77,7 +79,7 @@ class Article extends Component {
           <CommentList articleId={article_id} user={user} />
         </div>
 
-        <div className="side-panel">Side List</div>
+        <SidePanel topic={topic} />
       </main>
     );
   }

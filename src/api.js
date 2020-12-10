@@ -67,3 +67,7 @@ export const updateArticleVotes = async (articleId, voteInc) => {
 
   return article;
 };
+
+export const updateCommentVotes = async (commentId, voteInc) => {
+  console.log('update comment vote:', commentId, voteInc);
+};

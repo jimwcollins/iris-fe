@@ -1,16 +1,17 @@
 import React, { Component } from 'react';
-import { updateArticleVotes } from '../api';
+import { updateArticleVotes, updateCommentVotes } from '../api';
 
 class Votes extends Component {
   state = {
-    articleId: this.props.articleId,
+    type: this.props.type,
+    id: this.props.id,
     votes: this.props.votes,
     voteStatus: 0
   };
 
   handleClick = async (voteBtn) => {
     const currentVotes = this.state.votes;
-    const voteStatus = this.state.voteStatus;
+    const { type, id, voteStatus } = this.state;
 
     let inc, newVoteStatus;
 
@@ -43,7 +44,8 @@ class Votes extends Component {
     });
 
     try {
-      updateArticleVotes(this.state.articleId, inc);
+      if (type === 'article') updateArticleVotes(id, inc);
+      else if (type === 'comment') updateCommentVotes(id, inc);
     } catch (err) {
       alert('Error updating vote');
 

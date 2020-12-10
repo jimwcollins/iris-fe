@@ -23,9 +23,6 @@ class TopicBox extends Component {
   };
 
   fetchTopicInfo = async (topicSlug) => {
-    const { hasTopic } = this.state;
-    console.log('Topic slug in topic box:', topicSlug);
-
     if (topicSlug) {
       try {
         const { topic } = await getTopic(topicSlug);

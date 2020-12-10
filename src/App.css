@@ -42,6 +42,11 @@ body {
   justify-content: center;
 }
 
+.link {
+  text-decoration: none;
+  color: inherit;
+}
+
 .title {
   grid-area: title;
   align-self: center;
@@ -56,6 +61,7 @@ nav {
   grid-area: nav;
   grid-template-rows: 6rem auto;
   align-content: center;
+  position: fixed;
 
   grid-template-areas: 'nav nav nav' '. topics .';
 }
@@ -113,7 +119,7 @@ nav {
 }
 
 .btn {
-  width: 6rem;
+  width: 6.5rem;
   height: 3rem;
   padding: 0;
   border: 0;

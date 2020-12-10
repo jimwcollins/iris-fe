@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import TopicList from './Nav/TopicList';
+import User from './User';
 
 class Nav extends Component {
   state = {
@@ -11,8 +12,6 @@ class Nav extends Component {
       return { showTopics: !currState.showTopics };
     });
   };
-
-  loginUser = () => {};
 
   render() {
     const { showTopics } = this.state;
@@ -30,12 +29,10 @@ class Nav extends Component {
                 type="text"
                 name="searchTopics"
                 placeholder="Search topics"
-                autocomplete="off"
+                autoComplete="off"
               />
             </form>
-            <button className="btn" onClick={this.loginUser}>
-              Login
-            </button>
+            <User />
           </div>
         </div>
 

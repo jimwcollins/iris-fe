@@ -21,8 +21,6 @@ class SidePanel extends Component {
   render() {
     const { topic } = this.state;
 
-    console.log('Topic in side panel', topic);
-
     return (
       <div className="sidepanel">
         <TopicBox topicSlug={topic} />

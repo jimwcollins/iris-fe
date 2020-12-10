@@ -72,8 +72,6 @@ class ArticleList extends Component {
 
     if (hasError) return <ErrorMsg errorMsg={errMsg} />;
 
-    console.log('Topic in ArticleList', topic);
-
     return (
       <main>
         <h2 className="articles__header">{title}</h2>

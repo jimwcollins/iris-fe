@@ -56,3 +56,14 @@ export const postNewComment = async (user, articleId, commentText) => {
 export const deleteComment = (commentId) => {
   irisApi.delete(`/comments/${commentId}`);
 };
+
+export const updateArticleVotes = async (articleId, voteInc) => {
+  console.log('in api func', articleId, voteInc);
+  const {
+    data: { article }
+  } = await irisApi.patch(`/articles/${articleId}`, {
+    inc_votes: voteInc
+  });
+
+  return article;
+};

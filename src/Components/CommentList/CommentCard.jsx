@@ -1,13 +1,19 @@
 import React from 'react';
+import Votes from '../Votes';
 
 const CommentCard = ({ comment, user, removeComment }) => {
+  const { comment_id, author, created_at, votes, body } = comment;
+
   return (
     <li className="commentList__card">
-      <p className="comment__info">
-        {comment.author} • {comment.created_at}
-      </p>
-      <p className="comment__body">{comment.body}</p>
-      {comment.author === user && (
+      <div className="comment__info">
+        <p className="comment__author">
+          {author} • {created_at}
+        </p>
+        <Votes type="comment" id={comment_id} votes={votes} />
+      </div>
+      <p className="comment__body">{body}</p>
+      {author === user && (
         <button className="comment__delete-btn" onClick={removeComment}>
           Delete
         </button>

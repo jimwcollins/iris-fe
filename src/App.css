@@ -281,6 +281,14 @@ main {
   /* margin-left: 1rem; */
 }
 
+.vote__btn__down {
+  background-color: red;
+}
+
+.vote__btn__up {
+  background-color: green;
+}
+
 .vote__txt {
   text-align: center;
 }

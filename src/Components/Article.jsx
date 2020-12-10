@@ -62,12 +62,14 @@ class Article extends Component {
       <main>
         <div className="article">
           <h2 className="article__title">{title}</h2>
+
           <div className="article__info">
             <p className="article__author">
               Posted by {author} at {created_at}
             </p>
-            <Votes articleId={article_id} votes={votes} />
+            <Votes articleId={article_id} votes={votes} type="article" />
           </div>
+
           <p className="article__body">{body}</p>
           <div className="article__statBar">
             <p className="article__stat">{comment_count} comments</p>

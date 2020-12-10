@@ -5,38 +5,73 @@ class Votes extends Component {
   state = {
     articleId: this.props.articleId,
     votes: this.props.votes,
-    hasVoted: false,
-    voteChange: 0
+    voteStatus: 0
   };
 
-  handleClick = async (inc) => {
+  handleClick = async (voteBtn) => {
     const currentVotes = this.state.votes;
+    const voteStatus = this.state.voteStatus;
+
+    let inc, newVoteStatus;
+
+    // Handle repeated clicks
+    if (voteStatus === 1 && voteBtn === 1) {
+      // Already voted up so reverse
+      inc = -1;
+      newVoteStatus = 0;
+    } else if (voteStatus === 1 && voteBtn === -1) {
+      // Already voted up so reverse and case downvote
+      inc = -2;
+      newVoteStatus = -1;
+    } else if (voteStatus === -1 && voteBtn === 1) {
+      // Already voted down so reverse and case upvote
+      inc = 2;
+      newVoteStatus = 1;
+    } else if (voteStatus === -1 && voteBtn === -1) {
+      // Already voted down so reverse
+      inc = 1;
+      newVoteStatus = 0;
+    } else {
+      // No current vote so handle normally
+      inc = voteBtn;
+      newVoteStatus = voteBtn;
+    }
+
+    // Set state first, optimistic rendering
+    this.setState((currentState) => {
+      return { votes: currentState.votes + inc, voteStatus: newVoteStatus };
+    });
 
     try {
       updateArticleVotes(this.state.articleId, inc);
     } catch (err) {
       alert('Error updating vote');
 
-      this.setState((currentState) => {
-        return { votes: currentVotes };
+      this.setState({
+        votes: currentVotes,
+        voteStatus: 0
       });
     }
-
-    this.setState((currentState) => {
-      return { votes: currentState.votes + inc };
-    });
   };
 
   render() {
-    const { votes } = this.state;
+    const { votes, voteStatus } = this.state;
 
     return (
       <div className="vote__block">
-        <button className="vote__btn" onClick={() => this.handleClick(-1)}>
+        <button
+          className={
+            voteStatus === -1 ? 'vote__btn vote__btn__down' : 'vote__btn'
+          }
+          onClick={() => this.handleClick(-1)}
+        >
           ▼
         </button>
         <p className="vote__text">{votes}</p>
-        <button className="vote__btn" onClick={() => this.handleClick(1)}>
+        <button
+          className={voteStatus === 1 ? 'vote__btn vote__btn__up' : 'vote__btn'}
+          onClick={() => this.handleClick(1)}
+        >
           ▲
         </button>
       </div>

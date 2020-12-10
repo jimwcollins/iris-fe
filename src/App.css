@@ -245,13 +245,14 @@ main {
   margin-bottom: 1rem;
 }
 
-.article__author {
+.article__info {
   display: flex;
+  justify-content: space-between;
   align-items: center;
   border-top: 0.1rem solid black;
   border-bottom: 0.1rem solid black;
-  height: 3rem;
-  margin: 1rem 0;
+  height: 4rem;
+  margin: 2rem 0;
   font-size: 1.1rem;
 }
 
@@ -268,6 +269,20 @@ main {
 .article__stat {
   font-size: 1.1rem;
   margin-right: 0.3rem;
+}
+
+.vote__block {
+  display: flex;
+  justify-content: space-evenly;
+  width: 7rem;
+}
+
+.vote__btn {
+  /* margin-left: 1rem; */
+}
+
+.vote__txt {
+  text-align: center;
 }
 
 .commentList__newComment {

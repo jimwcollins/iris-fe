@@ -3,6 +3,7 @@ import { getArticle } from '../api';
 import LoadSpinner from './LoadSpinner';
 import ErrorMsg from './ErrorMsg';
 import CommentList from './CommentList';
+import Votes from './Votes';
 
 class Article extends Component {
   state = {
@@ -48,7 +49,8 @@ class Article extends Component {
       body,
       author,
       comment_count,
-      created_at
+      created_at,
+      votes
     } = this.state.article;
 
     const { user, isLoading, hasError, errMsg } = this.state;
@@ -60,9 +62,12 @@ class Article extends Component {
       <main>
         <div className="article">
           <h2 className="article__title">{title}</h2>
-          <p className="article__author">
-            Posted by {author} at {created_at}
-          </p>
+          <div className="article__info">
+            <p className="article__author">
+              Posted by {author} at {created_at}
+            </p>
+            <Votes votes={votes} />
+          </div>
           <p className="article__body">{body}</p>
           <div className="article__statBar">
             <p className="article__stat">{comment_count} comments</p>

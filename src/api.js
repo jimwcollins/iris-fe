@@ -81,3 +81,16 @@ export const updateCommentVotes = async (commentId, voteInc) => {
 
   return comment;
 };
+
+export const postArticle = async (author, topic, title, body) => {
+  const {
+    data: { article }
+  } = await irisApi.post('/articles/', {
+    title,
+    body,
+    topic,
+    author
+  });
+
+  return article;
+};

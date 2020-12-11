@@ -2,6 +2,7 @@ import { Link } from '@reach/router';
 import React, { Component } from 'react';
 import TopicList from './Nav/TopicList';
 import User from './User';
+import { UserContext } from '../Contexts/UserContext';
 
 class Nav extends Component {
   state = {
@@ -16,17 +17,20 @@ class Nav extends Component {
 
   render() {
     const { showTopics } = this.state;
+    const { user } = this.context;
 
     return (
       <nav className="nav grid">
         <div className="nav__bar grid">
           <div className="nav__bar__controls">
             <div className="nav__bar__topic">
-              <Link to="/article/new" className="title-link">
-                <button className="btn__post btn__space-right">
-                  <span className="btn__post__icon">&#9998;</span>
-                </button>
-              </Link>
+              {user && (
+                <Link to="/article/new" className="title-link">
+                  <button className="btn__post btn__space-right">
+                    <span className="btn__post__icon">&#9998;</span>
+                  </button>
+                </Link>
+              )}
               <button
                 className="btn btn__space-right"
                 onClick={this.showTopics}
@@ -52,5 +56,7 @@ class Nav extends Component {
     );
   }
 }
+
+Nav.contextType = UserContext;
 
 export default Nav;

@@ -20,18 +20,20 @@ class Nav extends Component {
       <nav className="nav grid">
         <div className="nav__bar grid">
           <div className="nav__bar__controls">
-            <button className="btn" onClick={this.showTopics}>
-              Topics
-            </button>
-            <form>
-              <input
-                className="nav__search"
-                type="text"
-                name="searchTopics"
-                placeholder="Search topics"
-                autoComplete="off"
-              />
-            </form>
+            <div className="nav__bar__topic">
+              <button className="btn" onClick={this.showTopics}>
+                Topics
+              </button>
+              <form>
+                <input
+                  className="nav__search"
+                  type="text"
+                  name="searchTopics"
+                  placeholder="Search topics"
+                  autoComplete="off"
+                />
+              </form>
+            </div>
             <User />
           </div>
         </div>

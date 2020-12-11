@@ -7,22 +7,33 @@ import ArticleList from './Components/ArticleList';
 import Article from './Components/Article';
 import ErrorMsg from './Components/ErrorMsg';
 import { UserContext } from './Contexts/UserContext';
+import { getUser } from './api';
 
 class App extends Component {
   state = {
-    user: null
+    userObj: null
   };
 
-  login = (newuser) => {
-    this.setState({ user: newuser });
+  login = async (newuser) => {
+    // Retrieve user details or throw error if doesn't exist in db
+    try {
+      const userObj = await getUser(newuser);
+      console.log(userObj);
+      this.setState({ userObj });
+    } catch (err) {
+      alert('Error logging in');
+      console.log(err);
+    }
   };
 
   logout = () => {
-    this.setState({ user: null });
+    this.setState({ userObj: null });
   };
 
   render() {
-    const { user } = this.state;
+    const { userObj } = this.state;
+
+    const user = userObj ? userObj.username : '';
 
     return (
       <UserContext.Provider

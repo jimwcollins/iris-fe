@@ -82,16 +82,22 @@ nav {
   justify-content: space-between;
 }
 
+.nav__bar__topic {
+  display: flex;
+  align-items: center;
+}
+
 .nav__search {
   height: 3rem;
-  width: 30rem;
+  width: 12rem;
   padding: 0.5rem;
+  margin-left: 2rem;
 
   transition: width 1s;
 }
 
 .nav__search:focus {
-  width: 50rem;
+  width: 30rem;
 }
 
 .nav__topiclist {
@@ -115,6 +121,27 @@ nav {
 
 .nav__topic:hover {
   color: var(--color-tertiary);
+}
+
+.user {
+  display: flex;
+  align-items: center;
+}
+
+.user__display {
+  font-size: 1.3rem;
+  font-weight: 600;
+  color: var(--color-white);
+  margin-right: 1rem;
+}
+
+.user__login-input {
+  height: 3rem;
+  width: 12rem;
+  padding: 0.5rem;
+  margin-right: 1rem;
+
+  transition: width 1s;
 }
 
 .btn {

@@ -31,6 +31,7 @@ class TopArticles extends Component {
         isLoading: false
       });
     } catch (err) {
+      console.log('TopArticlesErr', err);
       const {
         response: { status, statusText }
       } = err;

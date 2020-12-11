@@ -1,22 +1,45 @@
-import React, { useContext } from 'react';
+import React, { Component, useContext } from 'react';
 import { UserContext } from '../Contexts/UserContext';
+import UserLogin from './User/UserLogin';
 
-const User = () => {
-  const { user, login, logout } = useContext(UserContext);
+class User extends Component {
+  state = {
+    showLogin: false
+  };
 
-  if (user) {
-    return (
-      <button className="btn" onClick={logout}>
-        {user}
-      </button>
-    );
-  } else {
-    return (
-      <button className="btn" onClick={() => login('jessjelly')}>
-        login
-      </button>
-    );
+  showLogin = () => {
+    this.setState({ showLogin: true });
+  };
+
+  render() {
+    const { user, login, logout } = this.context;
+    const { showLogin } = this.state;
+
+    if (user) {
+      return (
+        <div className="user">
+          <p className="user__display">Logged in as {user}</p>
+          <button className="btn" onClick={logout}>
+            Logout
+          </button>
+        </div>
+      );
+    }
+
+    if (showLogin) {
+      return <UserLogin login={login} />;
+    } else {
+      return (
+        <div className="user">
+          <button className="btn" onClick={this.showLogin}>
+            login
+          </button>
+        </div>
+      );
+    }
   }
-};
+}
+
+User.contextType = UserContext;
 
 export default User;

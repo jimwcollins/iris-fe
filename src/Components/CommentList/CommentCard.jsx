@@ -1,7 +1,7 @@
 import React from 'react';
 import Votes from '../Votes';
 
-const CommentCard = ({ comment, user, removeComment }) => {
+const CommentCard = ({ comment, username, removeComment }) => {
   const { comment_id, author, created_at, votes, body } = comment;
 
   return (
@@ -13,7 +13,7 @@ const CommentCard = ({ comment, user, removeComment }) => {
         <Votes type="comment" id={comment_id} votes={votes} />
       </div>
       <p className="comment__body">{body}</p>
-      {author === user && (
+      {author === username && (
         <button className="comment__delete-btn" onClick={removeComment}>
           Delete
         </button>

@@ -20,11 +20,11 @@ class CommentForm extends Component {
   };
 
   render() {
-    const { user } = this.props;
+    const { username } = this.props;
 
     return (
       <div className="commentList__newComment">
-        <p className="commentList__newComment__head">Comment as {user}</p>
+        <p className="commentList__newComment__head">Comment as {username}</p>
 
         <form className="commentList__form" onSubmit={this.handleSubmit}>
           <textarea

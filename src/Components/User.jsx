@@ -1,4 +1,4 @@
-import React, { Component, useContext } from 'react';
+import React, { Component } from 'react';
 import { UserContext } from '../Contexts/UserContext';
 import UserLogin from './User/UserLogin';
 
@@ -18,7 +18,7 @@ class User extends Component {
     if (user) {
       return (
         <div className="user">
-          <p className="user__display">Logged in as {user}</p>
+          <p className="user__display">Logged in as {user.name}</p>
           <button className="btn" onClick={logout}>
             Logout
           </button>

@@ -37,9 +37,6 @@ class Article extends Component {
         response: { status, statusText }
       } = err;
 
-      console.log(status);
-      console.log(statusText);
-
       this.setState({
         isLoading: false,
         hasError: true,

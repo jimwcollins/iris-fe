@@ -19,6 +19,7 @@ class CommentList extends Component {
   componentDidMount = () => {
     const { articleId } = this.props;
     const { user } = this.context;
+    console.log('User in comment list', user);
     this.setState({ user });
 
     this.loadComments(articleId);
@@ -26,7 +27,18 @@ class CommentList extends Component {
 
   componentDidUpdate = (prevProps, prevState) => {
     const { user } = this.context;
-    if (user !== prevState.user) this.setState({ user });
+    const prevUser = prevState.user;
+
+    console.log('User in comment list update', user);
+    console.log('Prevuser', prevUser);
+
+    const username = user ? user.username : null;
+    const prevUsername = prevUser ? prevUser.username : null;
+
+    console.log('Username in comment list update', username);
+    console.log('Prevusername', prevUsername);
+
+    if (username !== prevUsername) this.setState({ user });
 
     const { articleId } = this.props;
     if (articleId !== prevProps.articleId) {
@@ -57,9 +69,10 @@ class CommentList extends Component {
 
   addComment = async (comment) => {
     const { user, articleId } = this.state;
+    const { username } = user;
 
     try {
-      const newComment = await postNewComment(user, articleId, comment);
+      const newComment = await postNewComment(username, articleId, comment);
       this.setState((currentState) => {
         return {
           comments: [newComment, ...currentState.comments]
@@ -107,14 +120,15 @@ class CommentList extends Component {
 
   render() {
     const { user, comments, isLoading, hasError, errMsg } = this.state;
+    const username = user ? user.username : null;
 
     if (isLoading) return <LoadSpinner />;
     if (hasError) return <ErrorMsg errorMsg={errMsg} />;
 
     return (
       <div className="commentList">
-        {user ? (
-          <CommentForm user={user} addComment={this.addComment} />
+        {username ? (
+          <CommentForm username={username} addComment={this.addComment} />
         ) : (
           <p className="commentList__newComment__head">
             Please login to comment
@@ -127,7 +141,7 @@ class CommentList extends Component {
               <CommentCard
                 key={comment.comment_id}
                 comment={comment}
-                user={user}
+                username={username}
                 removeComment={() => this.removeComment(comment.comment_id)}
               />
             );

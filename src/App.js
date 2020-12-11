@@ -11,15 +11,14 @@ import { getUser } from './api';
 
 class App extends Component {
   state = {
-    userObj: null
+    user: null
   };
 
   login = async (newuser) => {
     // Retrieve user details or throw error if doesn't exist in db
     try {
-      const userObj = await getUser(newuser);
-      console.log(userObj);
-      this.setState({ userObj });
+      const { user } = await getUser(newuser);
+      this.setState({ user });
     } catch (err) {
       alert('Error logging in');
       console.log(err);
@@ -27,13 +26,11 @@ class App extends Component {
   };
 
   logout = () => {
-    this.setState({ userObj: null });
+    this.setState({ user: null });
   };
 
   render() {
-    const { userObj } = this.state;
-
-    const user = userObj ? userObj.username : '';
+    const { user } = this.state;
 
     return (
       <UserContext.Provider

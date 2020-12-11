@@ -78,7 +78,9 @@ class Article extends Component {
           <div className="article__statBar">
             <p className="article__stat">{comment_count} comments</p>
           </div>
-          <CommentList articleId={article_id} user={user} />
+          {comment_count > 0 && (
+            <CommentList articleId={article_id} user={user} />
+          )}
         </div>
 
         <SidePanel topic={topic} />

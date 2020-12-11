@@ -102,10 +102,14 @@ class NewArticle extends Component {
         ) : (
           <>
             <h2 className="articles__header">Article posted!</h2>
-            <div className="articles">Want to look?</div>
-            <Link to={`/article/${newArticleId}`}>
-              <button className="btn">Heck, yeah!</button>
-            </Link>
+            <div className="articles">
+              <h3 className="new-article__success">Want to look?</h3>
+              <Link to={`/article/${newArticleId}`}>
+                <button className="new-article__success-btn">
+                  Heck, yeah!
+                </button>
+              </Link>
+            </div>
           </>
         )}
       </main>

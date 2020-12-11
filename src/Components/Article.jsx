@@ -1,14 +1,14 @@
 import React, { Component } from 'react';
-import { getArticle } from '../api';
+import { getArticle, delArticle } from '../api';
 import LoadSpinner from './LoadSpinner';
 import ErrorMsg from './ErrorMsg';
 import CommentList from './CommentList';
 import Votes from './Votes';
 import SidePanel from './SidePanel';
+import { UserContext } from '../Contexts/UserContext';
 
 class Article extends Component {
   state = {
-    user: this.props.user,
     article: {},
     isLoading: true,
     hasError: false,
@@ -45,6 +45,23 @@ class Article extends Component {
     }
   };
 
+  removeArticle = async (articleId) => {
+    try {
+      await delArticle(articleId);
+    } catch (err) {
+      alert('Error deleting article');
+      const {
+        response: { status, statusText }
+      } = err;
+
+      this.setState({
+        isLoading: false,
+        hasError: true,
+        errMsg: `${status}: ${statusText}`
+      });
+    }
+  };
+
   render() {
     const {
       article_id,
@@ -64,9 +81,8 @@ class Article extends Component {
 
     return (
       <main>
+        <h2 className="articles__header">{title}</h2>
         <div className="article">
-          <h2 className="article__title">{title}</h2>
-
           <div className="article__info">
             <p className="article__author">
               Posted by {author} at {created_at}
@@ -83,10 +99,21 @@ class Article extends Component {
           )}
         </div>
 
-        <SidePanel topic={topic} />
+        <div className="sidepanel">
+          <SidePanel topic={topic} />
+
+          <button
+            className="sidepanel__btn"
+            onClick={() => this.removeArticle(article_id)}
+          >
+            Delete article
+          </button>
+        </div>
       </main>
     );
   }
 }
+
+Article.contextType = UserContext;
 
 export default Article;

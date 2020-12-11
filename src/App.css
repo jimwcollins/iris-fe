@@ -460,6 +460,10 @@ h3 {
 }
 
 .sidepanel {
+  grid-area: side;
+}
+
+.sidepanel__box {
   border: 0.1rem solid rgb(37, 37, 37);
   border-radius: 0.5rem;
   padding-bottom: 1rem;
@@ -467,6 +471,7 @@ h3 {
   overflow: hidden;
   background-color: var(--color-white);
   box-shadow: var(--box-shadow);
+  margin-bottom: 2rem;
 }
 
 .topicbox {
@@ -517,4 +522,16 @@ h3 {
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+}
+
+.sidepanel__btn {
+  width: 100%;
+  border: none;
+  border-radius: 0.5rem;
+  padding: 1rem;
+  background-color: var(--color-tertiary);
+  box-shadow: var(--box-shadow);
+  color: var(--color-white);
+  text-transform: uppercase;
+  cursor: pointer;
 }

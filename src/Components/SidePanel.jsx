@@ -22,7 +22,7 @@ class SidePanel extends Component {
     const { topic } = this.state;
 
     return (
-      <div className="sidepanel">
+      <div className="sidepanel__box">
         <TopicBox topicSlug={topic} />
         <TopArticles topicSlug={topic} />
       </div>

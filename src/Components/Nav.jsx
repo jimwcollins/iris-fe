@@ -1,3 +1,4 @@
+import { Link } from '@reach/router';
 import React, { Component } from 'react';
 import TopicList from './Nav/TopicList';
 import User from './User';
@@ -21,9 +22,11 @@ class Nav extends Component {
         <div className="nav__bar grid">
           <div className="nav__bar__controls">
             <div className="nav__bar__topic">
-              <button className="btn btn__space-right">
-                <span className="btn__pencil">&#9998;</span>
-              </button>
+              <Link to="/article/new" className="title-link">
+                <button className="btn__post btn__space-right">
+                  <span className="btn__post__icon">&#9998;</span>
+                </button>
+              </Link>
               <button
                 className="btn btn__space-right"
                 onClick={this.showTopics}

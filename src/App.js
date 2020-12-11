@@ -8,6 +8,7 @@ import Article from './Components/Article';
 import ErrorMsg from './Components/ErrorMsg';
 import { UserContext } from './Contexts/UserContext';
 import { getUser } from './api';
+import NewArticle from './Components/NewArticle';
 
 class App extends Component {
   state = {
@@ -42,6 +43,7 @@ class App extends Component {
           <Router className="content" primary={false}>
             <ArticleList path="/" />
             <ArticleList path="/articles/:topic" />
+            <NewArticle path="/article/new" />
             <Article path="/article/:articleId" user={user} />
             <ErrorMsg default errorMsg="404: page not found" />
           </Router>

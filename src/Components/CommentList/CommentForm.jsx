@@ -14,6 +14,7 @@ class CommentForm extends Component {
 
     const { addComment } = this.props;
     const { comment } = this.state;
+    this.setState({ comment: '' });
 
     addComment(comment);
   };

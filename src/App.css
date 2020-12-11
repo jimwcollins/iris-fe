@@ -61,7 +61,6 @@ nav {
   grid-area: nav;
   grid-template-rows: 6rem auto;
   align-content: center;
-  position: fixed;
 
   grid-template-areas: 'nav nav nav' '. topics .';
 }
@@ -299,12 +298,15 @@ main {
   text-align: center;
 }
 
-.commentList__newComment {
+.commentList {
   margin-top: 2rem;
+  padding-top: 2rem;
+  border-top: 0.15rem solid black;
 }
 
 .commentList__newComment__head {
-  font-size: 1.1rem;
+  font-size: 1.3rem;
+  font-weight: 600;
 }
 
 .commentList__form__input {
@@ -319,7 +321,6 @@ main {
 }
 
 .commentList__list {
-  border-top: 0.15rem solid black;
   margin-top: 1rem;
   text-align: left;
   list-style: none;
@@ -330,7 +331,6 @@ main {
   border-radius: 1rem;
   padding: 1rem;
   margin: 1.5rem 0;
-  max-height: 10rem;
   overflow: hidden;
 }
 

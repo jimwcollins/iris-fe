@@ -4,11 +4,12 @@ import CommentCard from './CommentList/CommentCard';
 import LoadSpinner from './LoadSpinner';
 import ErrorMsg from './ErrorMsg';
 import CommentForm from './CommentList/CommentForm';
+import { UserContext } from '../Contexts/UserContext';
 
 class CommentList extends Component {
   state = {
-    user: this.props.user,
-    articleId: this.props.articleId,
+    user: null,
+    articleId: null,
     comments: [],
     isLoading: true,
     hasError: false,
@@ -17,13 +18,20 @@ class CommentList extends Component {
 
   componentDidMount = () => {
     const { articleId } = this.props;
+    const { user } = this.context;
+    this.setState({ user });
+
     this.loadComments(articleId);
   };
 
-  componentDidUpdate = (prevProps) => {
-    const { articleId } = this.props;
+  componentDidUpdate = (prevProps, prevState) => {
+    const { user } = this.context;
+    if (user !== prevState.user) this.setState({ user });
 
-    if (articleId !== prevProps.articleId) this.loadComments(articleId);
+    const { articleId } = this.props;
+    if (articleId !== prevProps.articleId) {
+      this.loadComments(articleId);
+    }
   };
 
   loadComments = async (articleId) => {
@@ -105,7 +113,13 @@ class CommentList extends Component {
 
     return (
       <div className="commentList">
-        <CommentForm addComment={this.addComment} />
+        {user ? (
+          <CommentForm user={user} addComment={this.addComment} />
+        ) : (
+          <p className="commentList__newComment__head">
+            Please login to comment
+          </p>
+        )}
 
         <ul className="commentList__list">
           {comments.map((comment) => {
@@ -123,5 +137,7 @@ class CommentList extends Component {
     );
   }
 }
+
+CommentList.contextType = UserContext;
 
 export default CommentList;

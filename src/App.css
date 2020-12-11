@@ -16,10 +16,11 @@ body {
   --font-display: 'Lato', sans-serif;
   --font-text: 'Lato', sans-serif;
 
-  --color-primary: #2c514c;
+  --color-primary: #436a79;
   --color-secondary: #122932;
-  --color-tertiary: #95818d;
+  --color-tertiary: #819594;
 
+  --color-grey: rgb(32, 32, 32);
   --color-black: rgba(0, 0, 0);
   --color-white: rgb(255, 255, 255);
 
@@ -37,7 +38,7 @@ body {
 }
 
 .App {
-  grid-template-rows: 6rem auto auto;
+  grid-template-rows: 10rem auto auto;
   grid-template-areas: '. title .' 'nav nav nav' '. app .';
   justify-content: center;
 }
@@ -66,6 +67,7 @@ body {
   justify-self: center; */
   font-family: var(--font-display);
   font-size: 3rem;
+  color: var(--color-secondary);
   text-transform: uppercase;
   letter-spacing: 1.25rem;
 }

@@ -1,13 +1,14 @@
 import React from 'react';
 import { Link } from '@reach/router';
+import logo from '../images/EyeLogo.jpg';
 
 const Header = () => {
   return (
-    <h1 className="title">
-      <Link to="/" className="link">
-        The Iris
-      </Link>
-    </h1>
+    <Link to="/" className="title-link">
+      <p className="title__text">The</p>
+      <img src={logo} className="logo" alt="iris logo" />
+      <p className="title__text">Iris</p>
+    </Link>
   );
 };
 

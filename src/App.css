@@ -42,15 +42,28 @@ body {
   justify-content: center;
 }
 
+.logo {
+  width: auto;
+  height: 5rem;
+}
+
 .link {
   text-decoration: none;
   color: inherit;
 }
 
-.title {
+.title-link {
   grid-area: title;
-  align-self: center;
-  justify-self: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: inherit;
+  text-decoration: none;
+}
+
+.title__text {
+  /* align-self: center;
+  justify-self: center; */
   font-family: var(--font-display);
   font-size: 3rem;
   text-transform: uppercase;

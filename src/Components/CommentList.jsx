@@ -19,7 +19,6 @@ class CommentList extends Component {
   componentDidMount = () => {
     const { articleId } = this.props;
     const { user } = this.context;
-    console.log('User in comment list', user);
     this.setState({ user });
 
     this.loadComments(articleId);
@@ -28,15 +27,8 @@ class CommentList extends Component {
   componentDidUpdate = (prevProps, prevState) => {
     const { user } = this.context;
     const prevUser = prevState.user;
-
-    console.log('User in comment list update', user);
-    console.log('Prevuser', prevUser);
-
     const username = user ? user.username : null;
     const prevUsername = prevUser ? prevUser.username : null;
-
-    console.log('Username in comment list update', username);
-    console.log('Prevusername', prevUsername);
 
     if (username !== prevUsername) this.setState({ user });
 

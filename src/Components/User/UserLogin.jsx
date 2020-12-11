@@ -26,6 +26,7 @@ class UserLogin extends Component {
           <input
             type="text"
             id="userLogin"
+            placeholder="username"
             value={this.state.userLogin}
             onChange={this.handleChange}
             className="user__login-input"

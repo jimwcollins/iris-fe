@@ -207,6 +207,51 @@ main {
   margin-top: 3rem;
 }
 
+.modal {
+  position: fixed;
+  z-index: 500;
+  background-color: white;
+  width: 30rem;
+  height: 10rem;
+  border: 0.1rem solid rgb(37, 37, 37);
+  border-radius: 0.5rem;
+  box-shadow: var(--box-shadow);
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 16px;
+  left: 15%;
+  top: 30%;
+
+  transform: scale(0, 0);
+  opacity: 0;
+  transition: all 0.3s ease-out;
+}
+
+.modal--show {
+  opacity: 1;
+  transform: scale(1, 1);
+}
+
+.modal__title {
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+}
+
+.modal__btn {
+  border: none;
+  background-color: inherit;
+  color: var(--color-primary);
+  cursor: pointer;
+  transition: all 1s;
+}
+
+.modal__btn:hover {
+  color: var(--color-secondary);
+}
+
 .articles__header {
   grid-area: header;
   justify-self: center;
@@ -252,12 +297,12 @@ main {
 .articles__card {
   border: 0.1rem solid rgb(37, 37, 37);
   border-radius: 0.5rem;
+  box-shadow: var(--box-shadow);
+  background-color: var(--color-white);
   padding: 1rem;
   margin-bottom: 1.5rem;
   max-height: 19rem;
   overflow: hidden;
-  background-color: var(--color-white);
-  box-shadow: var(--box-shadow);
 }
 
 .articles__card__title {

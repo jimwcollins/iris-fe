@@ -52,8 +52,11 @@ class Article extends Component {
   };
 
   removeArticle = async (articleId) => {
+    const { showDelModal } = this.props;
+
     try {
       await delArticle(articleId);
+      showDelModal(true, 'Article Deleted', 'Back to articles', '/');
     } catch (err) {
       alert('Error deleting article');
       const {

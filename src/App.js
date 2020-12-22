@@ -9,10 +9,17 @@ import ErrorMsg from './Components/ErrorMsg';
 import { UserContext } from './Contexts/UserContext';
 import { getUser } from './api';
 import NewArticle from './Components/NewArticle';
+import Modal from './Components/Modal';
 
 class App extends Component {
   state = {
-    user: null
+    user: null,
+    modal: {
+      showModal: false,
+      title: '',
+      message: '',
+      navTo: ''
+    }
   };
 
   login = async (newuser) => {
@@ -30,8 +37,12 @@ class App extends Component {
     this.setState({ user: null });
   };
 
+  modalHandler = (showModal, title, message, navTo) => {
+    this.setState({ modal: { showModal, title, message, navTo } });
+  };
+
   render() {
-    const { user } = this.state;
+    const { user, modal } = this.state;
 
     return (
       <UserContext.Provider
@@ -40,11 +51,22 @@ class App extends Component {
         <div className="App grid">
           <Title />
           <Nav />
+          <Modal
+            showModal={modal.showModal}
+            modalHandler={this.modalHandler}
+            title={modal.title}
+            message={modal.message}
+            navTo={modal.navTo}
+          />
           <Router className="content" primary={false}>
             <ArticleList path="/" />
             <ArticleList path="/articles/:topic" />
             <NewArticle path="/article/new" />
-            <Article path="/article/:articleId" user={user} />
+            <Article
+              path="/article/:articleId"
+              user={user}
+              showDelModal={this.modalHandler}
+            />
             <ErrorMsg default errorMsg="404: page not found" />
           </Router>
         </div>

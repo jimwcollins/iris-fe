@@ -15,9 +15,9 @@ class App extends Component {
   state = {
     user: null,
     modal: {
-      showModal: false,
-      title: '',
-      message: '',
+      showModal: true,
+      title: 'Article Deleted',
+      message: 'Take Me Back',
       navTo: ''
     }
   };

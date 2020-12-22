@@ -30,19 +30,31 @@ class NewArticle extends Component {
       body
     } = this.state;
 
+    const { showNewModal } = this.props;
+
     try {
       const newArticle = await postArticle(username, topic, title, body);
-
-      this.setState({
-        user: this.context.user,
-        topic: '',
-        title: '',
-        body: '',
-        isPosted: true,
-        newArticleId: newArticle.article_id,
-        hasError: false,
-        errMsg: ''
-      });
+      this.setState(
+        {
+          user: this.context.user,
+          topic: '',
+          title: '',
+          body: '',
+          isPosted: true,
+          newArticleId: newArticle.article_id,
+          hasError: false,
+          errMsg: ''
+        },
+        () => {
+          const { newArticleId } = this.state;
+          showNewModal(
+            true,
+            'Article Created',
+            'Take a look!',
+            `/article/${newArticleId}`
+          );
+        }
+      );
     } catch (err) {
       const {
         response: { status, statusText }
@@ -99,19 +111,7 @@ class NewArticle extends Component {
               </form>
             </div>
           </>
-        ) : (
-          <>
-            <h2 className="articles__header">Article posted!</h2>
-            <div className="articles">
-              <h3 className="new-article__success">Want to look?</h3>
-              <Link to={`/article/${newArticleId}`}>
-                <button className="new-article__success-btn">
-                  Heck, yeah!
-                </button>
-              </Link>
-            </div>
-          </>
-        )}
+        ) : null}
       </main>
     );
   }

@@ -15,9 +15,9 @@ class App extends Component {
   state = {
     user: null,
     modal: {
-      showModal: true,
-      title: 'Article Deleted',
-      message: 'Take Me Back',
+      showModal: false,
+      title: '',
+      message: '',
       navTo: ''
     }
   };
@@ -61,7 +61,7 @@ class App extends Component {
           <Router className="content" primary={false}>
             <ArticleList path="/" />
             <ArticleList path="/articles/:topic" />
-            <NewArticle path="/article/new" />
+            <NewArticle path="/article/new" showNewModal={this.modalHandler} />
             <Article
               path="/article/:articleId"
               user={user}

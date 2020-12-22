@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
-import { getArticleList } from '../api';
-import ArticleCard from './ArticleList/ArticleCard';
-import LoadSpinner from './LoadSpinner';
-import ErrorMsg from './ErrorMsg';
-import ArticleSort from './ArticleList/ArticleSort';
-import SidePanel from './SidePanel';
+import { getArticleList } from '../../api';
+import ArticleCard from './ArticleCard';
+import LoadSpinner from '../LoadSpinner';
+import ErrorMsg from '../ErrorMsg';
+import ArticleSort from './ArticleSort';
+import SidePanel from '../SidePanel';
 
 class ArticleList extends Component {
   state = {

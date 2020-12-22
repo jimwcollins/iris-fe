@@ -15,10 +15,12 @@ html {
 body {
   --font-display: 'Lato', sans-serif;
   --font-text: 'Lato', sans-serif;
+  --font-size-base: 1.1rem;
 
-  --color-primary: #436a79;
+  --color-primary: #315863;
   --color-secondary: #122932;
   --color-tertiary: #819594;
+  --color-background: #f3f8f9d9;
 
   --color-grey: rgb(32, 32, 32);
   --color-black: rgba(0, 0, 0);
@@ -26,7 +28,10 @@ body {
 
   --box-shadow: 0.1rem 0.1rem 0.5rem rgba(0, 0, 0, 0.2);
 
+  background-color: var(--color-background);
+
   font-family: var(--font-text);
+  font-size: var(--font-size-base);
 }
 
 .grid {

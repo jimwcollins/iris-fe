@@ -12,11 +12,17 @@ class Article extends Component {
     article: {},
     isLoading: true,
     hasError: false,
-    errMsg: ''
+    errMsg: '',
+    username: null
   };
 
   componentDidMount = () => {
     const { articleId } = this.props;
+    const { user } = this.context;
+    const username = user ? user.username : null;
+
+    this.setState({ username });
+
     this.loadArticle(articleId);
   };
 
@@ -74,7 +80,7 @@ class Article extends Component {
       votes
     } = this.state.article;
 
-    const { user, isLoading, hasError, errMsg } = this.state;
+    const { username, isLoading, hasError, errMsg } = this.state;
 
     if (isLoading) return <LoadSpinner />;
     if (hasError) return <ErrorMsg errorMsg={errMsg} />;
@@ -95,19 +101,21 @@ class Article extends Component {
             <p className="article__stat">{comment_count} comments</p>
           </div>
           {comment_count > 0 && (
-            <CommentList articleId={article_id} user={user} />
+            <CommentList articleId={article_id} user={username} />
           )}
         </div>
 
         <div className="sidepanel">
           <SidePanel topic={topic} />
 
-          <button
-            className="sidepanel__btn"
-            onClick={() => this.removeArticle(article_id)}
-          >
-            Delete article
-          </button>
+          {author === username && (
+            <button
+              className="sidepanel__btn"
+              onClick={() => this.removeArticle(article_id)}
+            >
+              Delete article
+            </button>
+          )}
         </div>
       </main>
     );

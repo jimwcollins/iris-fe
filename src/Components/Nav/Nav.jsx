@@ -1,8 +1,8 @@
 import { Link } from '@reach/router';
 import React, { Component } from 'react';
-import TopicList from './Nav/TopicList';
-import User from './User';
-import { UserContext } from '../Contexts/UserContext';
+import TopicList from './TopicList';
+import User from '../User';
+import { UserContext } from '../../Contexts/UserContext';
 
 class Nav extends Component {
   state = {

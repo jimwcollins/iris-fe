@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { getArticle, delArticle } from '../api';
 import LoadSpinner from './LoadSpinner';
 import ErrorMsg from './ErrorMsg';
-import CommentList from './CommentList';
+import CommentList from './CommentList/CommentList';
 import Votes from './Votes';
 import SidePanel from './SidePanel';
 import { UserContext } from '../Contexts/UserContext';

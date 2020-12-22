@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
-import { getCommentList, postNewComment, deleteComment } from '../api';
-import CommentCard from './CommentList/CommentCard';
-import LoadSpinner from './LoadSpinner';
-import ErrorMsg from './ErrorMsg';
-import CommentForm from './CommentList/CommentForm';
-import { UserContext } from '../Contexts/UserContext';
+import { getCommentList, postNewComment, deleteComment } from '../../api';
+import CommentCard from './CommentCard';
+import LoadSpinner from '../LoadSpinner';
+import ErrorMsg from '../ErrorMsg';
+import CommentForm from './CommentForm';
+import { UserContext } from '../../Contexts/UserContext';
 
 class CommentList extends Component {
   state = {

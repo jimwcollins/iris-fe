@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import './App.css';
 import { Router } from '@reach/router';
 import Title from './Components/Title';
-import Nav from './Components/Nav';
+import Nav from './Components/Nav/Nav';
 import ArticleList from './Components/ArticleList/ArticleList';
 import Article from './Components/Article';
 import ErrorMsg from './Components/ErrorMsg';

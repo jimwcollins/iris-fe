@@ -285,6 +285,7 @@ main {
   border-radius: 0.5rem;
   box-shadow: var(--box-shadow);
   background-color: var(--color-white);
+  overflow: hidden;
 }
 
 .articles__header {
@@ -335,18 +336,17 @@ main {
 
   margin-bottom: 2rem;
   max-height: 25rem;
-  overflow: hidden;
 }
 
 .articles__card__title {
-  background-color: var(--color-primary);
+  border-top: 0.75rem solid var(--color-primary);
   padding: 0.75rem var(--article-padding) 0.5rem var(--article-padding);
   margin-bottom: 1rem;
 }
 
-.articles__card__title h3 {
+.articles__card__title > h3 {
   font-size: 1.5rem;
-  color: var(--color-white);
+  color: var(--color-black);
 }
 
 .articles__card__body {
@@ -424,8 +424,9 @@ main {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  border-top: 0.75rem solid var(--color-primary);
   background-color: var(--color-tertiary-light);
-  height: 4rem;
+  height: 5rem;
   margin: calc(var(--article-padding) * -1);
   margin-bottom: 2rem;
   padding: 1rem var(--article-padding);
@@ -435,7 +436,7 @@ main {
 
 .article__info > p {
   font-size: 1.5rem;
-  color: var(--color-primary);
+  color: var(--color-black);
 }
 
 .article__body {
@@ -517,7 +518,7 @@ main {
 .commentList {
   margin-top: 2rem;
   padding-top: 2rem;
-  border-top: 0.15rem solid black;
+  border-top: 0.1rem solid black;
 }
 
 .commentList__newComment__head {
@@ -538,24 +539,27 @@ main {
 
 .commentList__list {
   margin-top: 1rem;
+  padding-top: 1rem;
   text-align: left;
   list-style: none;
 }
 
 .commentList__card {
-  border: 0.1rem solid rgb(37, 37, 37);
-  border-radius: 1rem;
-  padding: 1rem;
-  margin: 1.5rem 0;
+  margin: 2rem 0;
   overflow: hidden;
+  padding-bottom: 1rem;
 }
 
 .comment__info {
   display: flex;
   justify-content: space-between;
+  align-items: center;
+  background-color: var(--color-tertiary-light);
+  border-radius: 0.5rem;
   font-size: 1.1rem;
   margin-top: 0.5rem;
   margin-bottom: 1rem;
+  padding: 0.75rem 1.5rem;
 }
 
 .comment__body {

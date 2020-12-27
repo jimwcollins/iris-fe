@@ -29,7 +29,7 @@ const ArticleCard = ({ article }) => {
             <p className="articles__card__stat">
               {article.comment_count} comments
             </p>
-            <svg class="article__card__icon">
+            <svg class="articles__card__icon">
               <use href={icons + '#icon-thumbs-up'}></use>
             </svg>
             <p className="articles__card__stat">{article.votes} votes</p>

@@ -5,7 +5,7 @@ import icons from '../../images/iris-icons.svg';
 const ArticleCard = ({ article }) => {
   return (
     <Link to={`/article/${article.article_id}`} className="articles__link">
-      <li className="articles__card">
+      <li className="articles__card box">
         <div className="articles__card__title">
           <h3>{article.title}</h3>
         </div>
@@ -29,7 +29,7 @@ const ArticleCard = ({ article }) => {
             <p className="articles__card__stat">
               {article.comment_count} comments
             </p>
-            <svg class="articles__card__icon">
+            <svg class="article__card__icon">
               <use href={icons + '#icon-thumbs-up'}></use>
             </svg>
             <p className="articles__card__stat">{article.votes} votes</p>

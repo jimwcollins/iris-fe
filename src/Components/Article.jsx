@@ -6,6 +6,7 @@ import CommentList from './CommentList/CommentList';
 import Votes from './Votes';
 import SidePanel from './SidePanel';
 import { UserContext } from '../Contexts/UserContext';
+import icons from '../images/iris-icons.svg';
 
 class Article extends Component {
   state = {
@@ -91,17 +92,20 @@ class Article extends Component {
     return (
       <main>
         <h2 className="articles__header">{title}</h2>
-        <div className="article">
+        <div className="article box">
           <div className="article__info">
-            <p className="article__author">
+            <p>
               Posted by {author} at {created_at}
             </p>
             <Votes type="article" id={article_id} votes={votes} />
           </div>
 
           <p className="article__body">{body}</p>
-          <div className="article__statBar">
-            <p className="article__stat">{comment_count} comments</p>
+          <div className="article__stats">
+            <svg class="article__icon">
+              <use href={icons + '#icon-message'}></use>
+            </svg>
+            <p>{comment_count} comments</p>
           </div>
           {comment_count > 0 && (
             <CommentList articleId={article_id} user={username} />

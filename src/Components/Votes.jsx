@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { updateArticleVotes, updateCommentVotes } from '../api';
+import icons from '../images/iris-icons.svg';
 
 class Votes extends Component {
   state = {
@@ -59,23 +60,24 @@ class Votes extends Component {
   render() {
     const { votes, voteStatus } = this.state;
 
+    let upVoteClass = 'vote__btn vote__btn__up';
+    let downVoteClass = 'vote__btn vote__btn__down';
+
+    if (voteStatus === 1) {
+      upVoteClass += ' vote__btn__up--active';
+    } else if (voteStatus === -1) {
+      downVoteClass += ' vote__btn__down--active';
+    }
+
     return (
       <div className="vote__block">
-        <button
-          className={
-            voteStatus === -1 ? 'vote__btn vote__btn__down' : 'vote__btn'
-          }
-          onClick={() => this.handleClick(-1)}
-        >
-          ▼
-        </button>
-        <p className="vote__text">{votes}</p>
-        <button
-          className={voteStatus === 1 ? 'vote__btn vote__btn__up' : 'vote__btn'}
-          onClick={() => this.handleClick(1)}
-        >
-          ▲
-        </button>
+        <svg className={upVoteClass} onClick={() => this.handleClick(1)}>
+          <use href={icons + '#icon-thumbs-up'}></use>
+        </svg>
+        <p className="vote__txt">{votes}</p>
+        <svg className={downVoteClass} onClick={() => this.handleClick(-1)}>
+          <use href={icons + '#icon-thumbs-down'}></use>
+        </svg>
       </div>
     );
   }

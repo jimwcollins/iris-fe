@@ -68,7 +68,7 @@ class ArticleList extends Component {
       errMsg
     } = this.state;
 
-    const title = topic ? this.formatTitle(topic) : 'Welcome To The Iris!';
+    const title = topic ? this.formatTitle(topic) : 'Welcome To The Iris';
 
     if (hasError) return <ErrorMsg errorMsg={errMsg} />;
 

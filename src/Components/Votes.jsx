@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { updateArticleVotes, updateCommentVotes } from '../api';
+import { updateArticleVotes, updateCommentVotes } from '../Utils/api';
 import icons from '../images/iris-icons.svg';
 
 class Votes extends Component {

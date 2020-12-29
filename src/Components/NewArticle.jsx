@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { UserContext } from '../Contexts/UserContext';
-import { postArticle } from '../api';
+import { postArticle } from '../Utils/api';
 import SidePanel from './SidePanel';
 import { Link } from '@reach/router';
 
@@ -120,24 +120,3 @@ class NewArticle extends Component {
 NewArticle.contextType = UserContext;
 
 export default NewArticle;
-
-/*
-    title: 'Kindles: tech magic or work of the dark one?',
-    body:
-      'Book-lovers of the world unite to condemn this newfangled devilry. Tech-fans strike back.',
-    topic: 'paper',
-    author: 'rogersop',
-  })
-  .expect(201)
-  .then(({ body }) => {
-    expect(body.article).toEqual({
-      article_id: 13,
-      title: 'Kindles: tech magic or work of the dark one?',
-      body:
-        'Book-lovers of the world unite to condemn this newfangled devilry. Tech-fans strike back.',
-      votes: 0,
-      topic: 'paper',
-      author: 'rogersop',
-      created_at: expect.any(String),
-
-*/

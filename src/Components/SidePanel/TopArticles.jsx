@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { getArticleList } from '../../api';
+import { getArticleList } from '../../Utils/api';
 import { Link } from '@reach/router';
 
 class TopArticles extends Component {

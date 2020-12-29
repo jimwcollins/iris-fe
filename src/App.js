@@ -7,7 +7,7 @@ import ArticleList from './Components/ArticleList/ArticleList';
 import Article from './Components/Article';
 import ErrorMsg from './Components/ErrorMsg';
 import { UserContext } from './Contexts/UserContext';
-import { getUser } from './api';
+import { getUser } from './Utils/api';
 import NewArticle from './Components/NewArticle';
 import Modal from './Components/Modal';
 

@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { getTopicList } from '../../api';
+import { getTopicList } from '../../Utils/api';
 import { Link } from '@reach/router';
 
 class TopicList extends Component {

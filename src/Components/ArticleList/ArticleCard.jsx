@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from '@reach/router';
 import icons from '../../images/iris-icons.svg';
+import { formatDate } from '../../Utils/utils';
 
 const ArticleCard = ({ article }) => {
   return (
@@ -18,8 +19,10 @@ const ArticleCard = ({ article }) => {
               <use href={icons + '#icon-user'}></use>
             </svg>
             <p className="articles__card__author">
-              {article.author} •{' '}
-              <span className="articles__card__time">{article.created_at}</span>
+              Posted by {article.author}{' '}
+              <span className="articles__card__time">
+                {formatDate(article.created_at)}
+              </span>
             </p>
           </div>
           <div className="articles__card__stats">

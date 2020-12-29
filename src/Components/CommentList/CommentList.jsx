@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { getCommentList, postNewComment, deleteComment } from '../../api';
+import { getCommentList, postNewComment, deleteComment } from '../../Utils/api';
 import CommentCard from './CommentCard';
 import LoadSpinner from '../LoadSpinner';
 import ErrorMsg from '../ErrorMsg';

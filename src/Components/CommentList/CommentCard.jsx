@@ -1,4 +1,5 @@
 import React from 'react';
+import { formatDate } from '../../Utils/utils';
 import Votes from '../Votes';
 
 const CommentCard = ({ comment, username, removeComment }) => {
@@ -8,7 +9,7 @@ const CommentCard = ({ comment, username, removeComment }) => {
     <li className="commentList__card">
       <div className="comment__info">
         <p className="comment__author">
-          {author} • {created_at}
+          Posted by {author} {formatDate(created_at)}
         </p>
         <Votes type="comment" id={comment_id} votes={votes} />
       </div>

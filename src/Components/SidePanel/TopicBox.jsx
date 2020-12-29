@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { getTopic } from '../../api';
+import { getTopic } from '../../Utils/api';
 
 class TopicBox extends Component {
   state = {

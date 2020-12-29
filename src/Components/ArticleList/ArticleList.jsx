@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { getArticleList } from '../../api';
+import { getArticleList } from '../../Utils/api';
 import ArticleCard from './ArticleCard';
 import LoadSpinner from '../LoadSpinner';
 import ErrorMsg from '../ErrorMsg';

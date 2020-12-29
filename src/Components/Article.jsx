@@ -1,11 +1,12 @@
 import React, { Component } from 'react';
-import { getArticle, delArticle } from '../api';
+import { getArticle, delArticle } from '../Utils/api';
 import LoadSpinner from './LoadSpinner';
 import ErrorMsg from './ErrorMsg';
 import CommentList from './CommentList/CommentList';
 import Votes from './Votes';
 import SidePanel from './SidePanel';
 import { UserContext } from '../Contexts/UserContext';
+import { formatDate } from '../Utils/utils';
 import icons from '../images/iris-icons.svg';
 
 class Article extends Component {
@@ -95,7 +96,7 @@ class Article extends Component {
         <div className="article box">
           <div className="article__info">
             <p>
-              Posted by {author} at {created_at}
+              Posted by {author} {formatDate(created_at)}
             </p>
             <Votes type="article" id={article_id} votes={votes} />
           </div>

@@ -214,6 +214,28 @@ main {
   margin-top: 3rem;
 }
 
+.loadSpinner__container {
+  grid-column: 1 / -1;
+  justify-self: center;
+  margin-top: 5rem;
+}
+
+.loadSpinner {
+  height: 6rem;
+  width: 6rem;
+  fill: var(--color-tertiary);
+  animation: rotate 1.5s infinite linear;
+}
+
+@keyframes rotate {
+  0% {
+    transform: rotate(0);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
 .modal__bg {
   display: flex;
   justify-content: center;

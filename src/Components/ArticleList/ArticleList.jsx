@@ -70,21 +70,22 @@ class ArticleList extends Component {
 
     const title = topic ? this.formatTitle(topic) : 'Welcome To The Iris';
 
-    if (hasError) return <ErrorMsg errorMsg={errMsg} />;
+    // Set main content of page according to whether we are loading or if an error has been thrown
+    let mainContent;
 
-    return (
-      <main>
-        <h2 className="articles__header">{title}</h2>
-
-        <div className="articles">
-          <ArticleSort
-            articleCount={articleCount}
-            topic={topic}
-            loadArticleList={this.loadArticleList}
-          />
-          {isLoading ? (
-            <LoadSpinner />
-          ) : (
+    if (isLoading) {
+      mainContent = <LoadSpinner />;
+    } else if (hasError) {
+      mainContent = <ErrorMsg errorMsg={errMsg} />;
+    } else {
+      mainContent = (
+        <>
+          <div className="articles">
+            <ArticleSort
+              articleCount={articleCount}
+              topic={topic}
+              loadArticleList={this.loadArticleList}
+            />
             <ul className="articles__list">
               {articles.map((article) => {
                 return (
@@ -92,9 +93,16 @@ class ArticleList extends Component {
                 );
               })}
             </ul>
-          )}
-        </div>
-        <SidePanel topic={topic} />
+          </div>
+          <SidePanel topic={topic} />
+        </>
+      );
+    }
+
+    return (
+      <main>
+        <h2 className="articles__header">{title}</h2>
+        {mainContent}
       </main>
     );
   }

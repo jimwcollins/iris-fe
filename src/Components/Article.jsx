@@ -87,44 +87,56 @@ class Article extends Component {
 
     const { username, isLoading, hasError, errMsg } = this.state;
 
-    if (isLoading) return <LoadSpinner />;
-    if (hasError) return <ErrorMsg errorMsg={errMsg} />;
+    // Set main content of page according to whether we are loading or if an error has been thrown
+    let mainContent;
+
+    if (isLoading) {
+      mainContent = <LoadSpinner />;
+    } else if (hasError) {
+      mainContent = <ErrorMsg errorMsg={errMsg} />;
+    } else {
+      mainContent = (
+        <>
+          <div className="article box">
+            <div className="article__info">
+              <p>
+                Posted by {author} {formatDate(created_at)}
+              </p>
+              <Votes type="article" id={article_id} votes={votes} />
+            </div>
+
+            <p className="article__body">{body}</p>
+            <div className="article__stats">
+              <svg class="article__icon">
+                <use href={icons + '#icon-message'}></use>
+              </svg>
+              <p>{comment_count} comments</p>
+            </div>
+            {comment_count > 0 && (
+              <CommentList articleId={article_id} user={username} />
+            )}
+          </div>
+
+          <div className="sidepanel">
+            <SidePanel topic={topic} />
+
+            {author === username && (
+              <button
+                className="sidepanel__btn"
+                onClick={() => this.removeArticle(article_id)}
+              >
+                Delete article
+              </button>
+            )}
+          </div>
+        </>
+      );
+    }
 
     return (
       <main>
         <h2 className="articles__header">{title}</h2>
-        <div className="article box">
-          <div className="article__info">
-            <p>
-              Posted by {author} {formatDate(created_at)}
-            </p>
-            <Votes type="article" id={article_id} votes={votes} />
-          </div>
-
-          <p className="article__body">{body}</p>
-          <div className="article__stats">
-            <svg class="article__icon">
-              <use href={icons + '#icon-message'}></use>
-            </svg>
-            <p>{comment_count} comments</p>
-          </div>
-          {comment_count > 0 && (
-            <CommentList articleId={article_id} user={username} />
-          )}
-        </div>
-
-        <div className="sidepanel">
-          <SidePanel topic={topic} />
-
-          {author === username && (
-            <button
-              className="sidepanel__btn"
-              onClick={() => this.removeArticle(article_id)}
-            >
-              Delete article
-            </button>
-          )}
-        </div>
+        {mainContent}
       </main>
     );
   }

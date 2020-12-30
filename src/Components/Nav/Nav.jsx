@@ -1,8 +1,9 @@
 import { Link } from '@reach/router';
 import React, { Component } from 'react';
 import TopicList from './TopicList';
-import User from '../User';
+import User from '../User/User';
 import { UserContext } from '../../Contexts/UserContext';
+import NavButton from './NavButton';
 
 class Nav extends Component {
   state = {
@@ -23,7 +24,7 @@ class Nav extends Component {
       <nav className="nav grid">
         <div className="nav__bar grid">
           <div className="nav__bar__controls">
-            <div className="nav__bar__topic">
+            <div className="topics__container">
               {user && (
                 <Link to="/article/new" className="title-link">
                   <button className="btn__post btn__space-right">
@@ -31,21 +32,7 @@ class Nav extends Component {
                   </button>
                 </Link>
               )}
-              <button
-                className="btn btn__space-right"
-                onClick={this.showTopics}
-              >
-                Topics
-              </button>
-              <form>
-                <input
-                  className="nav__search"
-                  type="text"
-                  name="searchTopics"
-                  placeholder="Search topics"
-                  autoComplete="off"
-                />
-              </form>
+              <NavButton onClick={this.showTopics}>Topic</NavButton>
             </div>
             <User />
           </div>

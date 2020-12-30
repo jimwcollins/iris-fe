@@ -33,7 +33,7 @@ body {
   /* Shades */
   --color-tertiary-light: rgba(129, 149, 148, 0.1);
 
-  --box-shadow: 0.1rem 0.1rem 0.5rem rgba(0, 0, 0, 0.2);
+  --box-shadow: 0.1rem 0.1rem 0.3rem rgba(0, 0, 0, 0.1);
 
   background-color: var(--color-background);
 
@@ -107,21 +107,78 @@ nav {
   justify-content: space-between;
 }
 
-.nav__bar__topic {
+.topics__container {
   display: flex;
   align-items: center;
 }
 
-.nav__search {
+.navButton {
+  display: flex;
+  align-items: center;
+  width: 7rem;
   height: 3rem;
-  width: 12rem;
-  padding: 0.5rem;
-
-  transition: width 1s;
+  border-radius: 0.7rem;
+  border: 0.1rem solid var(--color-white);
+  background-color: var(--color-primary);
+  overflow: hidden;
+  transition: all 1s;
 }
 
-.nav__search:focus {
+.navButton--active {
   width: 30rem;
+}
+
+.navButton__btn {
+  height: 100%;
+  width: 7rem;
+  padding: 0 1.3rem;
+  border: 0;
+  background-color: var(--color-primary);
+  outline: 0;
+  cursor: pointer;
+  text-transform: uppercase;
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: var(--color-white);
+  transition: all 1s;
+}
+
+.navButton__btn--active {
+  background-color: var(--color-white);
+  color: var(--color-primary);
+}
+
+.navButton__btn:hover {
+  background-color: var(--color-white);
+  color: var(--color-primary);
+}
+
+.nav__form {
+  width: 0%;
+  opacity: 0;
+  transition: all 2s;
+}
+
+.nav__form--active {
+  width: 100%;
+  opacity: 1;
+}
+
+.nav__form__input {
+  width: 100%;
+  padding: 0.5rem 1rem;
+  border: 0;
+  outline: 0;
+  background-color: var(--color-primary);
+  color: var(--color-white);
+}
+
+.nav__form__input::placeholder {
+  color: var(--color-white);
+}
+
+.nav__form__input:focus::placeholder {
+  color: transparent;
 }
 
 .nav__topiclist {

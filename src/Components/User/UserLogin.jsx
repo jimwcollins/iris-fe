@@ -21,17 +21,17 @@ class UserLogin extends Component {
 
   render() {
     return (
-      <div className="user">
-        <form className="user__form" onSubmit={this.handleSubmit}>
+      <div className="navButton">
+        <form className="nav__form" onSubmit={this.handleSubmit}>
           <input
             type="text"
             id="userLogin"
             placeholder="username"
             value={this.state.userLogin}
             onChange={this.handleChange}
-            className="user__login-input"
+            className="nav__form__input"
           ></input>
-          <input type="submit" value="login" className="btn"></input>
+          <input type="submit" value="login" className="navButton__btn"></input>
         </form>
       </div>
     );

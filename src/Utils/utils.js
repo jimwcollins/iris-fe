@@ -1,5 +1,8 @@
 import { DateTime } from 'luxon';
 
+// Jest testing
+// const { DateTime } = require('luxon');
+
 export const formatDate = (date) => {
   // Turn ISO date string from db into a Luxon DateTime
   const dt = DateTime.fromISO(date);
@@ -7,7 +10,15 @@ export const formatDate = (date) => {
   // Now calculate duration between article time and now
   const duration = Object.entries(
     dt
-      .diffNow(['years', 'months', 'days', 'hours', 'minutes', 'seconds'])
+      .diffNow([
+        'years',
+        'months',
+        'weeks',
+        'days',
+        'hours',
+        'minutes',
+        'seconds'
+      ])
       .toObject()
   );
 
@@ -17,9 +28,14 @@ export const formatDate = (date) => {
     let unit = duration[i][0];
 
     if (time !== 0) {
+      if (unit === 'seconds') return 'just now';
       if (time < 2) unit = unit.slice(0, -1);
-
       return `${time} ${unit} ago`;
     }
   }
 };
+
+// Jest testing
+// module.exports = {
+//   formatDate
+// };

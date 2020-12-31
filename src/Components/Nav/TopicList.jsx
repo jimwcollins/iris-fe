@@ -15,23 +15,29 @@ class TopicList extends Component {
   };
 
   render() {
+    const { isLoading } = this.state;
+
     const topics = this.state.topics;
 
-    return (
-      <div className="nav__topiclist">
-        {topics.map((topic) => {
-          return (
-            <Link
-              to={`/articles/${topic.slug}`}
-              key={topic.slug}
-              className="nav__topic"
-            >
-              {topic.slug}
-            </Link>
-          );
-        })}
-      </div>
-    );
+    if (isLoading) {
+      return null;
+    } else {
+      return (
+        <div className="nav__topiclist">
+          {topics.map((topic) => {
+            return (
+              <Link
+                to={`/articles/${topic.slug}`}
+                key={topic.slug}
+                className="nav__topic"
+              >
+                {topic.slug}
+              </Link>
+            );
+          })}
+        </div>
+      );
+    }
   }
 }
 

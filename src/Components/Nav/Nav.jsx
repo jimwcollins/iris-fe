@@ -3,14 +3,14 @@ import React, { Component } from 'react';
 import TopicList from './TopicList';
 import User from '../User/User';
 import { UserContext } from '../../Contexts/UserContext';
-import NavButton from './NavButton';
+import TopicNav from './TopicNav';
 
 class Nav extends Component {
   state = {
     showTopics: false
   };
 
-  showTopics = () => {
+  handleTopicBtn = () => {
     this.setState((currState) => {
       return { showTopics: !currState.showTopics };
     });
@@ -32,7 +32,12 @@ class Nav extends Component {
                   </button>
                 </Link>
               )}
-              <NavButton onClick={this.showTopics}>Topics</NavButton>
+              <TopicNav
+                showTopics={this.state.showTopics}
+                onClick={this.handleTopicBtn}
+              >
+                Topics
+              </TopicNav>
             </div>
             <User />
           </div>

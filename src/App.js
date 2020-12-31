@@ -35,6 +35,10 @@ class App extends Component {
     }
   };
 
+  cancelLogin = () => {
+    this.setState({ showLoginModal: false });
+  };
+
   logout = () => {
     this.setState({ user: null });
   };
@@ -56,7 +60,8 @@ class App extends Component {
           user,
           login: this.login,
           logout: this.logout,
-          showLoginModal: this.loginModalHandler
+          showLoginModal: this.loginModalHandler,
+          cancelLogin: this.cancelLogin
         }}
       >
         <div className="App grid">

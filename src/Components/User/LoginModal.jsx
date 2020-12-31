@@ -1,9 +1,10 @@
 import React, { useState, useContext } from 'react';
 import { UserContext } from '../../Contexts/UserContext';
+import icons from '../../images/iris-icons.svg';
 
 const LoginModal = (props) => {
   const [userLogin, setUserLogin] = useState('');
-  const { login } = useContext(UserContext);
+  const { login, cancelLogin } = useContext(UserContext);
 
   const handleChange = (event) => {
     setUserLogin(event.target.value);
@@ -23,6 +24,9 @@ const LoginModal = (props) => {
   return (
     <div className={modalBgClass}>
       <div className={modalBoxClass}>
+        <svg class="login__cancel__icon" onClick={cancelLogin}>
+          <use href={icons + '#icon-circle-with-cross'}></use>
+        </svg>
         <h3 className="login__title">Login</h3>
         <form className="login__form" onSubmit={handleSubmit}>
           <input

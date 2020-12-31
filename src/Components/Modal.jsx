@@ -16,7 +16,7 @@ const Modal = (props) => {
     <div className={modalBgClass}>
       <div className={modalBoxClass}>
         <h3 className="modal__title">{props.title}</h3>
-        <button onClick={handleClick} className="modal__btn">
+        <button onClick={handleClick} className="btn">
           {props.message}
         </button>
       </div>

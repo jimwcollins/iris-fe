@@ -1,26 +1,28 @@
-import React, { Component } from 'react';
+import React, { useContext } from 'react';
 import { UserContext } from '../../Contexts/UserContext';
-import UserLogin from './UserLogin';
 
-class User extends Component {
-  render() {
-    const { user, login, logout } = this.context;
+const User = () => {
+  const { user, logout, showLoginModal } = useContext(UserContext);
 
-    if (user) {
-      return (
-        <div className="user">
-          <p className="user__display">Logged in as {user.name}</p>
-          <button className="navBtn__btn" onClick={logout}>
-            Logout
-          </button>
-        </div>
-      );
-    } else {
-      return <UserLogin login={login} />;
-    }
+  if (user) {
+    return (
+      <div className="user">
+        <p className="user__display">Logged in as {user.name}</p>
+        <button className="navButton__outline navButton__btn" onClick={logout}>
+          Logout
+        </button>
+      </div>
+    );
+  } else {
+    return (
+      <button
+        className="navButton__outline navButton__btn"
+        onClick={showLoginModal.bind(this, true)}
+      >
+        Login
+      </button>
+    );
   }
-}
-
-User.contextType = UserContext;
+};
 
 export default User;

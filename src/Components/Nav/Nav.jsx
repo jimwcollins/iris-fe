@@ -32,7 +32,7 @@ class Nav extends Component {
                   </button>
                 </Link>
               )}
-              <NavButton onClick={this.showTopics}>Topic</NavButton>
+              <NavButton onClick={this.showTopics}>Topics</NavButton>
             </div>
             <User />
           </div>

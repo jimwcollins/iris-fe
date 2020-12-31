@@ -10,10 +10,12 @@ import { UserContext } from './Contexts/UserContext';
 import { getUser } from './Utils/api';
 import NewArticle from './Components/NewArticle';
 import Modal from './Components/Modal';
+import LoginModal from './Components/User/LoginModal';
 
 class App extends Component {
   state = {
     user: null,
+    showLoginModal: false,
     modal: {
       showModal: false,
       title: '',
@@ -26,7 +28,7 @@ class App extends Component {
     // Retrieve user details or throw error if doesn't exist in db
     try {
       const { user } = await getUser(newuser);
-      this.setState({ user });
+      this.setState({ user, showLoginModal: false });
     } catch (err) {
       alert('Error logging in');
       console.log(err);
@@ -41,12 +43,21 @@ class App extends Component {
     this.setState({ modal: { showModal, title, message, navTo } });
   };
 
+  loginModalHandler = (showLoginModal) => {
+    this.setState({ showLoginModal });
+  };
+
   render() {
-    const { user, modal } = this.state;
+    const { user, showLoginModal, modal } = this.state;
 
     return (
       <UserContext.Provider
-        value={{ user, login: this.login, logout: this.logout }}
+        value={{
+          user,
+          login: this.login,
+          logout: this.logout,
+          showLoginModal: this.loginModalHandler
+        }}
       >
         <div className="App grid">
           <Title />
@@ -57,6 +68,10 @@ class App extends Component {
             title={modal.title}
             message={modal.message}
             navTo={modal.navTo}
+          />
+          <LoginModal
+            showLoginModal={showLoginModal}
+            loginModalHandler={this.loginModalHandler}
           />
           <Router className="content" primary={false}>
             <ArticleList path="/" />

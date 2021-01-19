@@ -7,7 +7,7 @@ class TopicBox extends Component {
     topic: {},
     isLoading: true,
     hasError: false,
-    errMsg: ''
+    errMsg: '',
   };
 
   componentDidMount = () => {
@@ -29,13 +29,13 @@ class TopicBox extends Component {
         this.setState({ hasTopic: true, topic, isLoading: false });
       } catch (err) {
         const {
-          response: { status, statusText }
+          response: { status, statusText },
         } = err;
 
         this.setState({
           isLoading: false,
           hasError: true,
-          errMsg: `${status}: ${statusText}`
+          errMsg: `${status}: ${statusText}`,
         });
       }
     }
@@ -54,7 +54,7 @@ class TopicBox extends Component {
     else topic = 'Hi there!';
 
     if (slug) subhead = description;
-    else subhead = 'Pick a topic or dive right in...';
+    else subhead = 'Pick a topic or dive right in';
 
     return (
       <div className="topicbox">

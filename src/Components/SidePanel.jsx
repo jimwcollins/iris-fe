@@ -24,16 +24,19 @@ const SidePanel = ({ topic, newPost }) => {
         )}
       </div>
       {user && !newPost && (
-        <Link to={`/article/new/${topic}`}>
-          <button className="newArticleBtn">
-            <span className="newArticleBtn__text">Post new article</span>
+        <Link to={`/article/new/${topic}`} className="sidepanel__link">
+          <button className="mainButton">
+            <span className="mainButton__text">Post new article</span>
           </button>
         </Link>
       )}
       {newPost && (
-        <Link to={topic ? `/articles/${topic}` : '/'}>
-          <button className="newArticleBtn">
-            <span className="newArticleBtn__text">Back to articles</span>
+        <Link
+          to={topic ? `/articles/${topic}` : '/'}
+          className="sidepanel__link"
+        >
+          <button className="mainButton">
+            <span className="mainButton__text">Back to articles</span>
           </button>
         </Link>
       )}

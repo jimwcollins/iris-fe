@@ -106,10 +106,13 @@ class NewArticle extends Component {
                   value={this.state.comment}
                   placeholder="Impart your wisdom here"
                   required
-                  className="new-article__input__body"
+                  className="new-article__textArea"
                   onChange={this.handleChange}
                 ></textarea>
-                <input type="submit" className="new-article__submit"></input>
+                <input
+                  type="submit"
+                  className="mainButton new-article__submitBtn"
+                ></input>
               </form>
             </div>
             <SidePanel topic={topic} newPost={true} />

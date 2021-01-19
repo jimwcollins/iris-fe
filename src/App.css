@@ -21,7 +21,7 @@ body {
   /* Colours */
   --color-primary: #1d3557;
   --color-secondary: #457b9d;
-  --color-tertiary: #f1faee;
+  --color-tertiary: #457b9d;
   --color-red: rgb(131, 38, 38);
   --color-background: #f3f8f9d9;
 
@@ -84,7 +84,7 @@ body {
 
 nav {
   grid-area: nav;
-  grid-template-rows: 6.25rem auto;
+  grid-template-rows: 6.5rem auto;
   align-content: center;
 
   grid-template-areas: 'nav nav nav' '. topics .';
@@ -116,8 +116,8 @@ nav {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  width: 7rem;
-  height: 3rem;
+  width: 7.25rem;
+  height: 3.25rem;
   border-radius: 0.7rem;
   border: 0.1rem solid var(--color-white);
   overflow: hidden;
@@ -129,18 +129,20 @@ nav {
 }
 
 .navButton__btn {
-  height: 3rem;
-  min-width: 7rem;
-  max-width: 7rem;
+  height: 3.25rem;
   border: 0;
   background-color: var(--color-primary);
   outline: 0;
   cursor: pointer;
   text-transform: uppercase;
-  font-size: 1.2rem;
+  font-size: 1.4rem;
   font-weight: 600;
   color: var(--color-white);
   transition: all 1s;
+}
+.navButton__btn--topic {
+  min-width: 7.25rem;
+  max-width: 7.25rem;
 }
 
 .navButton__btn--active {
@@ -154,8 +156,9 @@ nav {
 }
 
 .navButton__outline {
-  width: 7rem;
-  height: 3rem;
+  height: 3.25rem;
+  padding-left: 1rem;
+  padding-right: 1rem;
   border-radius: 0.7rem;
   border: 0.1rem solid var(--color-white);
 }
@@ -217,10 +220,10 @@ nav {
 }
 
 .user__display {
-  font-size: 1.3rem;
+  font-size: 1.4rem;
   font-weight: 600;
   color: var(--color-white);
-  margin-right: 1rem;
+  margin-right: 1.75rem;
 }
 
 .user__login-input {
@@ -257,19 +260,6 @@ nav {
 
 .btn__space-left {
   margin-left: 1rem;
-}
-
-.btn__post {
-  width: 4rem;
-  height: 3rem;
-  padding: 0;
-  border: 0;
-  border-radius: 0.2rem;
-  cursor: pointer;
-}
-
-.btn__post__icon {
-  font-size: 2rem;
 }
 
 .content {
@@ -823,4 +813,28 @@ h3 {
   color: var(--color-white);
   text-transform: uppercase;
   cursor: pointer;
+}
+
+.newArticleBtn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 0.7rem;
+  background-color: var(--color-secondary);
+  height: 3rem;
+  width: 100%;
+  padding: 2rem;
+  border: 0;
+  cursor: pointer;
+}
+
+.newArticleBtn__icon {
+  font-size: 2rem;
+  color: var(--color-white);
+}
+
+.newArticleBtn__text {
+  font-size: 1.5rem;
+  color: var(--color-white);
+  text-transform: uppercase;
 }

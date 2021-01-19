@@ -1,33 +1,37 @@
-import React, { Component } from 'react';
+import React, { useState, useContext } from 'react';
+import { Link } from '@reach/router';
+
 import TopicBox from './SidePanel/TopicBox';
 import TopArticles from './SidePanel/TopArticles';
+import { UserContext } from '../Contexts/UserContext';
 
-class SidePanel extends Component {
-  state = {
-    topic: ''
-  };
+const SidePanel = ({ topic, newPost }) => {
+  const { user } = useContext(UserContext);
 
-  componentDidMount = () => {
-    this.setState({ topic: this.props.topic });
-  };
+  console.log('panel topic:', topic);
 
-  componentDidUpdate = (prevProps) => {
-    const { topic } = this.props;
-    if (topic !== prevProps.topic) {
-      this.setState({ topic: this.props.topic });
-    }
-  };
-
-  render() {
-    const { topic } = this.state;
-
-    return (
+  return (
+    <div>
       <div className="sidepanel__box">
         <TopicBox topicSlug={topic} />
         <TopArticles topicSlug={topic} />
       </div>
-    );
-  }
-}
+      {user && !newPost && (
+        <Link to={`/article/new/${topic}`}>
+          <button className="newArticleBtn">
+            <span className="newArticleBtn__text">Post new article</span>
+          </button>
+        </Link>
+      )}
+      {newPost && (
+        <Link to={topic ? `/articles/${topic}` : '/'}>
+          <button className="newArticleBtn">
+            <span className="newArticleBtn__text">Back to articles</span>
+          </button>
+        </Link>
+      )}
+    </div>
+  );
+};
 
 export default SidePanel;

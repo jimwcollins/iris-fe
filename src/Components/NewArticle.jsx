@@ -13,7 +13,7 @@ class NewArticle extends Component {
     isPosted: false,
     newArticleId: null,
     hasError: false,
-    errMsg: ''
+    errMsg: '',
   };
 
   handleChange = (event) => {
@@ -27,7 +27,7 @@ class NewArticle extends Component {
       user: { username },
       topic,
       title,
-      body
+      body,
     } = this.state;
 
     const { showNewModal } = this.props;
@@ -43,7 +43,7 @@ class NewArticle extends Component {
           isPosted: true,
           newArticleId: newArticle.article_id,
           hasError: false,
-          errMsg: ''
+          errMsg: '',
         },
         () => {
           const { newArticleId } = this.state;
@@ -57,13 +57,13 @@ class NewArticle extends Component {
       );
     } catch (err) {
       const {
-        response: { status, statusText }
+        response: { status, statusText },
       } = err;
 
       this.setState({
         isLoading: false,
         hasError: true,
-        errMsg: `${status}: ${statusText}`
+        errMsg: `${status}: ${statusText}`,
       });
     }
   };
@@ -72,8 +72,10 @@ class NewArticle extends Component {
     const {
       user: { name },
       isPosted,
-      newArticleId
+      newArticleId,
     } = this.state;
+
+    const { topic } = this.props;
 
     return (
       <main>
@@ -110,6 +112,7 @@ class NewArticle extends Component {
                 <input type="submit" className="new-article__submit"></input>
               </form>
             </div>
+            <SidePanel topic={topic} newPost={true} />
           </>
         ) : null}
       </main>

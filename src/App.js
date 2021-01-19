@@ -20,8 +20,8 @@ class App extends Component {
       showModal: false,
       title: '',
       message: '',
-      navTo: ''
-    }
+      navTo: '',
+    },
   };
 
   login = async (newuser) => {
@@ -61,7 +61,7 @@ class App extends Component {
           login: this.login,
           logout: this.logout,
           showLoginModal: this.loginModalHandler,
-          cancelLogin: this.cancelLogin
+          cancelLogin: this.cancelLogin,
         }}
       >
         <div className="App grid">
@@ -81,7 +81,10 @@ class App extends Component {
           <Router className="content" primary={false}>
             <ArticleList path="/" />
             <ArticleList path="/articles/:topic" />
-            <NewArticle path="/article/new" showNewModal={this.modalHandler} />
+            <NewArticle
+              path="/article/new/:topic"
+              showNewModal={this.modalHandler}
+            />
             <Article
               path="/article/:articleId"
               user={user}

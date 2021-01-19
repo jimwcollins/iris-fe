@@ -32,8 +32,8 @@ const TopicNav = (props) => {
       <button
         className={
           active || showTopics
-            ? 'navButton__btn navButton__btn--active'
-            : 'navButton__btn'
+            ? 'navButton__btn navButton__btn--topic navButton__btn--active'
+            : 'navButton__btn navButton__btn--topic'
         }
         onClick={props.onClick}
       >

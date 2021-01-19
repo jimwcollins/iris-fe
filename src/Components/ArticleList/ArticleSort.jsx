@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 class ArticleSort extends Component {
   state = {
     sortBy: 'date',
-    order: 'desc'
+    order: 'desc',
   };
 
   handleChange = (event) => {
@@ -27,6 +27,7 @@ class ArticleSort extends Component {
             name="sortBy"
             onChange={this.handleChange}
             value={this.state.sortBy}
+            className="articles-sort__select"
           >
             <option value="created_at">Date</option>
             <option value="comment_count">Comments</option>
@@ -37,6 +38,7 @@ class ArticleSort extends Component {
             name="order"
             onChange={this.handleChange}
             value={this.state.order}
+            className="articles-sort__select"
           >
             <option value="asc">Asc</option>
             <option value="desc">Desc</option>

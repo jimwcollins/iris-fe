@@ -26,7 +26,7 @@ body {
   --color-background: #f3f8f9d9;
 
   --color-grey: rgb(91, 88, 88);
-  --color-grey-light: rgba(91, 88, 88, 0.646);
+  --color-grey-light: rgba(176, 165, 165, 0.646);
   --color-black: rgba(0, 0, 0);
   --color-white: rgb(255, 255, 255);
 
@@ -446,7 +446,7 @@ main {
 }
 
 .articles__count {
-  font-size: 1.3rem;
+  font-size: 1.4rem;
 }
 
 .articles {
@@ -458,15 +458,24 @@ main {
   justify-content: space-between;
   align-items: center;
   background-color: var(--color-white);
-  border: 0.1rem solid var(--color-grey);
+  border: 0.2rem solid var(--color-primary);
   border-radius: var(--border-radius-main);
   padding: 1rem;
   margin-bottom: 1.5rem;
 }
 
 .articles-sort__label {
-  margin-right: 0.5rem;
-  font-size: 1.1rem;
+  font-size: 1.4rem;
+}
+
+.articles-sort__select {
+  background-color: var(--color-grey-light);
+  height: 3rem;
+  padding: 0.5rem;
+  font-size: 1.4rem;
+  color: var(--color-black);
+  border-radius: 0.5rem;
+  margin-left: 1rem;
 }
 
 .articles-sort__controls {

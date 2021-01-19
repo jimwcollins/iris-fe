@@ -745,7 +745,6 @@ h3 {
 .sidepanel__box {
   border: 0.1rem solid rgb(37, 37, 37);
   border-radius: 0.5rem;
-  padding-bottom: 1rem;
   overflow: hidden;
   background-color: var(--color-white);
   box-shadow: var(--box-shadow);
@@ -753,7 +752,7 @@ h3 {
 }
 
 .topicbox {
-  padding: 1.5rem;
+  margin: 1.5rem;
 }
 
 .box__header {
@@ -775,33 +774,38 @@ h3 {
 .box__desc {
   margin-top: 1rem;
   margin-bottom: 1rem;
+  padding-top: 0.25rem;
+  padding-bottom: 0.5rem;
   font-size: 1.5rem;
   font-weight: 600;
+  line-height: 1.5;
+  padding-bottom: 1rem;
+  border-bottom: 0.1rem solid var(--color-secondary);
 }
 
 .top-articles {
-  margin: 1rem;
+  margin: 1.5rem;
 }
 
 .top-articles__header {
-  font-size: 1.1rem;
-  text-transform: uppercase;
+  font-size: 1.4rem;
   font-weight: 600;
   color: var(--color-tertiary);
-  margin-bottom: 0.5rem;
+  margin-bottom: 1rem;
 }
 
 .top-articles__list {
-  height: 9rem;
   overflow: hidden;
 }
 
 .top-articles__item {
   margin-bottom: 0.5rem;
-  font-size: 1.1rem;
+  font-size: 1.3rem;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+  padding-bottom: 0.5rem;
+  border-bottom: 0.1rem dotted var(--color-secondary);
 }
 
 .sidepanel__btn {
@@ -851,7 +855,7 @@ h3 {
   counter-increment: ruleCounter;
   margin-bottom: 1rem;
   padding-bottom: 1rem;
-  border-bottom: 0.1rem solid var(--color-secondary);
+  border-bottom: 0.1rem dotted var(--color-secondary);
 }
 
 .newPostRules li::marker {

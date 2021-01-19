@@ -6,7 +6,7 @@ function NewPostRules() {
       <div className="box__header">
         <p className="box__header__text">Posting to The Iris</p>
       </div>
-      <p className="box__desc">Please...</p>
+      <p className="box__desc">A polite note to please...</p>
       <ol className="newPostRules">
         <li>Treat each other with respect</li>
         <li>Behave as you would in real life</li>

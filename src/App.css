@@ -19,9 +19,9 @@ body {
   --font-size-base: 1.1rem;
 
   /* Colours */
-  --color-primary: #315863;
-  --color-secondary: #122932;
-  --color-tertiary: #819594;
+  --color-primary: #1d3557;
+  --color-secondary: #457b9d;
+  --color-tertiary: #f1faee;
   --color-red: rgb(131, 38, 38);
   --color-background: #f3f8f9d9;
 
@@ -50,14 +50,14 @@ body {
 }
 
 .App {
-  grid-template-rows: 10rem auto auto;
+  grid-template-rows: 13rem auto auto;
   grid-template-areas: '. title .' 'nav nav nav' '. app .';
   justify-content: center;
 }
 
 .logo {
   width: auto;
-  height: 5rem;
+  height: 13rem;
 }
 
 .link {
@@ -84,7 +84,7 @@ body {
 
 nav {
   grid-area: nav;
-  grid-template-rows: 6rem auto;
+  grid-template-rows: 6.25rem auto;
   align-content: center;
 
   grid-template-areas: 'nav nav nav' '. topics .';

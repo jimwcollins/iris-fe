@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 const irisApi = axios.create({
-  baseURL: 'https://iris-be.herokuapp.com/api'
+  baseURL: 'https://iris-be.herokuapp.com/api',
 });
 
 export const getUser = async (username) => {
@@ -24,8 +24,8 @@ export const getArticleList = async (topic, sortBy, order, limit) => {
     params: {
       topic,
       sort_by: sortBy,
-      order
-    }
+      order,
+    },
   });
 
   return articles;
@@ -33,7 +33,7 @@ export const getArticleList = async (topic, sortBy, order, limit) => {
 
 export const getArticle = async (articleId) => {
   const {
-    data: { article }
+    data: { article },
   } = await irisApi.get(`/articles/${articleId}`);
 
   return article;
@@ -41,12 +41,12 @@ export const getArticle = async (articleId) => {
 
 export const postArticle = async (author, topic, title, body) => {
   const {
-    data: { article }
+    data: { article },
   } = await irisApi.post('/articles/', {
     title,
     body,
     topic,
-    author
+    author,
   });
 
   return article;
@@ -58,7 +58,7 @@ export const delArticle = async (articleId) => {
 
 export const getCommentList = async (articleId) => {
   const {
-    data: { comments }
+    data: { comments },
   } = await irisApi.get(`/articles/${articleId}/comments`);
 
   return comments;
@@ -66,10 +66,10 @@ export const getCommentList = async (articleId) => {
 
 export const postNewComment = async (user, articleId, commentText) => {
   const {
-    data: { comment }
+    data: { comment },
   } = await irisApi.post(`/articles/${articleId}/comments`, {
     username: user,
-    body: commentText
+    body: commentText,
   });
 
   return comment;
@@ -81,9 +81,9 @@ export const deleteComment = (commentId) => {
 
 export const updateArticleVotes = async (articleId, voteInc) => {
   const {
-    data: { article }
+    data: { article },
   } = await irisApi.patch(`/articles/${articleId}`, {
-    inc_votes: voteInc
+    inc_votes: voteInc,
   });
 
   return article;
@@ -91,9 +91,9 @@ export const updateArticleVotes = async (articleId, voteInc) => {
 
 export const updateCommentVotes = async (commentId, voteInc) => {
   const {
-    data: { comment }
+    data: { comment },
   } = await irisApi.patch(`/comments/${commentId}`, {
-    inc_votes: voteInc
+    inc_votes: voteInc,
   });
 
   return comment;

@@ -7,7 +7,7 @@ class TopArticles extends Component {
     topArticles: [],
     isLoading: true,
     hasError: false,
-    errMsg: ''
+    errMsg: '',
   };
 
   componentDidMount = () => {
@@ -28,18 +28,18 @@ class TopArticles extends Component {
 
       this.setState({
         topArticles: articles,
-        isLoading: false
+        isLoading: false,
       });
     } catch (err) {
       console.log('TopArticlesErr', err);
       const {
-        response: { status, statusText }
+        response: { status, statusText },
       } = err;
 
       this.setState({
         isLoading: false,
         hasError: true,
-        errMsg: `${status}: ${statusText}`
+        errMsg: `${status}: ${statusText}`,
       });
     }
   };

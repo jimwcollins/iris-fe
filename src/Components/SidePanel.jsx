@@ -2,6 +2,7 @@ import React, { useState, useContext } from 'react';
 import { Link } from '@reach/router';
 
 import TopicBox from './SidePanel/TopicBox';
+import NewPostRules from './SidePanel/NewPostRules';
 import TopArticles from './SidePanel/TopArticles';
 import { UserContext } from '../Contexts/UserContext';
 
@@ -13,8 +14,14 @@ const SidePanel = ({ topic, newPost }) => {
   return (
     <div>
       <div className="sidepanel__box">
-        <TopicBox topicSlug={topic} />
-        <TopArticles topicSlug={topic} />
+        {newPost ? (
+          <NewPostRules />
+        ) : (
+          <>
+            <TopicBox topicSlug={topic} />
+            <TopArticles topicSlug={topic} />
+          </>
+        )}
       </div>
       {user && !newPost && (
         <Link to={`/article/new/${topic}`}>

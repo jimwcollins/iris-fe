@@ -1,5 +1,8 @@
 import React, { Component } from 'react';
+
 import { getArticleList } from '../../Utils/api';
+import { formatTitle } from '../../Utils/utils';
+
 import ArticleCard from './ArticleCard';
 import LoadSpinner from '../LoadSpinner';
 import ErrorMsg from '../ErrorMsg';
@@ -53,11 +56,6 @@ class ArticleList extends Component {
     }
   };
 
-  // Capitalise the title
-  formatTitle = (title) => {
-    return title.charAt(0).toUpperCase() + title.slice(1);
-  };
-
   render() {
     const {
       articles,
@@ -68,7 +66,7 @@ class ArticleList extends Component {
       errMsg,
     } = this.state;
 
-    const title = topic ? this.formatTitle(topic) : 'Welcome To The Iris';
+    const title = topic ? formatTitle(topic) : 'Welcome To The Iris';
 
     // Set main content of page according to whether we are loading or if an error has been thrown
     let mainContent;

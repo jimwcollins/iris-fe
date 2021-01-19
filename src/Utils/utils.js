@@ -1,8 +1,6 @@
 import { DateTime } from 'luxon';
 
-// Jest testing
-// const { DateTime } = require('luxon');
-
+// Format date and time for articles
 export const formatDate = (date) => {
   // Turn ISO date string from db into a Luxon DateTime
   const dt = DateTime.fromISO(date);
@@ -17,7 +15,7 @@ export const formatDate = (date) => {
         'days',
         'hours',
         'minutes',
-        'seconds'
+        'seconds',
       ])
       .toObject()
   );
@@ -35,7 +33,7 @@ export const formatDate = (date) => {
   }
 };
 
-// Jest testing
-// module.exports = {
-//   formatDate
-// };
+// Capitalise titles
+export const formatTitle = (title) => {
+  return title.charAt(0).toUpperCase() + title.slice(1);
+};

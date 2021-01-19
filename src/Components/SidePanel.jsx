@@ -24,7 +24,10 @@ const SidePanel = ({ topic, page }) => {
         )}
       </div>
       {user && page !== 'newArticle' && page !== 'article' && (
-        <Link to={`/article/new/${topic}`} className="sidepanel__link">
+        <Link
+          to={topic ? `/article/new/${topic}` : '/article/new'}
+          className="sidepanel__link"
+        >
           <button className="mainButton">
             <span className="mainButton__text">Post new article</span>
           </button>

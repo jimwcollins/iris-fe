@@ -85,6 +85,7 @@ class App extends Component {
               path="/article/new/:topic"
               showNewModal={this.modalHandler}
             />
+            <NewArticle path="/article/new" showNewModal={this.modalHandler} />
             <Article
               path="/article/:articleId"
               user={user}

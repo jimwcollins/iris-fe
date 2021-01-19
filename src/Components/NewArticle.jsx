@@ -1,8 +1,10 @@
 import React, { Component } from 'react';
+
 import { UserContext } from '../Contexts/UserContext';
 import { postArticle } from '../Utils/api';
+import { formatTitle } from '../Utils/utils';
+
 import SidePanel from './SidePanel';
-import { Link } from '@reach/router';
 
 class NewArticle extends Component {
   state = {
@@ -14,6 +16,14 @@ class NewArticle extends Component {
     newArticleId: null,
     hasError: false,
     errMsg: '',
+  };
+
+  componentDidMount = () => {
+    const { topic } = this.props;
+
+    if (topic) {
+      this.setState({ topic: formatTitle(topic) });
+    }
   };
 
   handleChange = (event) => {
@@ -88,6 +98,7 @@ class NewArticle extends Component {
                   type="text"
                   name="topic"
                   placeholder="Topic"
+                  value={this.state.topic}
                   required
                   className="new-article__input"
                   onChange={this.handleChange}

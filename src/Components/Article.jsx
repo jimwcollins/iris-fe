@@ -15,7 +15,7 @@ class Article extends Component {
     isLoading: true,
     hasError: false,
     errMsg: '',
-    username: null
+    username: null,
   };
 
   componentDidMount = () => {
@@ -38,17 +38,17 @@ class Article extends Component {
       const article = await getArticle(articleId);
       this.setState({
         article,
-        isLoading: false
+        isLoading: false,
       });
     } catch (err) {
       const {
-        response: { status, statusText }
+        response: { status, statusText },
       } = err;
 
       this.setState({
         isLoading: false,
         hasError: true,
-        errMsg: `${status}: ${statusText}`
+        errMsg: `${status}: ${statusText}`,
       });
     }
   };
@@ -62,13 +62,13 @@ class Article extends Component {
     } catch (err) {
       alert('Error deleting article');
       const {
-        response: { status, statusText }
+        response: { status, statusText },
       } = err;
 
       this.setState({
         isLoading: false,
         hasError: true,
-        errMsg: `${status}: ${statusText}`
+        errMsg: `${status}: ${statusText}`,
       });
     }
   };
@@ -82,7 +82,7 @@ class Article extends Component {
       comment_count,
       created_at,
       topic,
-      votes
+      votes,
     } = this.state.article;
 
     const { username, isLoading, hasError, errMsg } = this.state;
@@ -118,7 +118,7 @@ class Article extends Component {
           </div>
 
           <div className="sidepanel">
-            <SidePanel topic={topic} />
+            <SidePanel topic={topic} page="article" />
 
             {author === username && (
               <button

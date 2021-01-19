@@ -6,7 +6,7 @@ import NewPostRules from './SidePanel/NewPostRules';
 import TopArticles from './SidePanel/TopArticles';
 import { UserContext } from '../Contexts/UserContext';
 
-const SidePanel = ({ topic, newPost }) => {
+const SidePanel = ({ topic, page }) => {
   const { user } = useContext(UserContext);
 
   console.log('panel topic:', topic);
@@ -14,7 +14,7 @@ const SidePanel = ({ topic, newPost }) => {
   return (
     <div>
       <div className="sidepanel__box">
-        {newPost ? (
+        {page === 'newArticle' ? (
           <NewPostRules />
         ) : (
           <>
@@ -23,14 +23,14 @@ const SidePanel = ({ topic, newPost }) => {
           </>
         )}
       </div>
-      {user && !newPost && (
+      {user && page !== 'newArticle' && page !== 'article' && (
         <Link to={`/article/new/${topic}`} className="sidepanel__link">
           <button className="mainButton">
             <span className="mainButton__text">Post new article</span>
           </button>
         </Link>
       )}
-      {newPost && (
+      {page !== 'articleList' && (
         <Link
           to={topic ? `/articles/${topic}` : '/'}
           className="sidepanel__link"

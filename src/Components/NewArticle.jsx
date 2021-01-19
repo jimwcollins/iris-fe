@@ -111,11 +111,12 @@ class NewArticle extends Component {
                 ></textarea>
                 <input
                   type="submit"
+                  value="post"
                   className="mainButton new-article__submitBtn"
                 ></input>
               </form>
             </div>
-            <SidePanel topic={topic} newPost={true} />
+            <SidePanel topic={topic} page="newArticle" />
           </>
         ) : null}
       </main>

@@ -13,7 +13,7 @@ class ArticleList extends Component {
     articleCount: 0,
     isLoading: true,
     hasError: false,
-    errMsg: ''
+    errMsg: '',
   };
 
   componentDidMount = () => {
@@ -38,17 +38,17 @@ class ArticleList extends Component {
         topic,
         articles,
         articleCount: total_count,
-        isLoading: false
+        isLoading: false,
       });
     } catch (err) {
       const {
-        response: { status, statusText }
+        response: { status, statusText },
       } = err;
 
       this.setState({
         isLoading: false,
         hasError: true,
-        errMsg: `${status}: ${statusText}`
+        errMsg: `${status}: ${statusText}`,
       });
     }
   };
@@ -65,7 +65,7 @@ class ArticleList extends Component {
       articleCount,
       isLoading,
       hasError,
-      errMsg
+      errMsg,
     } = this.state;
 
     const title = topic ? this.formatTitle(topic) : 'Welcome To The Iris';
@@ -94,7 +94,7 @@ class ArticleList extends Component {
               })}
             </ul>
           </div>
-          <SidePanel topic={topic} />
+          <SidePanel topic={topic} page="articleList" />
         </>
       );
     }

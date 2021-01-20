@@ -665,17 +665,6 @@ main {
   margin-right: 0.5rem;
 }
 
-.article__stats {
-  display: flex;
-  align-items: center;
-  padding-top: 1rem;
-  border-top: var(--line-main);
-}
-
-.article__commentCount {
-  font-size: 1.4rem;
-}
-
 .vote__block {
   display: flex;
   justify-content: space-evenly;
@@ -731,6 +720,20 @@ main {
 
 .commentList {
   margin-top: 2rem;
+}
+
+.commentList__stats {
+  display: flex;
+  align-items: center;
+  padding: 1rem 0;
+  border-top: var(--line-main);
+  border-bottom: var(--line-main);
+  margin-bottom: 2rem;
+}
+
+.commentList__commentCount {
+  font-size: 1.4rem;
+  font-weight: 600;
 }
 
 .commentList__newComment__head {

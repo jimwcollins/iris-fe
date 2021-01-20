@@ -68,6 +68,7 @@ class CommentList extends Component {
       const newComment = await postNewComment(username, articleId, comment);
       this.setState((currentState) => {
         return {
+          isLoading: false,
           comments: [newComment, ...currentState.comments],
           commentCount: currentState.commentCount + 1,
         };
@@ -131,11 +132,11 @@ class CommentList extends Component {
 
     return (
       <div className="commentList">
-        <div className="article__stats">
+        <div className="commentList__stats">
           <svg class="article__icon">
             <use href={icons + '#icon-message'}></use>
           </svg>
-          <p className="article__commentCount">{commentCount} comments</p>
+          <p className="commentList__commentCount">{commentCount} comments</p>
         </div>
         {username ? (
           <CommentForm username={username} addComment={this.addComment} />

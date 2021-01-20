@@ -7,7 +7,6 @@ import Votes from './Votes';
 import SidePanel from './SidePanel';
 import { UserContext } from '../Contexts/UserContext';
 import { formatDate } from '../Utils/utils';
-import icons from '../images/iris-icons.svg';
 
 class Article extends Component {
   state = {
@@ -106,15 +105,13 @@ class Article extends Component {
             </div>
 
             <p className="article__body">{body}</p>
-            <div className="article__stats">
-              <svg class="article__icon">
-                <use href={icons + '#icon-message'}></use>
-              </svg>
-              <p>{comment_count} comments</p>
+            <div className="article__comments">
+              <CommentList
+                articleId={article_id}
+                user={username}
+                commentCount={comment_count}
+              />
             </div>
-            {comment_count > 0 && (
-              <CommentList articleId={article_id} user={username} />
-            )}
           </div>
 
           <div className="sidepanel">

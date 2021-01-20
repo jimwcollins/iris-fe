@@ -30,8 +30,6 @@ class ArticleList extends Component {
   };
 
   loadArticleList = async (topic, sortBy, order) => {
-    console.log('Loading article list:', topic, sortBy, order);
-
     try {
       const { articles, total_count } = await getArticleList(
         topic,

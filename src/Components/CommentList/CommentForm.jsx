@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 
 class CommentForm extends Component {
   state = {
-    comment: ''
+    comment: '',
   };
 
   handleChange = (event) => {
@@ -33,9 +33,8 @@ class CommentForm extends Component {
             onChange={this.handleChange}
             value={this.state.comment}
             required
-            className="commentList__form__input"
           ></textarea>
-          <input type="submit"></input>
+          <input type="submit" value="Comment" className="subButton"></input>
         </form>
       </div>
     );

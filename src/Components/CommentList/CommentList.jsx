@@ -5,23 +5,25 @@ import LoadSpinner from '../LoadSpinner';
 import ErrorMsg from '../ErrorMsg';
 import CommentForm from './CommentForm';
 import { UserContext } from '../../Contexts/UserContext';
+import icons from '../../images/iris-icons.svg';
 
 class CommentList extends Component {
   state = {
     user: null,
     articleId: null,
     comments: [],
+    commentCount: 0,
     isLoading: true,
     hasError: false,
-    errMsg: ''
+    errMsg: '',
   };
 
   componentDidMount = () => {
-    const { articleId } = this.props;
+    const { articleId, commentCount } = this.props;
     const { user } = this.context;
-    this.setState({ user });
+    this.setState({ user, articleId, commentCount });
 
-    this.loadComments(articleId);
+    if (commentCount > 0) this.loadComments(articleId);
   };
 
   componentDidUpdate = (prevProps, prevState) => {
@@ -33,7 +35,7 @@ class CommentList extends Component {
     if (username !== prevUsername) this.setState({ user });
 
     const { articleId } = this.props;
-    if (articleId !== prevProps.articleId) {
+    if (articleId !== prevProps.articleId && this.commentCount > 0) {
       this.loadComments(articleId);
     }
   };
@@ -42,19 +44,18 @@ class CommentList extends Component {
     try {
       const comments = await getCommentList(articleId);
       this.setState({
-        articleId,
         comments,
-        isLoading: false
+        isLoading: false,
       });
     } catch (err) {
       const {
-        response: { status, statusText }
+        response: { status, statusText },
       } = err;
 
       this.setState({
         isLoading: false,
         hasError: true,
-        errMsg: `${status}: ${statusText}`
+        errMsg: `${status}: ${statusText}`,
       });
     }
   };
@@ -67,17 +68,18 @@ class CommentList extends Component {
       const newComment = await postNewComment(username, articleId, comment);
       this.setState((currentState) => {
         return {
-          comments: [newComment, ...currentState.comments]
+          comments: [newComment, ...currentState.comments],
+          commentCount: currentState.commentCount + 1,
         };
       });
     } catch (err) {
       const {
-        response: { status, statusText }
+        response: { status, statusText },
       } = err;
 
       this.setState({
         hasError: true,
-        errMsg: `${status}: ${statusText}`
+        errMsg: `${status}: ${statusText}`,
       });
     }
   };
@@ -95,50 +97,74 @@ class CommentList extends Component {
         oldComments.splice(delIndex, 1);
 
         return {
-          comments: oldComments
+          comments: oldComments,
+          commentCount: currentState.commentCount - 1,
         };
       });
     } catch (err) {
       const {
-        response: { status, statusText }
+        response: { status, statusText },
       } = err;
 
       this.setState({
         hasError: true,
-        errMsg: `${status}: ${statusText}`
+        errMsg: `${status}: ${statusText}`,
       });
     }
   };
 
   render() {
-    const { user, comments, isLoading, hasError, errMsg } = this.state;
+    const {
+      user,
+      comments,
+      commentCount,
+      isLoading,
+      hasError,
+      errMsg,
+    } = this.state;
+
     const username = user ? user.username : null;
 
-    if (isLoading) return <LoadSpinner />;
+    const { showLoginModal } = this.context;
+
     if (hasError) return <ErrorMsg errorMsg={errMsg} />;
 
     return (
       <div className="commentList">
+        <div className="article__stats">
+          <svg class="article__icon">
+            <use href={icons + '#icon-message'}></use>
+          </svg>
+          <p className="article__commentCount">{commentCount} comments</p>
+        </div>
         {username ? (
           <CommentForm username={username} addComment={this.addComment} />
         ) : (
-          <p className="commentList__newComment__head">
-            Please login to comment
-          </p>
+          <div className="commentList__login">
+            <p> Please login to comment</p>
+            <button className="subButton" onClick={showLoginModal}>
+              Login
+            </button>
+          </div>
         )}
 
-        <ul className="commentList__list">
-          {comments.map((comment) => {
-            return (
-              <CommentCard
-                key={comment.comment_id}
-                comment={comment}
-                username={username}
-                removeComment={() => this.removeComment(comment.comment_id)}
-              />
-            );
-          })}
-        </ul>
+        {commentCount > 0 &&
+          (isLoading ? (
+            <LoadSpinner />
+          ) : (
+            <ul className="commentList__list">
+              {comments.map((comment) => {
+                return (
+                  <CommentCard
+                    key={comment.comment_id}
+                    comment={comment}
+                    username={username}
+                    removeComment={() => this.removeComment(comment.comment_id)}
+                  />
+                );
+              })}
+            </ul>
+          ))}
       </div>
     );
   }

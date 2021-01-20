@@ -15,7 +15,10 @@ const CommentCard = ({ comment, username, removeComment }) => {
       </div>
       <p className="comment__body">{body}</p>
       {author === username && (
-        <button className="comment__delete-btn" onClick={removeComment}>
+        <button
+          className="subButton comment__deleteBtn"
+          onClick={removeComment}
+        >
           Delete
         </button>
       )}

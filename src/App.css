@@ -21,7 +21,7 @@ body {
   /* Colours */
   --color-primary: #1d3557;
   --color-secondary: #457b9d;
-  --color-tertiary: #457b9d;
+  --color-tertiary: #a9c3d3;
   --color-red: rgb(131, 38, 38);
   --color-background: #f3f8f9d9;
 
@@ -36,13 +36,19 @@ body {
 
   --box-shadow: 0.1rem 0.1rem 0.3rem rgba(0, 0, 0, 0.1);
 
+  /* Borders and lines */
+  --line-main: 0.1rem solid var(--color-secondary);
+  --line-sub: 0.1rem dotted var(--color-secondary);
+
+  /* Measurements */
+  --border-radius-main: 0.75rem;
+  --border-radius-small: 0.35rem;
+
+  /* Base styles */
   background-color: var(--color-background);
 
   font-family: var(--font-text);
   font-size: var(--font-size-base);
-
-  /* Measurements */
-  --border-radius-main: 0.75rem;
 }
 
 .grid {
@@ -109,6 +115,23 @@ body {
 .mainButton__text {
   font-size: 1.4rem;
   text-transform: uppercase;
+}
+
+.subButton {
+  border: none;
+  border-radius: var(--border-radius-small);
+  padding: 0.7rem 0.9rem;
+  background-color: var(--color-tertiary);
+  color: var(--color-white);
+  text-transform: uppercase;
+  font-weight: 600;
+  font-size: 1.2rem;
+  cursor: pointer;
+  transition: all 0.5s;
+}
+
+.subButton:hover {
+  background-color: var(--color-secondary);
 }
 
 nav {
@@ -499,6 +522,7 @@ main {
   padding-top: 0.8rem;
   border-radius: 0.5rem;
   border: none;
+  outline: none;
   margin-left: 0.5rem;
 }
 
@@ -628,9 +652,10 @@ main {
 }
 
 .article__body {
-  font-size: 1.4rem;
-  line-height: 1.9rem;
+  font-size: 1.5rem;
+  line-height: 2.1rem;
   letter-spacing: 0.01rem;
+  margin-bottom: 3rem;
 }
 
 .article__icon {
@@ -641,13 +666,14 @@ main {
 }
 
 .article__stats {
-  margin-top: 1rem;
   display: flex;
   align-items: center;
+  padding-top: 1rem;
+  border-top: var(--line-main);
 }
 
-.article__stats p {
-  font-size: 1.2rem;
+.article__commentCount {
+  font-size: 1.4rem;
 }
 
 .vote__block {
@@ -659,7 +685,7 @@ main {
 .vote__btn {
   height: 1.75rem;
   width: 1.75rem;
-  fill: var(--color-tertiary);
+  fill: var(--color-secondary);
   cursor: pointer;
   transition: all 0.5s;
 }
@@ -705,24 +731,46 @@ main {
 
 .commentList {
   margin-top: 2rem;
-  padding-top: 2rem;
-  border-top: 0.1rem solid black;
 }
 
 .commentList__newComment__head {
-  font-size: 1.3rem;
-  font-weight: 600;
+  font-size: 1.4rem;
+  font-weight: 500;
 }
 
-.commentList__form__input {
+.commentList__login {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border: 0.1rem solid var(--color-grey);
+  border-radius: var(--border-radius-small);
+  padding: 1rem;
+  padding-left: 2rem;
+}
+
+.commentList__login p {
+  font-size: 1.4rem;
+}
+
+.commentList__form {
+  margin-bottom: 3rem;
+}
+
+.commentList__form textarea {
   display: block;
-  border: 0.1rem solid rgb(37, 37, 37);
-  border-radius: var(--border-radius-main);
+  border: 0.1rem solid var(--color-grey);
+  border-radius: var(--border-radius-small);
+  background-color: var(--color-tertiary-light);
   margin-top: 1rem;
+  margin-bottom: 1rem;
   padding: 1rem;
   width: 100%;
   height: 10rem;
   resize: vertical;
+}
+
+.commentList__form .subButton {
+  float: right;
 }
 
 .commentList__list {
@@ -733,6 +781,8 @@ main {
 }
 
 .commentList__card {
+  border: 0.1rem solid var(--color-grey);
+  border-radius: var(--border-radius-small);
   margin: 2rem 0;
   overflow: hidden;
   padding-bottom: 1rem;
@@ -743,19 +793,30 @@ main {
   justify-content: space-between;
   align-items: center;
   background-color: var(--color-tertiary-light);
-  border-radius: var(--border-radius-main);
-  font-size: 1.1rem;
-  margin-top: 0.5rem;
+  font-size: 1.3rem;
   margin-bottom: 1rem;
   padding: 0.75rem 1.5rem;
 }
 
-.comment__body {
-  font-size: 1.3rem;
+.comment__info .vote__btn {
+  height: 1.5rem;
+  width: 1.5rem;
 }
 
-.comment__delete-btn {
+.comment__info .vote__txt {
+  font-size: 1.4rem;
+}
+
+.comment__body {
+  font-size: 1.35rem;
+  padding: 0.5rem 1.5rem;
+  margin-bottom: 1rem;
+}
+
+.comment__deleteBtn {
   margin-top: 0.5rem;
+  margin-right: 1rem;
+  float: right;
 }
 
 h3 {

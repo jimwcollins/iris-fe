@@ -9,8 +9,6 @@ import { UserContext } from '../Contexts/UserContext';
 const SidePanel = ({ topic, page }) => {
   const { user } = useContext(UserContext);
 
-  console.log('panel topic:', topic);
-
   return (
     <div>
       <div className="sidepanel__box">

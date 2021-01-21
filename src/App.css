@@ -305,17 +305,19 @@ nav {
 .nav__topic {
   font-size: 1.4rem;
   font-weight: 600;
-  text-decoration: none;
   text-transform: uppercase;
+  letter-spacing: 0.05rem;
   color: var(--color-secondary);
+}
 
+.nav__topic__link {
+  text-decoration: none;
   padding-right: 1rem;
-
   transition: color 1s;
 }
 
-.nav__topic:hover {
-  color: var(--color-tertiary);
+.nav__topic__link:hover {
+  color: var(--color-primary);
 }
 
 .user {

@@ -11,15 +11,17 @@ class TopicList extends Component {
   componentDidMount = async () => {
     const { topicSearch } = this.props;
 
-    let topics;
+    let topicList;
 
     if (topicSearch) {
-      topics = await getTopic(topicSearch);
+      const { topics } = await getTopic(topicSearch);
+      topicList = topics;
     } else {
-      topics = await getTopicList();
+      const { topics } = await getTopicList();
+      topicList = topics;
     }
 
-    this.setState({ topicList: topics.topics, isLoading: false });
+    this.setState({ topicList, isLoading: false });
   };
 
   render() {
@@ -31,6 +33,12 @@ class TopicList extends Component {
 
     if (isLoading) {
       return null;
+    } else if (topicList.length === 0) {
+      return (
+        <div className="nav__topiclist">
+          <p className="nav__topic">No topics found</p>
+        </div>
+      );
     } else {
       return (
         <div className="nav__topiclist">
@@ -39,7 +47,7 @@ class TopicList extends Component {
               <Link
                 to={`/articles/${topic.slug}`}
                 key={topic.slug}
-                className="nav__topic"
+                className="nav__topic nav__topic__link"
                 state={{ topic }}
               >
                 {topic.slug}

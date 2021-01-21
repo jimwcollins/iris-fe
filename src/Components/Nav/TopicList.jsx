@@ -4,31 +4,37 @@ import { Link } from '@reach/router';
 
 class TopicList extends Component {
   state = {
-    topics: [],
+    topicList: [],
     isLoading: true,
   };
 
   componentDidMount = async () => {
     const { topicSearch } = this.props;
 
-    // const { topics } = await getTopicList();
+    let topics;
 
-    const { topics } = await getTopic(topicSearch);
+    if (topicSearch) {
+      topics = await getTopic(topicSearch);
+    } else {
+      topics = await getTopicList();
+    }
 
-    this.setState({ topics, isLoading: false });
+    this.setState({ topicList: topics.topics, isLoading: false });
   };
 
   render() {
     const { isLoading } = this.state;
 
-    const topics = this.state.topics;
+    const { topicList } = this.state;
+
+    console.log(topicList);
 
     if (isLoading) {
       return null;
     } else {
       return (
         <div className="nav__topiclist">
-          {topics.map((topic) => {
+          {topicList.map((topic) => {
             return (
               <Link
                 to={`/articles/${topic.slug}`}

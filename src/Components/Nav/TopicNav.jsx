@@ -2,17 +2,18 @@ import React, { useState } from 'react';
 import icons from '../../images/iris-icons.svg';
 
 const TopicNav = (props) => {
-  const [btnActive, setBtnActive] = useState(false);
-  const [formActive, setFormActive] = useState(false);
+  const [btnActive, setBtnActive] = useState(false); // Handle display state of topic button
+  const [formActive, setFormActive] = useState(false); // Handle display state of form and form elements
   const [topicInput, setTopicInput] = useState('');
 
-  const { displayTopics, topicSearch } = props;
+  const { hideTopics, topicSearch } = props;
 
   const handleTopicBtn = () => {
     if (btnActive) {
       setBtnActive(false);
       setFormActive(false);
-      displayTopics();
+      setTopicInput('');
+      hideTopics();
     } else {
       setBtnActive(true);
       setFormActive(true);
@@ -52,18 +53,30 @@ const TopicNav = (props) => {
           onChange={(event) => setTopicInput(event.target.value)}
           autoComplete="off"
         />
-        <button
-          className={
-            formActive
-              ? 'nav__form__submit nav__form__submit--active'
-              : 'nav__form__submit'
-          }
-          type="submit"
-        >
-          <svg>
-            <use href={icons + '#icon-magnifying-glass'}></use>
-          </svg>
-        </button>
+        {topicInput ? (
+          <button
+            className={
+              topicInput
+                ? 'nav__form__submit nav__form__submit--active'
+                : 'nav__form__submit'
+            }
+            type="submit"
+          >
+            <svg>
+              <use href={icons + '#icon-magnifying-glass'}></use>
+            </svg>
+          </button>
+        ) : (
+          <input
+            className={
+              formActive
+                ? 'nav__form__submitAll nav__form__submitAll--active'
+                : 'nav__form__submitAll'
+            }
+            value="ALL"
+            type="submit"
+          />
+        )}
       </form>
     </div>
   );

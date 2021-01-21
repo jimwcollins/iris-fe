@@ -246,6 +246,27 @@ nav {
   color: transparent;
 }
 
+.nav__form__submitAll {
+  height: 2rem;
+  padding: 0 0.5rem;
+  background-color: var(--color-secondary);
+  border-radius: var(--border-radius-small);
+  border: none;
+  margin-right: 0.5rem;
+  color: var(--color-primary);
+  cursor: pointer;
+  opacity: 0;
+  transition: all 1s;
+}
+
+.nav__form__submitAll--active {
+  opacity: 1;
+}
+
+.nav__form__submitAll:hover {
+  background-color: var(--color-tertiary);
+}
+
 .nav__form__submit {
   display: flex;
   justify-content: center;

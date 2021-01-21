@@ -9,10 +9,8 @@ class Nav extends Component {
     topicInput: '',
   };
 
-  displayTopics = () => {
-    this.setState((currState) => {
-      return { showTopics: !currState.showTopics };
-    });
+  hideTopics = () => {
+    this.setState({ showTopics: false, topicInput: '' });
   };
 
   topicSearch = (topicInput) => {
@@ -28,7 +26,7 @@ class Nav extends Component {
           <div className="nav__bar__controls">
             <div className="topics__container">
               <TopicNav
-                displayTopics={this.displayTopics}
+                hideTopics={this.hideTopics}
                 topicSearch={this.topicSearch}
               />
             </div>

@@ -385,6 +385,13 @@ main {
   margin-top: 3rem;
 }
 
+@media only screen and (max-width: 1000px) {
+  main {
+    grid-template-columns: 100%;
+    grid-template-areas: 'header' 'main';
+  }
+}
+
 .loadSpinner__container {
   grid-column: 1 / -1;
   justify-self: center;
@@ -934,6 +941,12 @@ h3 {
 
 .sidepanel {
   grid-area: side;
+}
+
+@media only screen and (max-width: 1000px) {
+  .sidepanel {
+    display: none;
+  }
 }
 
 .sidepanel__box {

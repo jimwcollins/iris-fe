@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { getTopicList, getTopic } from '../../Utils/api';
-import { Link } from '@reach/router';
+import { navigate } from '@reach/router';
 
 class TopicList extends Component {
   state = {
@@ -24,12 +24,15 @@ class TopicList extends Component {
     this.setState({ topicList, isLoading: false });
   };
 
+  handleTopicNav = (topic) => {
+    const { resetTopics } = this.props;
+    resetTopics();
+    navigate(`/articles/${topic.slug}`, { state: { topic } });
+  };
+
   render() {
     const { isLoading } = this.state;
-
     const { topicList } = this.state;
-
-    console.log(topicList);
 
     if (isLoading) {
       return null;
@@ -44,14 +47,14 @@ class TopicList extends Component {
         <div className="nav__topiclist">
           {topicList.map((topic) => {
             return (
-              <Link
-                to={`/articles/${topic.slug}`}
+              <button
                 key={topic.slug}
                 className="nav__topic nav__topic__link"
-                state={{ topic }}
+                type="button"
+                onClick={() => this.handleTopicNav(topic)}
               >
                 {topic.slug}
-              </Link>
+              </button>
             );
           })}
         </div>

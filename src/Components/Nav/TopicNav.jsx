@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import icons from '../../images/iris-icons.svg';
 
 const TopicNav = (props) => {
@@ -6,14 +6,21 @@ const TopicNav = (props) => {
   const [formActive, setFormActive] = useState(false); // Handle display state of form and form elements
   const [topicInput, setTopicInput] = useState('');
 
-  const { hideTopics, topicSearch } = props;
+  const { topicSearch, clearTopicBtn, resetTopics, resetBtn } = props;
 
-  const handleTopicBtn = () => {
+  useEffect(() => {
+    if (clearTopicBtn) {
+      setBtnActive(false);
+      resetBtn();
+    }
+  });
+
+  const handleBtnClick = () => {
     if (btnActive) {
       setBtnActive(false);
       setFormActive(false);
       setTopicInput('');
-      hideTopics();
+      resetTopics();
     } else {
       setBtnActive(true);
       setFormActive(true);
@@ -35,7 +42,7 @@ const TopicNav = (props) => {
             ? 'navButton__btn navButton__btn--topic navButton__btn--active'
             : 'navButton__btn navButton__btn--topic'
         }
-        onClick={handleTopicBtn.bind(this)}
+        onClick={handleBtnClick}
       >
         Topics
       </button>

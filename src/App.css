@@ -312,7 +312,10 @@ nav {
 
 .nav__topic__link {
   text-decoration: none;
+  background-color: transparent;
+  border: none;
   padding-right: 1rem;
+  cursor: pointer;
   transition: color 1s;
 }
 

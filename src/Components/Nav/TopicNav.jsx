@@ -1,63 +1,70 @@
 import React, { useState } from 'react';
+import icons from '../../images/iris-icons.svg';
 
 const TopicNav = (props) => {
-  const [active, setActive] = useState(false);
+  const [btnActive, setBtnActive] = useState(false);
   const [formActive, setFormActive] = useState(false);
+  const [topicInput, setTopicInput] = useState('');
 
-  const { showTopics } = props;
+  const { displayTopics, topicSearch } = props;
 
-  const handleHover = (isActive) => {
-    if (isActive) {
-      setActive(true);
-    } else if (!formActive) {
-      setActive(false);
+  const handleTopicBtn = () => {
+    if (btnActive) {
+      setBtnActive(false);
+      setFormActive(false);
+      displayTopics();
+    } else {
+      setBtnActive(true);
+      setFormActive(true);
     }
   };
 
-  const handleForm = (hasFocus) => {
-    if (hasFocus) {
-      setFormActive(true);
-    } else {
-      setFormActive(false);
-      setActive(false);
-    }
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    topicSearch(topicInput);
+    setTopicInput('');
+    setFormActive(false);
   };
 
   return (
-    <div
-      className={active ? 'navButton navButton--active' : 'navButton'}
-      onMouseEnter={handleHover.bind(this, true)}
-      onMouseLeave={handleHover.bind(this, false)}
-    >
+    <div className={formActive ? 'navButton navButton--active' : 'navButton'}>
       <button
         className={
-          active || showTopics
+          btnActive
             ? 'navButton__btn navButton__btn--topic navButton__btn--active'
             : 'navButton__btn navButton__btn--topic'
         }
-        onClick={props.onClick}
+        onClick={handleTopicBtn.bind(this)}
       >
-        {props.children}
+        Topics
       </button>
-      {active && (
-        <form
-          className={active ? 'nav__form nav__form--active' : 'nav__form'}
-          onFocus={handleForm.bind(this, true)}
-          onBlur={handleForm.bind(this, false)}
+
+      <form
+        className={formActive ? 'nav__form nav__form--active' : 'nav__form'}
+        onSubmit={handleSubmit}
+      >
+        <input
+          className="nav__form__input"
+          type="text"
+          name="searchTopics"
+          value={topicInput}
+          placeholder="Search for topics or show all"
+          onChange={(event) => setTopicInput(event.target.value)}
+          autoComplete="off"
+        />
+        <button
+          className={
+            formActive
+              ? 'nav__form__submit nav__form__submit--active'
+              : 'nav__form__submit'
+          }
+          type="submit"
         >
-          <input
-            className="nav__form__input"
-            type="text"
-            name="searchTopics"
-            placeholder={
-              showTopics
-                ? 'Search for topics or click to hide all'
-                : 'Search for topics or click to show all'
-            }
-            autoComplete="off"
-          />
-        </form>
-      )}
+          <svg>
+            <use href={icons + '#icon-magnifying-glass'}></use>
+          </svg>
+        </button>
+      </form>
     </div>
   );
 };

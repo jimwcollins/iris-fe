@@ -66,7 +66,11 @@ class ArticleList extends Component {
       errMsg,
     } = this.state;
 
-    const topicData = this.props.location.state.topic;
+    let topicData;
+
+    if (this.props.location.state) {
+      topicData = this.props.location.state.topic;
+    }
 
     const title = topic ? formatTitle(topic) : 'Welcome To The Iris';
 

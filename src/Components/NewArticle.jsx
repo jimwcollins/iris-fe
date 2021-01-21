@@ -82,7 +82,6 @@ class NewArticle extends Component {
     const {
       user: { name },
       isPosted,
-      newArticleId,
     } = this.state;
 
     const { topic } = this.props;

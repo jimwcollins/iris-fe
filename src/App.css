@@ -166,7 +166,7 @@ nav {
 
 .navButton {
   display: flex;
-  justify-content: space-between;
+  justify-content: flex-start;
   align-items: center;
   width: 7.25rem;
   height: 3.25rem;
@@ -177,7 +177,7 @@ nav {
 }
 
 .navButton--active {
-  width: 33rem;
+  width: 35rem;
 }
 
 .navButton__btn {
@@ -216,9 +216,12 @@ nav {
 }
 
 .nav__form {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
   width: 0%;
   opacity: 0;
-  transition: all 2s;
+  transition: width opacity 2s;
 }
 
 .nav__form--active {
@@ -227,20 +230,48 @@ nav {
 }
 
 .nav__form__input {
-  width: 100%;
+  flex: 1;
   padding: 0.5rem 1rem;
   border: 0;
   outline: 0;
-  background-color: var(--color-primary);
+  background: transparent;
   color: var(--color-white);
 }
 
 .nav__form__input::placeholder {
-  color: var(--color-white);
+  color: var(--color-tertiary);
 }
 
 .nav__form__input:focus::placeholder {
   color: transparent;
+}
+
+.nav__form__submit {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 2rem;
+  padding-bottom: 0.1rem;
+  border: none;
+  background-color: transparent;
+  margin-right: 1rem;
+  opacity: 0;
+  transition: opacity 3s;
+}
+
+.nav__form__submit--active {
+  opacity: 1;
+}
+
+.nav__form__submit svg {
+  fill: var(--color-secondary);
+  height: 2rem;
+  width: 2rem;
+  cursor: pointer;
+}
+
+.nav__form__submit svg:hover {
+  fill: var(--color-tertiary);
 }
 
 .nav__topiclist {

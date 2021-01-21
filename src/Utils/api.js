@@ -1,8 +1,7 @@
 import axios from 'axios';
 
 const irisApi = axios.create({
-  // baseURL: 'https://iris-be.herokuapp.com/api',
-  baseURL: 'http://localhost:9090/api',
+  baseURL: 'https://iris-be.herokuapp.com/api',
 });
 
 export const getUser = async (username) => {
@@ -16,8 +15,8 @@ export const getTopicList = async () => {
 };
 
 export const getTopic = async (topicSlug) => {
-  const { data: topic } = await irisApi.get(`/topics/${topicSlug}`);
-  return topic;
+  const { data: topics } = await irisApi.get(`/topics/${topicSlug}`);
+  return topics;
 };
 
 export const getArticleList = async (topic, sortBy, order, limit) => {

@@ -1,23 +1,26 @@
 import React, { Component } from 'react';
 import TopicList from './TopicList';
 import User from '../User/User';
-import { UserContext } from '../../Contexts/UserContext';
 import TopicNav from './TopicNav';
 
 class Nav extends Component {
   state = {
     showTopics: false,
+    topicInput: '',
   };
 
-  handleTopicBtn = () => {
+  displayTopics = () => {
     this.setState((currState) => {
       return { showTopics: !currState.showTopics };
     });
   };
 
+  topicSearch = (topicInput) => {
+    this.setState({ showTopics: true, topicInput });
+  };
+
   render() {
-    const { showTopics } = this.state;
-    const { user } = this.context;
+    const { showTopics, topicInput } = this.state;
 
     return (
       <nav className="nav grid">
@@ -25,22 +28,18 @@ class Nav extends Component {
           <div className="nav__bar__controls">
             <div className="topics__container">
               <TopicNav
-                showTopics={this.state.showTopics}
-                onClick={this.handleTopicBtn}
-              >
-                Topics
-              </TopicNav>
+                displayTopics={this.displayTopics}
+                topicSearch={this.topicSearch}
+              />
             </div>
             <User />
           </div>
         </div>
 
-        {showTopics ? <TopicList /> : null}
+        {showTopics ? <TopicList topicSearch={topicInput} /> : null}
       </nav>
     );
   }
 }
-
-Nav.contextType = UserContext;
 
 export default Nav;

@@ -1,60 +1,38 @@
 import React, { Component } from 'react';
-import { getTopic } from '../../Utils/api';
+
+import { formatTitle } from '../../Utils/utils';
 
 class TopicBox extends Component {
   state = {
     hasTopic: false,
     topic: {},
-    isLoading: true,
-    hasError: false,
-    errMsg: '',
   };
 
   componentDidMount = () => {
-    const { topicSlug } = this.props;
-    this.fetchTopicInfo(topicSlug);
+    const { topicData } = this.props;
+
+    if (topicData) this.setState({ hasTopic: true, topic: topicData });
   };
 
   componentDidUpdate = (prevProps) => {
-    const { topicSlug } = this.props;
-    if (topicSlug !== prevProps.topicSlug) {
-      this.fetchTopicInfo(topicSlug);
+    const { topicData } = this.props;
+
+    if (topicData && topicData.slug !== prevProps.topicData.slug) {
+      this.setState({ hasTopic: true, topic: topicData });
     }
-  };
-
-  fetchTopicInfo = async (topicSlug) => {
-    if (topicSlug) {
-      try {
-        const { topic } = await getTopic(topicSlug);
-        this.setState({ hasTopic: true, topic, isLoading: false });
-      } catch (err) {
-        const {
-          response: { status, statusText },
-        } = err;
-
-        this.setState({
-          isLoading: false,
-          hasError: true,
-          errMsg: `${status}: ${statusText}`,
-        });
-      }
-    }
-  };
-
-  // Capitalise the title
-  formatTopic = (topicSlug) => {
-    return topicSlug.charAt(0).toUpperCase() + topicSlug.slice(1);
   };
 
   render() {
-    const { slug, description } = this.state.topic;
-    let topic, subhead;
+    const { hasTopic } = this.state;
 
-    if (slug) topic = this.formatTopic(slug);
-    else topic = 'Hi there!';
+    let topic = 'Hi there!';
+    let subhead = 'Pick a topic or dive right in';
 
-    if (slug) subhead = description;
-    else subhead = 'Pick a topic or dive right in';
+    if (hasTopic) {
+      const { slug, description } = this.state.topic;
+      topic = formatTitle(slug);
+      subhead = description;
+    }
 
     return (
       <div className="topicbox">

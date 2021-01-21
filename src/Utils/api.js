@@ -1,7 +1,8 @@
 import axios from 'axios';
 
 const irisApi = axios.create({
-  baseURL: 'https://iris-be.herokuapp.com/api',
+  // baseURL: 'https://iris-be.herokuapp.com/api',
+  baseURL: 'http://localhost:9090/api',
 });
 
 export const getUser = async (username) => {

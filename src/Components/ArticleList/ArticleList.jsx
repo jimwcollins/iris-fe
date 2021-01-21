@@ -66,6 +66,8 @@ class ArticleList extends Component {
       errMsg,
     } = this.state;
 
+    const topicData = this.props.location.state.topic;
+
     const title = topic ? formatTitle(topic) : 'Welcome To The Iris';
 
     // Set main content of page according to whether we are loading or if an error has been thrown
@@ -92,7 +94,7 @@ class ArticleList extends Component {
               })}
             </ul>
           </div>
-          <SidePanel topic={topic} page="articleList" />
+          <SidePanel topicData={topicData} page="articleList" />
         </>
       );
     }

@@ -5,7 +5,7 @@ import { Link } from '@reach/router';
 class TopicList extends Component {
   state = {
     topics: [],
-    isLoading: true
+    isLoading: true,
   };
 
   componentDidMount = async () => {
@@ -30,6 +30,7 @@ class TopicList extends Component {
                 to={`/articles/${topic.slug}`}
                 key={topic.slug}
                 className="nav__topic"
+                state={{ topic }}
               >
                 {topic.slug}
               </Link>

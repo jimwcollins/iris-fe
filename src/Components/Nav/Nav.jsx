@@ -12,7 +12,6 @@ const Nav = () => {
   const [showMobSearch, setShowMobSearch] = useState(false);
 
   const topicSearch = (topicInput) => {
-    console.log('Searching for:', topicInput);
     setShowTopics(true);
     setTopicInput(topicInput);
   };

@@ -104,10 +104,10 @@ class ArticleList extends Component {
     }
 
     return (
-      <main>
+      <>
         <h2 className="articles__header">{title}</h2>
         {mainContent}
-      </main>
+      </>
     );
   }
 }

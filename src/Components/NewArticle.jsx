@@ -87,7 +87,7 @@ class NewArticle extends Component {
     const { topic } = this.props;
 
     return (
-      <main>
+      <>
         {!isPosted ? (
           <>
             <h2 className="articles__header">What's on your mind, {name}?</h2>
@@ -129,7 +129,7 @@ class NewArticle extends Component {
             <SidePanel topic={topic} page="newArticle" />
           </>
         ) : null}
-      </main>
+      </>
     );
   }
 }

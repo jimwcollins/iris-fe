@@ -13,11 +13,6 @@ html {
 }
 
 body {
-  /* Fonts */
-  --font-display: 'Lato', sans-serif;
-  --font-text: 'Lato', sans-serif;
-  --font-size-base: 1.1rem;
-
   /* Colours */
   --color-primary: #1d3557;
   --color-secondary: #457b9d;
@@ -44,11 +39,25 @@ body {
   --border-radius-main: 0.75rem;
   --border-radius-small: 0.35rem;
 
+  /* Fonts */
+  --font-display: 'Lato', sans-serif;
+  --font-text: 'Lato', sans-serif;
+
+  --font-size-main: 1.4rem;
+  --font-size-article: 1.5rem;
+
   /* Base styles */
   background-color: var(--color-background);
-
   font-family: var(--font-text);
-  font-size: var(--font-size-base);
+  font-size: var(--font-size-main);
+}
+
+/* Body - phone breakpoint */
+@media only screen and (max-width: 600px) {
+  body {
+    --font-size-main: 1.2rem;
+    --font-size-article: 1.3rem;
+  }
 }
 
 .grid {
@@ -59,17 +68,17 @@ body {
     minmax(10rem, 1fr);
 }
 
-/* Tablet breakpoint */
+/* Grid - tablet breakpoint */
 @media only screen and (max-width: 800px) {
   .grid {
     grid-template-columns:
-      minmax(5rem, 1fr)
+      minmax(9rem, 1fr)
       minmax(min-content, 70rem)
-      minmax(5rem, 1fr);
+      minmax(9rem, 1fr);
   }
 }
 
-/* Phone breakpoint */
+/* Grid - phone breakpoint */
 @media only screen and (max-width: 600px) {
   .grid {
     grid-template-columns:
@@ -152,7 +161,7 @@ body {
 }
 
 .mainButton__text {
-  font-size: 1.4rem;
+  font-size: var(--font-size-main);
   text-transform: uppercase;
 }
 
@@ -226,7 +235,7 @@ nav {
   outline: 0;
   cursor: pointer;
   text-transform: uppercase;
-  font-size: 1.4rem;
+  font-size: var(--font-size-main);
   font-weight: 600;
   color: var(--color-white);
   transition: all 1s;
@@ -248,7 +257,6 @@ nav {
 
 .navButton {
   height: 3.25rem;
-  width: 7.25rem;
   padding-left: 1rem;
   padding-right: 1rem;
   border-radius: 0.7rem;
@@ -257,7 +265,7 @@ nav {
   outline: 0;
   cursor: pointer;
   text-transform: uppercase;
-  font-size: 1.4rem;
+  font-size: var(--font-size-main);
   font-weight: 600;
   color: var(--color-white);
   transition: all 1s;
@@ -296,6 +304,7 @@ nav {
   outline: 0;
   background: transparent;
   color: var(--color-white);
+  font-size: var(--font-size-main);
 }
 
 .nav__form__input::placeholder {
@@ -430,7 +439,7 @@ nav {
 }
 
 .nav__topic {
-  font-size: 1.4rem;
+  font-size: var(--font-size-main);
   font-weight: 600;
   text-transform: uppercase;
   letter-spacing: 0.05rem;
@@ -458,7 +467,7 @@ nav {
 }
 
 .user__display {
-  font-size: 1.4rem;
+  font-size: var(--font-size-main);
   font-weight: 600;
   color: var(--color-white);
   margin-right: 1.75rem;
@@ -482,7 +491,7 @@ nav {
   border: 0;
   cursor: pointer;
   text-transform: uppercase;
-  font-size: 1.2rem;
+  font-size: var(--font-size-main);
   font-weight: 600;
   color: var(--color-white);
   transition: all 1s;
@@ -641,7 +650,7 @@ nav {
 }
 
 .articles__count {
-  font-size: 1.5rem;
+  font-size: var(--font-size-article);
   margin-left: 1rem;
 }
 
@@ -661,7 +670,7 @@ nav {
 }
 
 .articles-sort__label {
-  font-size: 1.4rem;
+  font-size: var(--font-size-main);
 }
 
 .articles-sort__select {
@@ -676,7 +685,7 @@ nav {
   padding: 0.5rem;
   padding-left: 1rem;
   padding-right: 3rem;
-  font-size: 1.4rem;
+  font-size: var(--font-size-main);
   font-weight: 500;
   color: var(--color-white);
   border-radius: 0.5rem;
@@ -755,7 +764,7 @@ nav {
 }
 
 .articles__card__body p {
-  font-size: 1.4rem;
+  font-size: var(--font-size-main);
   line-height: 1.5;
 }
 
@@ -819,7 +828,7 @@ nav {
 }
 
 .article__info > p {
-  font-size: 1.5rem;
+  font-size: var(--font-size-article);
   color: var(--color-black);
 }
 
@@ -885,7 +894,7 @@ nav {
 .vote__txt {
   text-align: center;
   color: var(--color-black);
-  font-size: 1.5rem;
+  font-size: var(--font-size-article);
   font-weight: 600;
   width: 2rem;
 }
@@ -904,12 +913,12 @@ nav {
 }
 
 .commentList__commentCount {
-  font-size: 1.4rem;
+  font-size: var(--font-size-main);
   font-weight: 600;
 }
 
 .commentList__newComment__head {
-  font-size: 1.4rem;
+  font-size: var(--font-size-main);
   font-weight: 500;
 }
 
@@ -924,7 +933,7 @@ nav {
 }
 
 .commentList__login p {
-  font-size: 1.4rem;
+  font-size: var(--font-size-main);
 }
 
 .commentList__form {
@@ -1120,7 +1129,7 @@ h3 {
 
 .top-articles__item {
   margin-bottom: 0.5rem;
-  font-size: 1.4rem;
+  font-size: var(--font-size-main);
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -1135,7 +1144,7 @@ h3 {
 }
 
 .newPostRules li {
-  font-size: 1.4rem;
+  font-size: var(--font-size-main);
   counter-increment: ruleCounter;
   margin-bottom: 1rem;
   padding-bottom: 1rem;

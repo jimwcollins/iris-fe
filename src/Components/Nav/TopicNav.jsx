@@ -13,7 +13,7 @@ const TopicNav = (props) => {
       setBtnActive(false);
       resetBtn();
     }
-  });
+  }, [clearTopicBtn, resetBtn]);
 
   const handleBtnClick = () => {
     if (btnActive) {

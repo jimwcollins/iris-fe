@@ -133,7 +133,7 @@ class CommentList extends Component {
     return (
       <div className="commentList">
         <div className="commentList__stats">
-          <svg class="article__icon">
+          <svg className="article__icon">
             <use href={icons + '#icon-message'}></use>
           </svg>
           <p className="commentList__commentCount">{commentCount} comments</p>

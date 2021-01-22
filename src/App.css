@@ -252,7 +252,7 @@ nav {
   background-color: var(--color-secondary);
   border-radius: var(--border-radius-small);
   border: none;
-  margin-right: 0.5rem;
+  margin-right: 0.7rem;
   color: var(--color-primary);
   cursor: pointer;
   opacity: 0;

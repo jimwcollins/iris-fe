@@ -24,7 +24,7 @@ const LoginModal = (props) => {
   return (
     <div className={modalBgClass}>
       <div className={modalBoxClass}>
-        <svg class="login__cancel__icon" onClick={cancelLogin}>
+        <svg className="login__cancel__icon" onClick={cancelLogin}>
           <use href={icons + '#icon-circle-with-cross'}></use>
         </svg>
         <h3 className="login__title">Login</h3>

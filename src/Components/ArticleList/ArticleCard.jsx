@@ -15,7 +15,7 @@ const ArticleCard = ({ article }) => {
         </div>
         <div className="articles__card__info">
           <div className="articles__card__stats">
-            <svg class="articles__card__icon">
+            <svg className="articles__card__icon">
               <use href={icons + '#icon-user'}></use>
             </svg>
             <p className="articles__card__author">
@@ -26,13 +26,13 @@ const ArticleCard = ({ article }) => {
             </p>
           </div>
           <div className="articles__card__stats">
-            <svg class="articles__card__icon">
+            <svg className="articles__card__icon">
               <use href={icons + '#icon-message'}></use>
             </svg>
             <p className="articles__card__stat">
               {article.comment_count} comments
             </p>
-            <svg class="articles__card__icon">
+            <svg className="articles__card__icon">
               <use href={icons + '#icon-thumbs-up'}></use>
             </svg>
             <p className="articles__card__stat">{article.votes} votes</p>

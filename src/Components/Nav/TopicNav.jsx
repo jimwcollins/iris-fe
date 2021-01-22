@@ -35,12 +35,14 @@ const TopicNav = (props) => {
   };
 
   return (
-    <div className={formActive ? 'navButton navButton--active' : 'navButton'}>
+    <div
+      className={formActive ? 'topicButton topicButton--active' : 'topicButton'}
+    >
       <button
         className={
           btnActive
-            ? 'navButton__btn navButton__btn--topic navButton__btn--active'
-            : 'navButton__btn navButton__btn--topic'
+            ? 'topicButton__btn topicButton__btn--topic topicButton__btn--active'
+            : 'topicButton__btn topicButton__btn--topic'
         }
         onClick={handleBtnClick}
       >

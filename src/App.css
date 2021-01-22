@@ -59,10 +59,43 @@ body {
     minmax(10rem, 1fr);
 }
 
+/* Tablet breakpoint */
+@media only screen and (max-width: 900px) {
+  main {
+    grid-template-columns:
+      minmax(15rem, 1fr)
+      minmax(min-content, 70rem)
+      minmax(15rem, 1fr);
+  }
+}
+
 .App {
   grid-template-rows: 13rem auto auto;
   grid-template-areas: '. title .' 'nav nav nav' '. app .';
   justify-content: center;
+}
+
+.content {
+  grid-area: app;
+}
+
+main {
+  display: grid;
+  justify-content: center;
+  grid-template-columns: minmax(20rem, 70%) 30%;
+  grid-template-rows: min-content auto;
+  grid-template-areas: 'header header' 'main side';
+  column-gap: 5rem;
+
+  margin-top: 3rem;
+}
+
+/* Tablet breakpoint */
+@media only screen and (max-width: 900px) {
+  main {
+    grid-template-columns: minmax(min-content, 100%);
+    grid-template-areas: 'header' 'main';
+  }
 }
 
 .logo {
@@ -164,7 +197,7 @@ nav {
   align-items: center;
 }
 
-.navButton {
+.topicButton {
   display: flex;
   justify-content: flex-start;
   align-items: center;
@@ -176,11 +209,11 @@ nav {
   transition: all 1s;
 }
 
-.navButton--active {
+.topicButton--active {
   width: 35rem;
 }
 
-.navButton__btn {
+.topicButton__btn {
   height: 3.25rem;
   border: 0;
   background-color: var(--color-primary);
@@ -192,27 +225,48 @@ nav {
   color: var(--color-white);
   transition: all 1s;
 }
-.navButton__btn--topic {
+.topicButton__btn--topic {
   min-width: 7.25rem;
   max-width: 7.25rem;
 }
 
-.navButton__btn--active {
+.topicButton__btn--active {
   background-color: var(--color-white);
   color: var(--color-primary);
 }
 
-.navButton__btn:hover {
+.topicButton__btn:hover {
   background-color: var(--color-white);
   color: var(--color-primary);
 }
 
-.navButton__outline {
+.navButton {
   height: 3.25rem;
+  width: 7.25rem;
   padding-left: 1rem;
   padding-right: 1rem;
   border-radius: 0.7rem;
   border: 0.1rem solid var(--color-white);
+  background-color: var(--color-primary);
+  outline: 0;
+  cursor: pointer;
+  text-transform: uppercase;
+  font-size: 1.4rem;
+  font-weight: 600;
+  color: var(--color-white);
+  transition: all 1s;
+}
+
+@media only screen and (min-width: 901px) {
+  .navButton:hover {
+    background-color: var(--color-white);
+    color: var(--color-primary);
+  }
+}
+
+.navButton--active {
+  background-color: var(--color-white);
+  color: var(--color-primary);
 }
 
 .nav__form {
@@ -295,6 +349,73 @@ nav {
   fill: var(--color-tertiary);
 }
 
+/* Mobile topic nav */
+
+.navMob {
+  grid-area: nav;
+  grid-template-rows: 6.5rem auto auto;
+  align-content: center;
+
+  grid-template-areas: 'nav nav nav' 'search search search' '. topics .';
+}
+
+.navMob__search {
+  grid-area: search;
+  display: grid;
+  grid-template-areas: '. searchForm .';
+  align-items: center;
+
+  background-color: var(--color-tertiary);
+}
+
+.navMob__search__form {
+  height: 3.5rem;
+  margin: 1rem 0;
+  grid-area: searchForm;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.navMob__search__input {
+  height: 100%;
+  flex: 1;
+  border-radius: var(--border-radius-main);
+  border: 0.1rem solid var(--color-secondary);
+  outline: 0;
+  padding-left: 1.25rem;
+  background: var(--color-white);
+  color: var(--color-primary);
+}
+
+.navMob__search__input::placeholder {
+  color: var(--color-primary);
+}
+
+.navMob__search__submit {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 3.5rem;
+  width: 4.5rem;
+  margin-left: 1rem;
+  border-radius: var(--border-radius-main);
+  border: none;
+  background-color: var(--color-secondary);
+}
+
+.navMob__search__submit p {
+  color: var(--color-white);
+  font-weight: 600;
+}
+
+.navMob__search__submit svg {
+  fill: var(--color-white);
+  height: 60%;
+  width: 60%;
+  cursor: pointer;
+}
+
 .nav__topiclist {
   margin-top: 2rem;
   grid-area: topics;
@@ -322,6 +443,8 @@ nav {
 .nav__topic__link:hover {
   color: var(--color-primary);
 }
+
+/* User */
 
 .user {
   display: flex;
@@ -369,27 +492,6 @@ nav {
 
 .btn__space-left {
   margin-left: 1rem;
-}
-
-.content {
-  grid-area: app;
-}
-
-main {
-  display: grid;
-  grid-template-columns: auto 30%;
-  grid-template-rows: min-content auto;
-  grid-template-areas: 'header header' 'main side';
-  column-gap: 5rem;
-
-  margin-top: 3rem;
-}
-
-@media only screen and (max-width: 1000px) {
-  main {
-    grid-template-columns: 100%;
-    grid-template-areas: 'header' 'main';
-  }
 }
 
 .loadSpinner__container {
@@ -943,7 +1045,8 @@ h3 {
   grid-area: side;
 }
 
-@media only screen and (max-width: 1000px) {
+/* Tablet breakpoint */
+@media only screen and (max-width: 900px) {
   .sidepanel {
     display: none;
   }

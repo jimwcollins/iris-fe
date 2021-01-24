@@ -1,10 +1,10 @@
 import React, { useContext } from 'react';
+import { UserContext } from '../Contexts/UserContext';
 import { Link } from '@reach/router';
 
 import TopicBox from './SidePanel/TopicBox';
 import NewPostRules from './SidePanel/NewPostRules';
 import TopArticles from './SidePanel/TopArticles';
-import { UserContext } from '../Contexts/UserContext';
 
 const SidePanel = ({ topicData, page }) => {
   const { user } = useContext(UserContext);

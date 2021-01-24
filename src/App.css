@@ -207,6 +207,10 @@ nav {
   justify-content: space-between;
 }
 
+.nav__bar__left {
+  display: flex;
+}
+
 .topics__container {
   display: flex;
   align-items: center;
@@ -256,6 +260,9 @@ nav {
 }
 
 .navButton {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   height: 3.25rem;
   padding-left: 1rem;
   padding-right: 1rem;
@@ -276,6 +283,17 @@ nav {
     background-color: var(--color-white);
     color: var(--color-primary);
   }
+}
+
+.navButton--post {
+  width: 5rem;
+  margin-right: 1.5rem;
+}
+
+.navButton svg {
+  height: 70%;
+  width: 70%;
+  fill: var(--color-white);
 }
 
 .navButton--active {
@@ -1119,7 +1137,7 @@ h3 {
 .top-articles__header {
   font-size: 1.5rem;
   font-weight: 600;
-  color: var(--color-tertiary);
+  color: var(--color-secondary);
   margin-bottom: 1rem;
 }
 

@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import icons from '../../images/iris-icons.svg';
 
-const TopicNav = (props) => {
+const TopicSearch = (props) => {
   const [btnActive, setBtnActive] = useState(false); // Handle display state of topic button
   const [formActive, setFormActive] = useState(false); // Handle display state of form and form elements
   const [topicInput, setTopicInput] = useState('');
@@ -91,4 +91,4 @@ const TopicNav = (props) => {
   );
 };
 
-export default TopicNav;
+export default TopicSearch;

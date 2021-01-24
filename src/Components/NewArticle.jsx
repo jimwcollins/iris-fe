@@ -5,6 +5,8 @@ import { postArticle } from '../Utils/api';
 import { formatTitle } from '../Utils/utils';
 
 import SidePanel from './SidePanel';
+import NewPostRules from './SidePanel/NewPostRules';
+import Breakpoint from '../Responsive/breakpoint';
 
 class NewArticle extends Component {
   state = {
@@ -126,7 +128,14 @@ class NewArticle extends Component {
                 ></input>
               </form>
             </div>
-            <SidePanel topic={topic} page="newArticle" />
+
+            <Breakpoint screen="desktop">
+              <SidePanel topic={topic} page="newArticle" />
+            </Breakpoint>
+
+            <Breakpoint screen="tabPhone">
+              <NewPostRules screen="tabPhone" />
+            </Breakpoint>
           </>
         ) : null}
       </>

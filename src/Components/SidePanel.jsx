@@ -14,7 +14,7 @@ const SidePanel = ({ topicData, page }) => {
     <div>
       <div className="sidepanel__box">
         {page === 'newArticle' ? (
-          <NewPostRules />
+          <NewPostRules screen="desktop" />
         ) : (
           <>
             <TopicBox topicData={topicData} />

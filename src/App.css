@@ -489,11 +489,18 @@ nav {
 }
 
 .user__display {
+  opacity: 1;
   font-size: var(--font-size-main);
   font-weight: 600;
   color: var(--color-white);
   margin-right: 1.75rem;
   text-align: right;
+  transition: opacity 1s;
+}
+
+.user__display--hidden {
+  opacity: 0;
+  transition: opacity 1s;
 }
 
 .user__login-input {

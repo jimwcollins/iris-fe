@@ -1,12 +1,14 @@
 import React, { Component } from 'react';
 import { getArticle, delArticle } from '../Utils/api';
+import { UserContext } from '../Contexts/UserContext';
+import { formatDate } from '../Utils/utils';
+
 import LoadSpinner from './LoadSpinner';
 import ErrorMsg from './ErrorMsg';
 import CommentList from './CommentList/CommentList';
 import Votes from './Votes';
 import SidePanel from './SidePanel';
-import { UserContext } from '../Contexts/UserContext';
-import { formatDate } from '../Utils/utils';
+import Breakpoint from '../Responsive/breakpoint';
 
 class Article extends Component {
   state = {
@@ -114,18 +116,20 @@ class Article extends Component {
             </div>
           </div>
 
-          <div className="sidepanel">
-            <SidePanel topic={topic} page="article" />
+          <Breakpoint screen="desktop">
+            <div className="sidepanel">
+              <SidePanel topic={topic} page="article" />
 
-            {author === username && (
-              <button
-                className="sidepanel__btn"
-                onClick={() => this.removeArticle(article_id)}
-              >
-                Delete article
-              </button>
-            )}
-          </div>
+              {author === username && (
+                <button
+                  className="sidepanel__btn"
+                  onClick={() => this.removeArticle(article_id)}
+                >
+                  Delete article
+                </button>
+              )}
+            </div>
+          </Breakpoint>
         </>
       );
     }

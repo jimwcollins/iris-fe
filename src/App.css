@@ -285,6 +285,10 @@ nav {
   }
 }
 
+.navButton--cancel {
+  margin-left: 1.5rem;
+}
+
 .navButton--post {
   width: 5rem;
   margin-right: 1.5rem;
@@ -489,6 +493,7 @@ nav {
   font-weight: 600;
   color: var(--color-white);
   margin-right: 1.75rem;
+  text-align: right;
 }
 
 .user__login-input {
@@ -1076,13 +1081,6 @@ h3 {
 
 .sidepanel {
   grid-area: side;
-}
-
-/* Tablet breakpoint */
-@media only screen and (max-width: 900px) {
-  .sidepanel {
-    display: none;
-  }
 }
 
 .sidepanel__box {

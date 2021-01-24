@@ -8,6 +8,7 @@ import LoadSpinner from '../LoadSpinner';
 import ErrorMsg from '../ErrorMsg';
 import ArticleSort from './ArticleSort';
 import SidePanel from '../SidePanel';
+import Breakpoint from '../../Responsive/breakpoint';
 
 class ArticleList extends Component {
   state = {
@@ -98,7 +99,9 @@ class ArticleList extends Component {
               })}
             </ul>
           </div>
-          <SidePanel topicData={topicData} page="articleList" />
+          <Breakpoint screen="desktop">
+            <SidePanel topicData={topicData} page="articleList" />
+          </Breakpoint>
         </>
       );
     }

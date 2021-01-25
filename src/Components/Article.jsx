@@ -119,7 +119,20 @@ class Article extends Component {
               <Votes type="article" id={article_id} votes={votes} />
             </div>
 
-            <p className="article__body">{body}</p>
+            <div className="article__body">
+              <p>{body}</p>
+              <Breakpoint screen="tabPhone">
+                {author === username && (
+                  <button
+                    className="subButton"
+                    onClick={() => this.removeArticle(article_id)}
+                  >
+                    Delete article
+                  </button>
+                )}
+              </Breakpoint>
+            </div>
+
             <div className="article__comments">
               <CommentList
                 articleId={article_id}

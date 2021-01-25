@@ -173,6 +173,8 @@ body {
 }
 
 .subButton {
+  align-self: flex-end;
+  width: auto;
   border: none;
   border-radius: var(--border-radius-small);
   padding: 0.7rem 0.9rem;
@@ -905,10 +907,18 @@ nav {
 }
 
 .article__body {
+  display: flex;
+  flex-direction: column;
   font-size: 1.5rem;
   line-height: 2.1rem;
   letter-spacing: 0.01rem;
   margin-bottom: 3rem;
+  padding-bottom: 3rem;
+  border-bottom: var(--line-main);
+}
+
+.article__body .subButton {
+  margin-top: 1rem;
 }
 
 .article__icon {
@@ -980,8 +990,7 @@ nav {
   align-items: center;
   padding: 1rem 0;
   border-top: var(--line-main);
-  border-bottom: var(--line-main);
-  margin-bottom: 2rem;
+  margin-top: 2rem;
 }
 
 .commentList__commentCount {
@@ -1010,6 +1019,8 @@ nav {
 
 .commentList__form {
   margin-bottom: 3rem;
+  display: flex;
+  flex-direction: column;
 }
 
 .commentList__form textarea {
@@ -1027,12 +1038,7 @@ nav {
   font-size: 1.5rem;
 }
 
-.commentList__form .subButton {
-  float: right;
-}
-
 .commentList__list {
-  margin-top: 1rem;
   padding-top: 1rem;
   text-align: left;
   list-style: none;

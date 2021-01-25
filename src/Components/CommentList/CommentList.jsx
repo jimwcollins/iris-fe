@@ -132,12 +132,6 @@ class CommentList extends Component {
 
     return (
       <div className="commentList">
-        <div className="commentList__stats">
-          <svg className="article__icon">
-            <use href={icons + '#icon-message'}></use>
-          </svg>
-          <p className="commentList__commentCount">{commentCount} comments</p>
-        </div>
         {username ? (
           <CommentForm username={username} addComment={this.addComment} />
         ) : (
@@ -148,6 +142,13 @@ class CommentList extends Component {
             </button>
           </div>
         )}
+
+        <div className="commentList__stats">
+          <svg className="article__icon">
+            <use href={icons + '#icon-message'}></use>
+          </svg>
+          <p className="commentList__commentCount">{commentCount} comments</p>
+        </div>
 
         {commentCount > 0 &&
           (isLoading ? (

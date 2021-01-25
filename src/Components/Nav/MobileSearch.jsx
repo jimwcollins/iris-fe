@@ -12,7 +12,7 @@ const MobileSearch = (props) => {
   };
 
   return (
-    <div className="navMob__search grid">
+    <div className="navMob__panel grid">
       <form className="navMob__search__form" onSubmit={handleSubmit}>
         <input
           className="navMob__search__input"
@@ -25,7 +25,7 @@ const MobileSearch = (props) => {
         />
 
         <button
-          className="navMob__search__submit"
+          className="navMob__panel__btn"
           type="submit"
           onClick={handleSubmit}
         >

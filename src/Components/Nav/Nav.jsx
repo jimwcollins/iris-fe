@@ -8,12 +8,14 @@ import TopicSearch from './TopicSearch';
 import MobileSearch from './MobileSearch';
 import Breakpoint from '../../Responsive/breakpoint';
 import icons from '../../images/iris-icons.svg';
+import MobileLogout from '../User/MobileLogout';
 
 const Nav = () => {
   const [showTopics, setShowTopics] = useState(false);
   const [topicInput, setTopicInput] = useState('');
   const [clearTopicBtn, setClearTopicBtn] = useState(false);
   const [showMobSearch, setShowMobSearch] = useState(false);
+  const [showMobLogout, setShowMobLogout] = useState(false);
 
   const { user } = useContext(UserContext);
 
@@ -37,6 +39,10 @@ const Nav = () => {
     setShowMobSearch(!showMobSearch);
 
     if (showTopics) setShowTopics(false);
+  };
+
+  const handleMobLogout = () => {
+    setShowMobLogout(!showMobLogout);
   };
 
   return (
@@ -87,9 +93,11 @@ const Nav = () => {
                   TOPICS
                 </button>
               </div>
-              <User />
+              <User handleMobLogout={handleMobLogout} />
             </div>
           </div>
+
+          {showMobLogout && <MobileLogout handleMobLogout={handleMobLogout} />}
 
           {showMobSearch && <MobileSearch topicSearch={topicSearch} />}
 

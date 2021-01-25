@@ -393,25 +393,52 @@ nav {
   grid-template-rows: 6.5rem auto auto;
   align-content: center;
 
-  grid-template-areas: 'nav nav nav' 'search search search' '. topics .';
+  grid-template-areas: 'nav nav nav' 'panel panel panel' '. topics .';
 }
 
-.navMob__search {
-  grid-area: search;
+.navMob__panel {
+  grid-area: panel;
   display: grid;
-  grid-template-areas: '. searchForm .';
+  grid-template-areas: '. controls .';
   align-items: center;
 
   background-color: var(--color-tertiary);
 }
 
+.navMob__panel__btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-left: 1rem;
+  border-radius: var(--border-radius-main);
+  border: none;
+  background-color: var(--color-secondary);
+}
+
+.navMob__panel__btn p {
+  color: var(--color-white);
+  font-weight: 600;
+}
+
+.navMob__panel__btn svg {
+  fill: var(--color-white);
+  height: 60%;
+  width: 60%;
+  cursor: pointer;
+}
+
 .navMob__search__form {
   height: 3.5rem;
   margin: 1rem 0;
-  grid-area: searchForm;
+  grid-area: controls;
   display: flex;
   align-items: center;
   justify-content: space-between;
+}
+
+.navMob__search__form button {
+  height: 3.5rem;
+  width: 4.5rem;
 }
 
 .navMob__search__input {
@@ -427,30 +454,6 @@ nav {
 
 .navMob__search__input::placeholder {
   color: var(--color-primary);
-}
-
-.navMob__search__submit {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 3.5rem;
-  width: 4.5rem;
-  margin-left: 1rem;
-  border-radius: var(--border-radius-main);
-  border: none;
-  background-color: var(--color-secondary);
-}
-
-.navMob__search__submit p {
-  color: var(--color-white);
-  font-weight: 600;
-}
-
-.navMob__search__submit svg {
-  fill: var(--color-white);
-  height: 60%;
-  width: 60%;
-  cursor: pointer;
 }
 
 .nav__topiclist {
@@ -510,6 +513,33 @@ nav {
   margin-right: 1rem;
 
   transition: width 1s;
+}
+
+.navMob__logout {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  grid-area: controls;
+}
+
+.navMob__logout__btns button {
+  height: 3rem;
+  padding: 0 1rem;
+  margin: 1rem 0 1rem 0.5rem;
+}
+
+.navMob__logout__btns button p {
+  font-size: 1.2rem;
+}
+
+.navMob__logout__text {
+  color: var(--color-primary);
+  font-size: 1.3rem;
+  font-weight: 600;
+}
+
+.navMob__logout__btns {
+  display: flex;
 }
 
 .btn {

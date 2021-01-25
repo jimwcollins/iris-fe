@@ -94,6 +94,8 @@ class Article extends Component {
 
     const { username, isLoading, hasError, errMsg } = this.state;
 
+    const { backTo } = this.props.location.state;
+
     // Set main content of page according to whether we are loading or if an error has been thrown
     let mainContent;
 
@@ -156,11 +158,13 @@ class Article extends Component {
               )}
 
               <Link
-                to={topic ? `/articles/${topic}` : '/'}
+                to={backTo ? `/articles/${backTo}` : '/'}
                 className="sidepanel__link"
               >
                 <button className="mainButton">
-                  <span className="mainButton__text">Back to articles</span>
+                  <span className="mainButton__text">
+                    Back to {backTo && `${backTo}`} articles
+                  </span>
                 </button>
               </Link>
             </div>

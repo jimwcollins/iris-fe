@@ -3,11 +3,15 @@ import { Link } from '@reach/router';
 import icons from '../../images/iris-icons.svg';
 import { formatDate } from '../../Utils/utils';
 
-const ArticleCard = ({ article, screen }) => {
+const ArticleCard = ({ article, backTo, screen }) => {
   const isDesk = screen === 'deskTab';
 
   return (
-    <Link to={`/article/${article.article_id}`} className="articles__link">
+    <Link
+      to={`/article/${article.article_id}`}
+      className="articles__link"
+      state={{ backTo }}
+    >
       <li className="articles__card box">
         <div className="articles__card__title">
           <h3>{article.title}</h3>

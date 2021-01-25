@@ -31,7 +31,6 @@ class ArticleList extends Component {
   componentDidUpdate = (prevProps) => {
     const { topicSlug } = this.props;
     if (topicSlug !== prevProps.topicSlug) {
-      console.log('Loading for topic:', topicSlug);
       this.loadArticleList(topicSlug);
       this.setState({ topicSlug });
     }
@@ -102,6 +101,7 @@ class ArticleList extends Component {
                       <ArticleCard
                         key={article.article_id}
                         article={article}
+                        backTo={topicSlug}
                         screen="deskTab"
                       />
                     </Breakpoint>
@@ -109,6 +109,7 @@ class ArticleList extends Component {
                       <ArticleCard
                         key={article.article_id}
                         article={article}
+                        backTo={topicSlug}
                         screen="phone"
                       />
                     </Breakpoint>

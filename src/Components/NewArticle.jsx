@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Link } from '@reach/router';
 
 import { UserContext } from '../Contexts/UserContext';
 import { postArticle } from '../Utils/api';
@@ -130,7 +131,17 @@ class NewArticle extends Component {
             </div>
 
             <Breakpoint screen="desktop">
-              <SidePanel topic={topic} page="newArticle" />
+              <div className="sidepanel">
+                <SidePanel topic={topic} page="newArticle" />
+                <Link
+                  to={topic ? `/articles/${topic}` : '/'}
+                  className="sidepanel__link"
+                >
+                  <button className="mainButton">
+                    <span className="mainButton__text">Back to articles</span>
+                  </button>
+                </Link>
+              </div>
             </Breakpoint>
 
             <Breakpoint screen="tabPhone">

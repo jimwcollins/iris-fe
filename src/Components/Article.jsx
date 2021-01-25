@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import { Link } from '@reach/router';
+
 import { getArticle, delArticle } from '../Utils/api';
 import { UserContext } from '../Contexts/UserContext';
 import { formatDate } from '../Utils/utils';
@@ -32,6 +34,10 @@ class Article extends Component {
   componentDidUpdate = (prevProps) => {
     const { articleId } = this.props;
     if (articleId !== prevProps.articleId) this.loadArticle(articleId);
+
+    const { user } = this.context;
+    const username = user ? user.username : null;
+    if (username !== this.state.username) this.setState({ username });
   };
 
   loadArticle = async (articleId) => {
@@ -125,16 +131,25 @@ class Article extends Component {
 
           <Breakpoint screen="desktop">
             <div className="sidepanel">
-              <SidePanel topic={topic} page="article" />
+              <SidePanel topic={topic} />
 
               {author === username && (
                 <button
-                  className="sidepanel__btn"
+                  className="mainButton"
                   onClick={() => this.removeArticle(article_id)}
                 >
                   Delete article
                 </button>
               )}
+
+              <Link
+                to={topic ? `/articles/${topic}` : '/'}
+                className="sidepanel__link"
+              >
+                <button className="mainButton">
+                  <span className="mainButton__text">Back to articles</span>
+                </button>
+              </Link>
             </div>
           </Breakpoint>
         </>

@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
+import { Link } from '@reach/router';
 
+import { UserContext } from '../../Contexts/UserContext';
 import { getArticleList } from '../../Utils/api';
 import { formatTitle } from '../../Utils/utils';
 
@@ -70,8 +72,10 @@ class ArticleList extends Component {
     let topicData;
 
     if (this.props.location.state) {
-      topicData = this.props.location.state.topic;
+      topicData = this.props.location.state.topicData;
     }
+
+    const { user } = this.context;
 
     const title = topic ? formatTitle(topic) : 'Welcome To The Iris';
 
@@ -115,7 +119,19 @@ class ArticleList extends Component {
             </ul>
           </div>
           <Breakpoint screen="desktop">
-            <SidePanel topicData={topicData} page="articleList" />
+            <div className="sidepanel">
+              <SidePanel topicData={topicData} page="articleList" />
+              {user && (
+                <Link
+                  to={topic ? `/article/new/${topic}` : '/article/new'}
+                  className="sidepanel__link"
+                >
+                  <button className="mainButton">
+                    <span className="mainButton__text">Post new article</span>
+                  </button>
+                </Link>
+              )}
+            </div>
           </Breakpoint>
         </>
       );
@@ -129,5 +145,7 @@ class ArticleList extends Component {
     );
   }
 }
+
+ArticleList.contextType = UserContext;
 
 export default ArticleList;

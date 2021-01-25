@@ -85,22 +85,50 @@ class ArticleList extends Component {
     } else {
       mainContent = (
         <>
-          <div className="articles">
-            <ArticleSort
-              articleCount={articleCount}
-              topic={topic}
-              loadArticleList={this.loadArticleList}
-            />
-            <ul className="articles__list">
-              {articles.map((article) => {
-                return (
-                  <ArticleCard key={article.article_id} article={article} />
-                );
-              })}
-            </ul>
-          </div>
-          <Breakpoint screen="desktop">
-            <SidePanel topicData={topicData} page="articleList" />
+          <Breakpoint screen="deskTab">
+            <div className="articles">
+              <ArticleSort
+                articleCount={articleCount}
+                topic={topic}
+                loadArticleList={this.loadArticleList}
+                screen="deskTab"
+              />
+              <ul className="articles__list">
+                {articles.map((article) => {
+                  return (
+                    <ArticleCard
+                      key={article.article_id}
+                      article={article}
+                      screen="deskTab"
+                    />
+                  );
+                })}
+              </ul>
+            </div>
+            <Breakpoint screen="desktop">
+              <SidePanel topicData={topicData} page="articleList" />
+            </Breakpoint>
+          </Breakpoint>
+          <Breakpoint screen="phone">
+            <div className="articles">
+              <ArticleSort
+                articleCount={articleCount}
+                topic={topic}
+                loadArticleList={this.loadArticleList}
+                screen="phone"
+              />
+              <ul className="articles__list">
+                {articles.map((article) => {
+                  return (
+                    <ArticleCard
+                      key={article.article_id}
+                      article={article}
+                      screen="phone"
+                    />
+                  );
+                })}
+              </ul>
+            </div>
           </Breakpoint>
         </>
       );

@@ -21,7 +21,7 @@ const ArticleCard = ({ article, screen }) => {
               <use href={icons + '#icon-user'}></use>
             </svg>
             <p className="articles__card__author">
-              {isDesk && 'Posted by'}
+              {isDesk && 'Posted by '}
               {article.author}{' '}
               <span className="articles__card__time">
                 {formatDate(article.created_at)}

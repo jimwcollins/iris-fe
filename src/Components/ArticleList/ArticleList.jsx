@@ -85,50 +85,37 @@ class ArticleList extends Component {
     } else {
       mainContent = (
         <>
-          <Breakpoint screen="deskTab">
-            <div className="articles">
-              <ArticleSort
-                articleCount={articleCount}
-                topic={topic}
-                loadArticleList={this.loadArticleList}
-                screen="deskTab"
-              />
-              <ul className="articles__list">
-                {articles.map((article) => {
-                  return (
-                    <ArticleCard
-                      key={article.article_id}
-                      article={article}
-                      screen="deskTab"
-                    />
-                  );
-                })}
-              </ul>
-            </div>
-            <Breakpoint screen="desktop">
-              <SidePanel topicData={topicData} page="articleList" />
-            </Breakpoint>
-          </Breakpoint>
-          <Breakpoint screen="phone">
-            <div className="articles">
-              <ArticleSort
-                articleCount={articleCount}
-                topic={topic}
-                loadArticleList={this.loadArticleList}
-                screen="phone"
-              />
-              <ul className="articles__list">
-                {articles.map((article) => {
-                  return (
-                    <ArticleCard
-                      key={article.article_id}
-                      article={article}
-                      screen="phone"
-                    />
-                  );
-                })}
-              </ul>
-            </div>
+          <div className="articles">
+            <ArticleSort
+              articleCount={articleCount}
+              topic={topic}
+              loadArticleList={this.loadArticleList}
+            />
+            <ul className="articles__list">
+              {articles.map((article) => {
+                return (
+                  <>
+                    <Breakpoint screen="deskTab">
+                      <ArticleCard
+                        key={article.article_id}
+                        article={article}
+                        screen="deskTab"
+                      />
+                    </Breakpoint>
+                    <Breakpoint screen="phone">
+                      <ArticleCard
+                        key={article.article_id}
+                        article={article}
+                        screen="phone"
+                      />
+                    </Breakpoint>
+                  </>
+                );
+              })}
+            </ul>
+          </div>
+          <Breakpoint screen="desktop">
+            <SidePanel topicData={topicData} page="articleList" />
           </Breakpoint>
         </>
       );

@@ -15,9 +15,7 @@ function ArticleSort({ articleCount, loadArticleList, topic }) {
 
   return (
     <div className="articles-sort">
-      <p className="articles__count">
-        Now showing 10 of {articleCount} articles
-      </p>
+      <p className="articles__count">{articleCount} articles</p>
 
       <div className="articles-sort__controls">
         <select

@@ -100,9 +100,16 @@ class Article extends Component {
         <>
           <div className="article box">
             <div className="article__info">
-              <p>
-                Posted by {author} {formatDate(created_at)}
-              </p>
+              <Breakpoint screen="deskTab">
+                <p>
+                  Posted by {author} {formatDate(created_at)}
+                </p>
+              </Breakpoint>
+              <Breakpoint screen="phone">
+                <p>
+                  {author} {formatDate(created_at)}
+                </p>
+              </Breakpoint>
               <Votes type="article" id={article_id} votes={votes} />
             </div>
 

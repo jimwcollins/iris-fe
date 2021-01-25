@@ -82,9 +82,9 @@ body {
 @media only screen and (max-width: 600px) {
   .grid {
     grid-template-columns:
-      minmax(5rem, 1fr)
+      minmax(2.5rem, 1fr)
       minmax(30rem, 50rem)
-      minmax(5rem, 1fr);
+      minmax(2.5rem, 1fr);
   }
 }
 
@@ -120,7 +120,7 @@ body {
 
 @media only screen and (max-width: 601px) {
   .logo {
-    height: 11rem;
+    height: 12rem;
   }
 }
 
@@ -713,10 +713,12 @@ nav {
   margin-bottom: 3.5rem;
 
   font-size: 2.5rem;
+  text-align: center;
 }
 
 .articles__count {
-  font-size: var(--font-size-article);
+  font-size: 1.6rem;
+  font-weight: 600;
   margin-left: 1rem;
 }
 
@@ -874,9 +876,12 @@ nav {
   text-align: left;
 }
 
-.article__title {
-  font-size: 2rem;
-  margin-bottom: 1rem;
+@media only screen and (max-width: 600px) {
+  .article {
+    --article-padding: 2rem;
+    padding: var(--article-padding);
+    text-align: left;
+  }
 }
 
 .article__info {

@@ -26,7 +26,7 @@ const TopicList = ({ topicInput, resetTopics }) => {
 
   const handleTopicNav = (topicData) => {
     resetTopics();
-    navigate(`/articles/${topicData.slug}`, { state: { topicData } });
+    navigate(`/articles/${topicData.slug}`);
   };
 
   if (isLoading) {

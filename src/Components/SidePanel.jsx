@@ -4,16 +4,14 @@ import TopicBox from './SidePanel/TopicBox';
 import NewPostRules from './SidePanel/NewPostRules';
 import TopArticles from './SidePanel/TopArticles';
 
-const SidePanel = ({ topicData, page }) => {
-  const topicSlug = topicData ? topicData.slug : null;
-
+const SidePanel = ({ topicSlug, page }) => {
   return (
     <div className="sidepanel__box">
       {page === 'newArticle' ? (
         <NewPostRules screen="desktop" />
       ) : (
         <>
-          <TopicBox topicData={topicData} />
+          <TopicBox topicSlug={topicSlug} />
           <TopArticles topicSlug={topicSlug} />
         </>
       )}

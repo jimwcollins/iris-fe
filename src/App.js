@@ -80,7 +80,7 @@ class App extends Component {
           />
           <Router className="content" primary={false}>
             <ArticleList path="/" />
-            <ArticleList path="/articles/:topic" />
+            <ArticleList path="/articles/:topicSlug" />
             <NewArticle
               path="/article/new/:topic"
               showNewModal={this.modalHandler}

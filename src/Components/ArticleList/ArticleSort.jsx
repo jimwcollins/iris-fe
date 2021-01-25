@@ -1,13 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import icons from '../../images/iris-icons.svg';
 
-function ArticleSort({ articleCount, loadArticleList, topic }) {
+function ArticleSort({ articleCount, loadArticleList, topicSlug }) {
   const [sortBy, setSortBy] = useState('created_at');
   const [order, setOrder] = useState('desc');
 
   useEffect(() => {
-    loadArticleList(topic, sortBy, order);
-  }, [sortBy, order, loadArticleList, topic]);
+    loadArticleList(topicSlug, sortBy, order);
+  }, [sortBy, order, loadArticleList, topicSlug]);
 
   const handleOrder = () => {
     order === 'desc' ? setOrder('asc') : setOrder('desc');

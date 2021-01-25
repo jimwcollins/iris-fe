@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 
+import { getTopic } from '../../Utils/api';
 import { formatTitle } from '../../Utils/utils';
 
 class TopicBox extends Component {
@@ -8,17 +9,21 @@ class TopicBox extends Component {
     topic: {},
   };
 
-  componentDidMount = () => {
-    const { topicData } = this.props;
+  componentDidMount = async () => {
+    const { topicSlug } = this.props;
 
-    if (topicData) this.setState({ hasTopic: true, topic: topicData });
+    if (topicSlug) {
+      const { topics } = await getTopic(topicSlug);
+      this.setState({ hasTopic: true, topic: topics[0] });
+    }
   };
 
-  componentDidUpdate = (prevProps) => {
-    const { topicData } = this.props;
+  componentDidUpdate = async (prevProps) => {
+    const { topicSlug } = this.props;
 
-    if (topicData && topicData.slug !== prevProps.topicData.slug) {
-      this.setState({ hasTopic: true, topic: topicData });
+    if (topicSlug && topicSlug !== prevProps.topicSlug) {
+      const { topics } = await getTopic(topicSlug);
+      this.setState({ hasTopic: true, topic: topics[0] });
     }
   };
 

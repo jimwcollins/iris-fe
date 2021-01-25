@@ -144,7 +144,7 @@ class Article extends Component {
 
           <Breakpoint screen="desktop">
             <div className="sidepanel">
-              <SidePanel topic={topic} />
+              <SidePanel topicSlug={topic} />
 
               {author === username && (
                 <button

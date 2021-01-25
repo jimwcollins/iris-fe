@@ -14,7 +14,7 @@ import Breakpoint from '../../Responsive/breakpoint';
 
 class ArticleList extends Component {
   state = {
-    topic: this.props.topic,
+    topicSlug: '',
     articles: [],
     articleCount: 0,
     isLoading: true,
@@ -23,13 +23,18 @@ class ArticleList extends Component {
   };
 
   componentDidMount = () => {
-    const { topic } = this.state;
-    this.loadArticleList(topic);
+    const { topicSlug } = this.props;
+    this.loadArticleList(topicSlug);
+    this.setState({ topicSlug });
   };
 
   componentDidUpdate = (prevProps) => {
-    const { topic } = this.props;
-    if (topic !== prevProps.topic) this.loadArticleList(topic);
+    const { topicSlug } = this.props;
+    if (topicSlug !== prevProps.topicSlug) {
+      console.log('Loading for topic:', topicSlug);
+      this.loadArticleList(topicSlug);
+      this.setState({ topicSlug });
+    }
   };
 
   loadArticleList = async (topic, sortBy, order) => {
@@ -62,22 +67,16 @@ class ArticleList extends Component {
   render() {
     const {
       articles,
-      topic,
+      topicSlug,
       articleCount,
       isLoading,
       hasError,
       errMsg,
     } = this.state;
 
-    let topicData;
-
-    if (this.props.location.state) {
-      topicData = this.props.location.state.topicData;
-    }
-
     const { user } = this.context;
 
-    const title = topic ? formatTitle(topic) : 'Welcome To The Iris';
+    const title = topicSlug ? formatTitle(topicSlug) : 'Welcome To The Iris';
 
     // Set main content of page according to whether we are loading or if an error has been thrown
     let mainContent;
@@ -92,7 +91,7 @@ class ArticleList extends Component {
           <div className="articles">
             <ArticleSort
               articleCount={articleCount}
-              topic={topic}
+              topicSlug={topicSlug}
               loadArticleList={this.loadArticleList}
             />
             <ul className="articles__list">
@@ -120,10 +119,10 @@ class ArticleList extends Component {
           </div>
           <Breakpoint screen="desktop">
             <div className="sidepanel">
-              <SidePanel topicData={topicData} page="articleList" />
+              <SidePanel topicSlug={topicSlug} page="articleList" />
               {user && (
                 <Link
-                  to={topic ? `/article/new/${topic}` : '/article/new'}
+                  to={topicSlug ? `/article/new/${topicSlug}` : '/article/new'}
                   className="sidepanel__link"
                 >
                   <button className="mainButton">

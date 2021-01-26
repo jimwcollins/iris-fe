@@ -752,15 +752,14 @@ nav {
   -moz-appearance: none;
   -webkit-appearance: none;
   appearance: none;
+  border: none;
   height: 3rem;
-  padding: 0.5rem;
   padding-left: 1rem;
   padding-right: 3rem;
   font-size: var(--font-size-main);
   font-weight: 500;
   color: var(--color-white);
   border-radius: 0.5rem;
-  margin-left: 1rem;
 }
 
 .articles-sort__order {

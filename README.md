@@ -4,7 +4,7 @@
 
 A full-stack, responsive news app built using React, Express and postgreSQL.
 
-The hosted site can be found here: <to come>
+The hosted site can be found here: https://the-iris.netlify.app/
 
 The backend repo can be found here: https://github.com/jimwcollins/iris-be
 

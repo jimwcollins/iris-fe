@@ -25,6 +25,7 @@ export const getArticleList = async (topic, sortBy, order, limit) => {
       topic,
       sort_by: sortBy,
       order,
+      limit,
     },
   });
 

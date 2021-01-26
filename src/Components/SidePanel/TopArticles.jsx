@@ -24,7 +24,7 @@ class TopArticles extends Component {
 
   fetchArticleList = async (topicSlug) => {
     try {
-      const { articles } = await getArticleList(topicSlug, 'votes');
+      const { articles } = await getArticleList(topicSlug, 'votes', 'desc', 8);
 
       this.setState({
         topArticles: articles,

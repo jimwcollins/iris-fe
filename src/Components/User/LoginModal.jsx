@@ -36,6 +36,7 @@ const LoginModal = (props) => {
             value={userLogin}
             onChange={handleChange}
             className="login__input"
+            autocomplete="off"
             required
           ></input>
           <input type="submit" value="login" className="btn"></input>
